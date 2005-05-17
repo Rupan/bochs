@@ -25,7 +25,7 @@ case "$1" in
     ;;
   update)
     echo "-> updating snapshot."
-    cvs up -d $SRCDIR bochs
+    cvs up -dP $SRCDIR
     ;;
 esac
 
