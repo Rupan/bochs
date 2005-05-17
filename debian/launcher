@@ -1,0 +1,9 @@
+#!/bin/sh -e
+#
+# Wrapper script for Bochs.
+
+# this allows use of a GUEST variable in bochsrc
+if test -z "$GUEST" ; then GUEST=guest ; fi
+
+# now we run bochs
+GUEST=$GUEST bochs-bin -q $@

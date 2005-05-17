@@ -1,0 +1,280 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+
+version=2.1.1
+=bochs
+null=
+
+DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_HOST_GNU_CPU	?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
+DEB_HOST_GNU_SYSTEM	?= $(shell dpkg-architecture -qDEB_HOST_GNU_SYSTEM)
+
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+        CFLAGS += -g
+endif
+ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+        INSTALL_PROGRAM += -s
+endif
+
+conf_args = \
+	--host=$(DEB_HOST_GNU_TYPE) \
+	--build=$(DEB_BUILD_GNU_TYPE) \
+	--prefix=/usr \
+	--mandir=\$${prefix}/share/man \
+	\
+	--with-x11 \
+	--with-term \
+	--with-sdl \
+	--with-wx \
+	\
+	--enable-cdrom \
+	--enable-vbe \
+	\
+	--enable-cpu-level=5 \
+	--enable-fpu \
+	--enable-mmx \
+	--enable-3dnow \
+	\
+	--enable-gdb-stub \
+	--enable-idle-hack \
+	--enable-all-optimizations \
+	--enable-plugins \
+	--enable-compressed-hd \
+	$(null)
+
+sb16=dummy
+ifeq ($(DEB_HOST_GNU_SYSTEM),linux)
+  sb16=linux
+endif
+ifeq ($(DEB_HOST_GNU_SYSTEM),kfreebsd-gnu)
+  sb16=freebsd
+endif
+conf_args += --enable-sb16=$(sb16)
+
+ifeq ($(DEB_HOST_GNU_SYSTEM),linux)
+  kernel = linux
+  conf_args += --enable-ne2000
+  eth = eth0
+endif
+ifeq ($(DEB_HOST_GNU_SYSTEM),kfreebsd-gnu)
+  kernel = fbsd
+  conf_args += --enable-ne2000
+  eth = xl0
+endif
+
+ifeq ($(DEB_HOST_GNU_SYSTEM),linux)
+  com = ttyS0
+endif
+ifeq ($(DEB_HOST_GNU_SYSTEM),gnu)
+  com = com0
+endif
+ifeq ($(DEB_HOST_GNU_SYSTEM),kfreebsd-gnu)
+  com = cuua0
+endif
+
+ifneq ($(DEB_HOST_GNU_CPU),i386)
+  pkg_exclude = -Nsb16ctrl-bochs
+endif
+ifeq ($(DEB_HOST_GNU_TYPE),i386-linux)
+  conf_args += --with-svga
+else
+  pkg_exclude += -Nbochs-svga
+endif
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f *-stamp
+
+	# Add here commands to clean up after the build process.
+	rm -rf $(bochs)
+
+	cat debian/control.in \
+	| sed "s/@i386@/`type-handling i386 any`/g" \
+	| sed "s/@libasound@/`type-handling any linux-gnu`/g" \
+	| sed "s/@svgalib@/`type-handling i386 linux-gnu`/g" \
+	> debian/control
+
+	dh_clean
+
+patch: patch-stamp
+patch-stamp:
+	dh_testdir
+
+	# Untar
+	tar -xzf $(bochs).tar.gz
+
+	# Add here commands to patch the source..
+	set -e ; for i in `cat debian/patches/0list | grep -v ^#` ; \
+	do \
+	echo "--- $$i ---" ; \
+	patch -p1 -d $(bochs) < debian/patches/$$i.diff ; \
+	done
+
+	touch patch-stamp
+
+configure: patch-stamp configure-stamp
+configure-stamp:
+	cd $(bochs) \
+		&& `which autoconf2.50 || which autoconf` \
+		&& ./configure $(conf_args)
+
+	touch configure-stamp
+
+build: build-arch
+build-arch: patch-stamp build-arch-stamp
+build-arch-stamp: configure-stamp
+	dh_testdir
+
+	cd $(bochs) && $(MAKE)
+
+ifeq ($(DEB_HOST_GNU_CPU),i386)
+	cd $(bochs) && gcc misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
+endif
+
+	touch build-arch-stamp
+
+build-indep: build-indep-stamp
+build-indep-stamp: configure-stamp
+	dh_testdir
+
+	# bochsbios
+	cd $(bochs) && $(MAKE) -C bios
+
+	touch build-indep-stamp
+
+install: install-stamp
+install-stamp: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Hack to keep install target happy
+	touch $(bochs)/bios/BIOS-stamp \
+		$(bochs)/bios/VGABIOS-stamp
+
+	# Add here commands to install the package into debian/tmp.
+	cd $(bochs) && $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+
+	# misc cleanup
+
+	find $(CURDIR)/debian/tmp -name CVS -type d | xargs rm -rf
+	rm -f \
+		$(CURDIR)/debian/tmp/usr/share/bochs/install-x11-fonts \
+		$(CURDIR)/debian/tmp/usr/share/bochs/test-x11-fonts \
+		$(CURDIR)/debian/tmp/usr/share/man/man1/bochs-dlx.1.gz \
+		$(CURDIR)/debian/tmp/usr/share/doc/bochs/COPYING.gz \
+		$(CURDIR)/debian/tmp/usr/bin/bochs-docs
+
+	# bochs
+
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/doc/bochs/examples
+	cat $(CURDIR)/debian/tmp/usr/share/doc/bochs/bochsrc-sample.txt |\
+		sed s/\#kernel\#/$(kernel)/g |\
+		sed s/\#eth\#/$(eth)/g |\
+		sed s/\#com\#/$(com)/g |\
+		gzip -c9 >\
+		$(CURDIR)/debian/tmp/usr/share/doc/bochs/examples/bochsrc.gz
+	rm -f $(CURDIR)/debian/tmp/usr/share/doc/bochs/bochsrc-sample.txt
+
+	mv $(CURDIR)/debian/tmp/usr/bin/bochs \
+		$(CURDIR)/debian/tmp/usr/bin/bochs-bin
+	install -m755 $(CURDIR)/debian/launcher \
+		$(CURDIR)/debian/tmp/usr/bin/bochs
+
+	cp $(bochs)/misc/sb16/sb16ctrl.c \
+		$(bochs)/misc/sb16/sb16ctrl.example \
+		debian/tmp/usr/share/doc/bochs/
+
+	cp -a debian/etc debian/tmp/
+	chmod 755 debian/tmp/etc/bochs-init/init.sh
+
+ifeq ($(DEB_HOST_GNU_CPU),i386)
+	cp $(bochs)/misc/sb16/sb16ctrl \
+		debian/tmp/usr/bin/
+endif
+
+	for i in \
+	README TESTFORM.txt README-plugins README-wxWindows ; do \
+		cp $(bochs)/$$i debian/tmp/usr/share/doc/bochs/ ; \
+	done
+	cp $(bochs)/CHANGES \
+		debian/tmp/usr/share/doc/bochs/changelog
+
+	touch install-stamp
+
+install-indep: install-indep-stamp
+install-indep-stamp: build-indep install
+	dh_testdir
+	dh_testroot
+	dh_installdirs
+
+	mkdir -p debian/tmp/usr/share/bochs
+	cp $(bochs)/bios/BIOS* \
+		debian/tmp/usr/share/bochs/
+
+	touch install-indep-stamp
+
+# Build architecture-independent files here.
+binary-indep: binary-arch build-indep install install-indep
+	dh_testdir -i
+	dh_testroot -i
+	dh_install -i
+
+#	dh_installdebconf -i
+	dh_installdocs -i
+	dh_installexamples -i
+#	dh_installmenu -i
+#	dh_installlogrotate -i
+#	dh_installemacsen -i
+#	dh_installpam -i
+#	dh_installmime -i
+#	dh_installinit -i
+#	dh_installcron -i
+#	dh_installman -i
+#	dh_installinfo -i
+#	dh_undocumented -i
+	dh_installchangelogs -i
+	dh_link -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+#	dh_perl -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir -a
+	dh_testroot -a
+	dh_install -a -Nbochs $(pkg_exclude)
+	dh_install -pbochs # bochs should be last
+	dh_installdebconf -a
+	dh_installdocs -a
+	dh_installexamples -a
+	dh_installmenu -a
+#	dh_installlogrotate -a
+#	dh_installemacsen -a
+#	dh_installpam -a
+#	dh_installmime -a
+#	dh_installinit -a
+#	dh_installcron -a
+	dh_installchangelogs -a
+	dh_link -a
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a
+#	dh_makeshlibs -a
+	dh_installdeb -a
+#	dh_perl -a
+	dh_shlibdeps -a
+	dh_gencontrol -a $(pkg_exclude)
+	dh_md5sums -a
+	dh_builddeb -a $(pkg_exclude)
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

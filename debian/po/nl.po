@@ -1,0 +1,81 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bochs 2.1.1-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-25 14:33+0200\n"
+"PO-Revision-Date: 2004-03-29 09:06+0100\n"
+"Last-Translator: Luk Claes <luk.claes@ugent.be>\n"
+"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "Configuration file format changed"
+msgstr "Het formaat van het configuratiebestand is gewijzigd."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Since version 2.0 of Bochs came into Debian, there have been two changes in "
+"the configuration file format."
+msgstr ""
+"Sinds versie 2.0 van Bochs in Debian is gekomen, zijn er twee wijzigingen in "
+"het formaat van het configuratiebestand."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Of course, a good option would be to just take a pristine bochsrc from /usr/"
+"share/doc/bochs/examples/bochsrc.gz and restart from scratch."
+msgstr ""
+"Natuurlijk is een goede keuze om een zuivere bochsrc van /usr/share/doc/"
+"bochs/examples/bochsrc.gz te nemen en om helemaal van nul te beginnen."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "The required changes are:"
+msgstr "De vereiste wijzigingen zijn:"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Change of syntax for disk and cdrom. ATA support has been added and you have "
+"to use the new ata-* directives in bochsrc. See the sample bochsrc for an "
+"example. (note that the obsolete syntax is supported, for now)"
+msgstr ""
+"Wijziging van de syntax voor schijf en cd-rom. ATA-ondersteuning is "
+"toegevoegd en u moet de nieuwe ata-*-directieven gebruiken in bochsrc. Zie "
+"de voorbeeld-bochsrc. (merk op dat de verouderde syntax voorlopig nog wordt "
+"ondersteund)"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"The launcher script used to replace  #home# and #guest# tags with the "
+"homedir and the guest parameter. This is now done by Bochs, so you'll have "
+"to change every #home# and #guest# by $HOME and $GUEST."
+msgstr ""
+"Het startscript verving #home#- en #guest#-tags met de thuismap en de "
+"gastparameter. Dit wordt nu gedaan door Bochs, dus zult u elke #home#- en "
+"#guest#-tag moeten vervangen door $HOME en $GUEST."

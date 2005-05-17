@@ -1,0 +1,18 @@
+Template: bochs/bochsrc
+Type: note
+_Description: Configuration file format changed
+ Since version 2.0 of Bochs came into Debian, there have been two changes
+ in the configuration file format.
+ .
+ Of course, a good option would be to just take a pristine bochsrc from
+ /usr/share/doc/bochs/examples/bochsrc.gz and restart from scratch.
+ .
+ The required changes are:
+ .
+ Change of syntax for disk and cdrom. ATA support has been added and you
+ have to use the new ata-* directives in bochsrc. See the sample bochsrc
+ for an example. (note that the obsolete syntax is supported, for now)
+ .
+ The launcher script used to replace  #home# and #guest# tags with the
+ homedir and the guest parameter. This is now done by Bochs, so you'll have
+ to change every #home# and #guest# by $HOME and $GUEST.

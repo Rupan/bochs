@@ -1,0 +1,103 @@
+diff -ur bochs.old/bochs.h bochs/bochs.h
+--- bochs.old/bochs.h	2004-06-29 21:24:25.000000000 +0200
++++ bochs/bochs.h	2004-09-03 10:19:44.000000000 +0200
+@@ -456,6 +456,9 @@
+ #if BX_MAGIC_BREAKPOINT
+   bx_bool magic_break_enabled;
+ #endif /* BX_MAGIC_BREAKPOINT */
++#ifdef BX_GDBSTUB
++  bx_bool gdbstub_enabled;
++#endif
+ #if BX_SUPPORT_APIC
+   bx_bool apic;
+   bx_bool ioapic;
+diff -ur bochs.old/config.cc bochs/config.cc
+--- bochs.old/config.cc	2004-09-01 20:12:22.000000000 +0200
++++ bochs/config.cc	2004-09-03 10:22:23.000000000 +0200
+@@ -3163,6 +3163,27 @@
+         }
+       }
+     }
++#ifdef BX_GDBSTUB
++  else if (!strcmp(params[0], "gdbstub")) {
++    if (num_params != 2) {
++      PARSE_ERR(("%s: gdbstub directive: wrong # args.", context));
++      }
++    if (strncmp(params[1], "enabled=", 8)) {
++      PARSE_ERR(("%s: gdbstub directive malformed.", context));
++      }
++    if (params[1][8] == '0') {
++      BX_INFO(("Disabled gdbstub"));
++      bx_dbg.gdbstub_enabled = 0;
++      }
++    else if (params[1][8] == '1') {
++      BX_INFO(("Enabled gdbstub"));
++      bx_dbg.gdbstub_enabled = 1;
++      }
++    else {
++      PARSE_ERR(("%s: gdbstub directive malformed.", context));
++      }
++    }
++#endif
+ #if BX_MAGIC_BREAKPOINT
+   else if (!strcmp(params[0], "magic_break")) {
+     if (num_params != 2) {
+diff -ur bochs.old/cpu/cpu.cc bochs/cpu/cpu.cc
+--- bochs.old/cpu/cpu.cc	2004-07-29 22:30:14.000000000 +0200
++++ bochs/cpu/cpu.cc	2004-09-03 10:19:14.000000000 +0200
+@@ -485,6 +485,7 @@
+ 
+ #endif  // #if BX_DEBUGGER
+ #if BX_GDBSTUB
++    if(bx_dbg.gdbstub_enabled)
+     {
+     unsigned int reason;
+     if ((reason = bx_gdbstub_check(EIP)) != GDBSTUB_STOP_NO_REASON) {
+diff -ur bochs.old/main.cc bochs/main.cc
+--- bochs.old/main.cc	2004-09-01 20:12:22.000000000 +0200
++++ bochs/main.cc	2004-09-03 10:19:14.000000000 +0200
+@@ -724,15 +724,18 @@
+     BX_PANIC (("no gui module was loaded"));
+     return 0;
+   }
+-#if BX_GDBSTUB
+-  // If using gdbstub, it will take control and call
+-  // bx_init_hardware() and cpu_loop()
+-  bx_gdbstub_init (argc, argv);
+-#elif BX_DEBUGGER
++#if BX_DEBUGGER
+   // If using the debugger, it will take control and call
+   // bx_init_hardware() and cpu_loop()
+   bx_dbg_main(argc, argv);
+ #else
++#if BX_GDBSTUB
++  // If using gdbstub, it will take control and call
++  // bx_init_hardware() and cpu_loop()
++  if (bx_dbg.gdbstub_enabled)
++    bx_gdbstub_init (argc, argv);
++  else {
++#endif
+ 
+   bx_init_hardware();
+ 
+@@ -776,7 +779,10 @@
+             BX_TICKN(quantum);
+     }
+   }
++#if BX_GDBSTUB
++  }
+ #endif
++#endif /* ! BX_DEBUGGER */
+   BX_INFO (("cpu loop quit, shutting down simulator"));
+   bx_atexit ();
+   return(0);
+@@ -958,6 +964,9 @@
+ #if BX_MAGIC_BREAKPOINT
+   bx_dbg.magic_break_enabled = 0;
+ #endif
++#ifdef BX_GDBSTUB
++  bx_dbg.gdbstub_enabled = 0;
++#endif
+ 
+ }
+ 
