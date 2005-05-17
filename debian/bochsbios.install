@@ -1,4 +1,4 @@
-debian/tmp/usr/share/bochs/BIOS-bochs-2-processors
-debian/tmp/usr/share/bochs/BIOS-bochs-4-processors
-debian/tmp/usr/share/bochs/BIOS-bochs-8-processors
-debian/tmp/usr/share/bochs/BIOS-bochs-latest
+usr/share/bochs/BIOS-bochs-2-processors
+usr/share/bochs/BIOS-bochs-4-processors
+usr/share/bochs/BIOS-bochs-8-processors
+usr/share/bochs/BIOS-bochs-latest

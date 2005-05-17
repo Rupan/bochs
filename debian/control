@@ -1,10 +1,10 @@
 Source: bochs
 Section: misc
 Priority: extra
-Maintainer: Debian QA Group <packages@qa.debian.org>
+Maintainer: Guillem Jover <guillem@debian.org>
 Build-Depends: debhelper (>= 4.1.16), libncurses5-dev, xlibs-dev, libsdl1.2-dev, libwxgtk2.4-dev, libgtk1.2-dev, autoconf, libasound2-dev [alpha arm hppa i386 ia64 m68k mips mipsel powerpc s390 s390x sh3 sh3eb sh4 sh4eb sparc sparc64 amd64], aalib1-dev, libsvga1-dev [i386], type-handling (>= 0.2.1), libreadline4-dev, libz-dev
 Build-Depends-Indep: bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl, docbook-utils
-Standards-Version: 3.5.2
+Standards-Version: 3.6.1
 
 Package: bochs
 Architecture: any
@@ -104,7 +104,7 @@ Description: SVGA plugin for Bochs
  **VERY IMPORTANT WARNING**
  Running Bochs with this plugin will redirect all your keyboard input
  (including ALT+Fx) to the guest OS, blocking your terminal. An exception
- is the F12 key, which you can use to interrupt the emulation. 
+ is the F12 key, which you can use to interrupt the emulation.
 
 Package: bximage
 Architecture: any

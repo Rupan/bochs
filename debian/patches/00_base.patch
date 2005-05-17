@@ -1,6 +1,6 @@
-diff -ur bochs.old/.bochsrc bochs/.bochsrc
---- bochs.old/.bochsrc	2004-09-01 20:12:21.000000000 +0200
-+++ bochs/.bochsrc	2004-09-03 10:54:11.000000000 +0200
+diff -Naur bochs.orig/.bochsrc bochs/.bochsrc
+--- bochs.orig/.bochsrc	2004-11-06 11:50:02.000000000 +0100
++++ bochs/.bochsrc	2004-11-09 06:48:59.000000000 +0100
 @@ -17,7 +17,7 @@
  # the "wx" display library.
  #=======================================================================
@@ -59,19 +59,19 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
  
  #=======================================================================
  # MEGS
-@@ -109,9 +97,8 @@
+@@ -107,9 +95,8 @@
  # VGAROMIMAGE
  # You now need to load a VGA ROM BIOS into C0000.
  #=======================================================================
 -#vgaromimage: file=bios/VGABIOS-lgpl-latest
 -#vgaromimage: file=bios/VGABIOS-elpin-2.40
 -vgaromimage: file=$BXSHARE/VGABIOS-elpin-2.40
-+vgaromimage: /usr/share/vgabios/vgabios.bin
-+#vgaromimage: /usr/share/vgabios/vgabios.debug.bin
++vgaromimage: file=/usr/share/vgabios/vgabios.bin
++#vgaromimage: file=/usr/share/vgabios/vgabios.debug.bin
  
  #=======================================================================
  # FLOPPYA:
-@@ -218,11 +205,8 @@
+@@ -217,11 +204,8 @@
  #   ata3-master: type=disk, mode=flat, path=483M.sample, cylinders=1024, heads=15, spt=63
  #   ata3-slave:  type=cdrom, path=iso.sample, status=inserted
  #=======================================================================
@@ -86,7 +86,7 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
  #=======================================================================
  # BOOT:
 @@ -237,7 +221,8 @@
- #   boot: a
+ #   boot: cdrom, floppy, disk
  #=======================================================================
  #boot: floppy
 -boot: disk
@@ -152,9 +152,9 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Examples:
-@@ -569,10 +543,7 @@
- # Bochs execution. The network interface name is supplied to the script
- # as first parameter
+@@ -578,10 +552,7 @@
+ #         DHCP assignes 192.168.10.2 to the guest.
+ #
  #=======================================================================
 -# ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=fbsd, ethdev=en0 #macosx
 -# ne2k: ioaddr=0x240, irq=9, mac=b0:c4:20:00:00:00, ethmod=fbsd, ethdev=xl0
@@ -163,8 +163,8 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
 +# ne2k: ioaddr=0x240, irq=9, mac=b0:c4:20:00:00:00, ethmod=#kernel#, ethdev=#eth#
  # ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
- 
-@@ -585,7 +556,7 @@
+ # ne2k: ioaddr=0x240, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
+@@ -596,7 +567,7 @@
  # Examples:
  #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
  #=======================================================================
@@ -173,9 +173,9 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
  
  #=======================================================================
  # KEYBOARD_TYPE:
-@@ -638,114 +609,3 @@
- #-------------------------
- #pcidev: vendor=0x1234, device=0x5678
+@@ -656,114 +627,3 @@
+ #=======================================================================
+ #gdbstub: enabled=0, port=1234, text_base=0, data_base=0, bss_base=0
  
 -#=======================================================================
 -# for Macintosh, use the style of pathnames in the following
@@ -288,45 +288,28 @@ diff -ur bochs.old/.bochsrc bochs/.bochsrc
 -#=======================================================================
 -#newharddrivesupport: enabled=1
 -
-Only in bochs/: .bochsrc.orig
-Only in bochs/: .bochsrc.rej~
-Only in bochs/: .bochsrc~
-diff -ur bochs.old/configure.in bochs/configure.in
---- bochs.old/configure.in	2004-08-18 13:48:56.000000000 +0200
-+++ bochs/configure.in	2004-09-03 10:48:53.000000000 +0200
-@@ -1646,6 +1646,29 @@
-     ]
-   )
- 
-+AC_MSG_CHECKING(for 3DNOW support)
-+AC_ARG_ENABLE(3dnow,
-+  [  --enable-3dnow                      3DNOW support],
-+  [if test "$enableval" = yes; then
+diff -Naur bochs.orig/configure.in bochs/configure.in
+--- bochs.orig/configure.in	2004-10-23 21:31:13.000000000 +0200
++++ bochs/configure.in	2004-11-09 06:50:33.000000000 +0100
+@@ -1603,6 +1603,15 @@
+     AC_DEFINE(BX_SUPPORT_3DNOW, 0)
+    fi
+    ],
++  [if test "$use_x86_64" = 1; then
 +    AC_MSG_RESULT(yes)
 +    AC_DEFINE(BX_SUPPORT_3DNOW, 1)
-+   elif test "$enableval" = no; then
++   else
 +    AC_MSG_RESULT(no)
 +    AC_DEFINE(BX_SUPPORT_3DNOW, 0)
 +   fi
-+   ],
-+  [
-+    if test "$use_x86_64" = 1; then
-+      AC_MSG_RESULT(yes)
-+      AC_DEFINE(BX_SUPPORT_3DNOW, 1)
-+    else
-+      AC_MSG_RESULT(no)
-+      AC_DEFINE(BX_SUPPORT_3DNOW, 0)
-+    fi
-+    AC_MSG_RESULT(no)
-+    ]
-+  )
-+
- AC_MSG_CHECKING(for SEP support)
- AC_ARG_ENABLE(sep,
-   [  --enable-sep                      SYSENTER/SYSEXIT support],
-diff -ur bochs.old/doc/man/bochs.1 bochs/doc/man/bochs.1
---- bochs.old/doc/man/bochs.1	2002-12-13 20:46:53.000000000 +0100
-+++ bochs/doc/man/bochs.1	2004-09-03 10:48:53.000000000 +0200
++   AC_MSG_RESULT(no)
++   ]
+   )
+ 
+ support_sse=0
+diff -Naur bochs.orig/doc/man/bochs.1 bochs/doc/man/bochs.1
+--- bochs.orig/doc/man/bochs.1	2004-10-09 17:58:46.000000000 +0200
++++ bochs/doc/man/bochs.1	2004-11-09 06:48:59.000000000 +0100
 @@ -57,8 +57,8 @@
  .SH LICENSE
  This program  is distributed  under the terms of the  GNU
@@ -338,24 +321,3 @@ diff -ur bochs.old/doc/man/bochs.1 bochs/doc/man/bochs.1
  the lack of warrantee.
  .\"SKIP_SECTION"
  .SH AVAILABILITY
-diff -ur bochs.old/misc/sb16/sb16ctrl.c bochs/misc/sb16/sb16ctrl.c
---- bochs.old/misc/sb16/sb16ctrl.c	2001-10-03 15:10:38.000000000 +0200
-+++ bochs/misc/sb16/sb16ctrl.c	2004-09-03 10:48:53.000000000 +0200
-@@ -43,7 +43,7 @@
- #	include <dos.h>
- #endif
- 
--#ifdef linux
-+#ifdef __unix__
- #	include <sys/io.h>
- #	include <errno.h>
- #	define inp inb
-@@ -80,7 +80,7 @@
- /* Enable access to the emulator port */
- void enableport()
- {
--#ifdef linux
-+#ifdef __unix__
-   if (ioperm(EMULPORT, 1, 1)) {
-     printf("Could not access emulator port %03x: %s.\n", EMULPORT, strerror(errno));
-     exit(1);

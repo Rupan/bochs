@@ -1,7 +1,6 @@
-debian/tmp/usr/share/doc/bochs/changelog
-debian/tmp/usr/share/doc/bochs/README
-debian/tmp/usr/share/doc/bochs/TESTFORM.txt
-debian/tmp/usr/share/doc/bochs/README-plugins
-debian/tmp/usr/share/doc/bochs/README-wxWindows
-debian/tmp/usr/share/doc/bochs/sb16ctrl.c
-debian/tmp/usr/share/doc/bochs/sb16ctrl.example
+README
+TESTFORM.txt
+README-plugins
+README-wxWindows
+misc/sb16/sb16ctrl.c
+misc/sb16/sb16ctrl.example

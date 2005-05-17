@@ -1,3 +1,39 @@
+bochs (2.1.1+20041109-1) unstable; urgency=low
+
+  * New maintainer. (Closes: #276392)
+  * New upstream snapshot.
+    - Stop using tar in tar.
+  * Added a debian/tarball.sh script to easily manage snapshots.
+  * Patches:
+    - Use debian/patch.mk.
+    - debian/patches/gdb.diff: Remove, integrated upstream.
+    - debian/patches/gzip.diff: Likewise.
+    - debian/patches/kbsd-gnu.diff: Likewise
+    - debian/patches/orig.diff: Renamed to ...
+    - debian/patches/00_base.patch: ... this. Remove upstream integrated
+      changes. Fixed 3DNow hunk duplication.
+    - debian/patches/plex86.diff: Renamed to ...
+    - debian/patches/plex86.disabled: ... this.
+  * Use new vgaromimage syntax in bochs-init config:
+    - debian/etc/bochs-init/bochsrc: Update.
+  * Create tun devices. (Closes: #215576)
+  * Removed leftover debian/rules.ZILESAVE.
+  * Removed leftover debian/xfonts-bochs.dirs.
+  * General cosmetic fixes.
+  * Cleaned debian/copyright.
+  * Major cleanup of debian/rules.
+    - Honour noopt in DEB_BUILD_OPTIONS.
+    - Build with debugging symbols by default.
+    - Use -s in debhelper scripts instead of -a and hardcoded package
+      excludes.
+    - Use debian/tmp as the source dir in dh_install. Fix all *.install
+      files.
+  * Added a debian/watch file.
+  * Added Catalan debconf template.
+  * Now using Standard-Version 3.6.1.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 13 Nov 2004 17:32:09 +0100
+
 bochs (2.1.1+20040903-3) unstable; urgency=low
 
   * QA Upload
