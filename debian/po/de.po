@@ -47,9 +47,8 @@ msgid ""
 "Of course, a good option would be to just take a pristine bochsrc from /usr/"
 "share/doc/bochs/examples/bochsrc.gz and restart from scratch."
 msgstr ""
-"Es wird das Beste sein, eine frische bochsrc aus "
-"/usr/share/doc/bochs/examples/bochsrc.gz zu erstellen und von vorn "
-"anzufangen."
+"Es wird das Beste sein, eine frische bochsrc aus /usr/share/doc/bochs/"
+"examples/bochsrc.gz zu erstellen und von vorn anzufangen."
 
 #. Type: note
 #. Description
@@ -67,8 +66,8 @@ msgid ""
 msgstr ""
 "Änderung der Syntax für Festplatten und CD-ROM. ATA-Unterstützung wurde "
 "hinzugefügt und Sie müssen die neuen ata-* Anweisungen benutzen. Als "
-"Beispiel verwenden Sie das Muster der bochsrc. (Beachten Sie, dass die "
-"alte Syntax noch unterstützt wird, zumindest bis jetzt.)"
+"Beispiel verwenden Sie das Muster der bochsrc. (Beachten Sie, dass die alte "
+"Syntax noch unterstützt wird, zumindest bis jetzt.)"
 
 #. Type: note
 #. Description
@@ -78,8 +77,6 @@ msgid ""
 "homedir and the guest parameter. This is now done by Bochs, so you'll have "
 "to change every #home# and #guest# by $HOME and $GUEST."
 msgstr ""
-"Das Startskript wurde genutzt, um die Marken #home# und #guest# durch "
-"die Werte von homedir und guest zu ersetzen. Das macht Bochs nun selbst, "
-"deshalb müssen Sie alle #home# und #guest# durch $HOME und $GUEST "
-"ersetzen."
-
+"Das Startskript wurde genutzt, um die Marken #home# und #guest# durch die "
+"Werte von homedir und guest zu ersetzen. Das macht Bochs nun selbst, deshalb "
+"müssen Sie alle #home# und #guest# durch $HOME und $GUEST ersetzen."

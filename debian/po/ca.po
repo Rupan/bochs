@@ -36,8 +36,8 @@ msgid ""
 "Since version 2.0 of Bochs came into Debian, there have been two changes in "
 "the configuration file format."
 msgstr ""
-"Des de la versió 2.0 de Bochs a Debian, hi ha hagut dos canvis en el "
-"format del fitxer de configuració."
+"Des de la versió 2.0 de Bochs a Debian, hi ha hagut dos canvis en el format "
+"del fitxer de configuració."
 
 #. Type: note
 #. Description
@@ -64,8 +64,8 @@ msgid ""
 "example. (note that the obsolete syntax is supported, for now)"
 msgstr ""
 "Canvi de sintaxi per a disc i cdrom. S'ha afegit suport d'ATA i heu de fer "
-"servir les noves directives a bochsrc. Vegeu el fitxer bochsrc de mostra "
-"per a un exemple. (tingueu en compte que la sintaxi obsoleta encara està "
+"servir les noves directives a bochsrc. Vegeu el fitxer bochsrc de mostra per "
+"a un exemple. (tingueu en compte que la sintaxi obsoleta encara està "
 "suportada, per ara)"
 
 #. Type: note
@@ -77,6 +77,5 @@ msgid ""
 "to change every #home# and #guest# by $HOME and $GUEST."
 msgstr ""
 "El script «launcher» reemplaçava les marques #home# i #guest# amb els "
-"paràmetres «homedir» i «guest». Això ho fa Bochs ara, per tant haureu "
-"de canviar totes les aparicions de #home# i #guest# per $HOME i $GUEST."
-
+"paràmetres «homedir» i «guest». Això ho fa Bochs ara, per tant haureu de "
+"canviar totes les aparicions de #home# i #guest# per $HOME i $GUEST."

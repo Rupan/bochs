@@ -2,7 +2,7 @@ Source: bochs
 Section: misc
 Priority: extra
 Maintainer: Guillem Jover <guillem@debian.org>
-Build-Depends: debhelper (>= 4.1.16), libncurses5-dev, xlibs-dev, libsdl1.2-dev, libwxgtk2.4-dev, libgtk1.2-dev, autoconf, libasound2-dev [@libasound@], aalib1-dev, libsvga1-dev [@svgalib@], type-handling (>= 0.2.1), libreadline4-dev, libz-dev
+Build-Depends: debhelper (>= 4.1.16), g++-3.4 [m68k], chrpath, libncurses5-dev, xlibs-dev, libsdl1.2-dev, libwxgtk2.4-dev, libgtk1.2-dev, autoconf, libasound2-dev [@libasound@], aalib1-dev, libsvga1-dev [@svgalib@], type-handling (>= 0.2.1), libreadline4-dev, libz-dev
 Build-Depends-Indep: bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl, docbook-utils
 Standards-Version: 3.6.1
 

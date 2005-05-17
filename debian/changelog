@@ -1,8 +1,23 @@
+bochs (2.1.1+20041109-2) unstable; urgency=high
+
+  * Build-Depends and use gcc-3.4 on m68k to avoid an ICE. (Closes: #284050)
+  * Fix build failure with gcc-4.0. (Closes: #284748)
+    Thanks to Andreas Jochens <aj@andaco.de>.
+  * Add missing "--tag CXX" in libtool invokations.
+  * Remove possible RPATH in SDL plugin.
+  * Fix typo in documentation. (Partial fix: #198766)
+  * Fix broken links to Home in bochs-doc manuals. (Closes: #198861)
+  * Update bochsrc(5) with new vgaromimage syntax, and fix warnings in all
+    manpages. (Closes: #274336)
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 13 Dec 2004 17:22:43 +0100
+
 bochs (2.1.1+20041109-1) unstable; urgency=low
 
   * New maintainer. (Closes: #276392)
   * New upstream snapshot.
     - Stop using tar in tar.
+    - Fix Linux kernel loading on 2.4.26 or 2.6.8 and up. (Closes: #273424)
   * Added a debian/tarball.sh script to easily manage snapshots.
   * Patches:
     - Use debian/patch.mk.

@@ -24,26 +24,26 @@ set -e
 #     `abort-remove' or `abort-deconfigure'.
 
 case "$1" in
-    configure)
+  configure)
 
     . /usr/share/debconf/confmodule
 
     DEVICE=/dev/net/tun
 
     if test ! -e /dev/.devfsd -a ! -c $DEVICE; then
-	cd /dev
-	/sbin/MAKEDEV tun
+      cd /dev
+      /sbin/MAKEDEV tun
     fi
-    ;;
+  ;;
 
-    abort-upgrade|abort-remove|abort-deconfigure)
+  abort-upgrade|abort-remove|abort-deconfigure)
 
-    ;;
+  ;;
 
-    *)
-        echo "postinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
 esac
 
 #DEBHELPER#

@@ -36,8 +36,8 @@ msgid ""
 "Since version 2.0 of Bochs came into Debian, there have been two changes in "
 "the configuration file format."
 msgstr ""
-"Od verze 2.0, kdy se Bochs dostal do Debianu, prodìlal formát "
-"konfiguraèního souboru dvì zmìny."
+"Od verze 2.0, kdy se Bochs dostal do Debianu, prodìlal formát konfiguraèního "
+"souboru dvì zmìny."
 
 #. Type: note
 #. Description
@@ -46,8 +46,8 @@ msgid ""
 "Of course, a good option would be to just take a pristine bochsrc from /usr/"
 "share/doc/bochs/examples/bochsrc.gz and restart from scratch."
 msgstr ""
-"Samozøejmì, dobrou volbou by bylo jednodu¹e vzít nedotèený bochsrc z "
-"/usr/share/doc/bochs/examples/bochsrc.gz a znovu ho upravit."
+"Samozøejmì, dobrou volbou by bylo jednodu¹e vzít nedotèený bochsrc z /usr/"
+"share/doc/bochs/examples/bochsrc.gz a znovu ho upravit."
 
 #. Type: note
 #. Description
@@ -63,9 +63,9 @@ msgid ""
 "to use the new ata-* directives in bochsrc. See the sample bochsrc for an "
 "example. (note that the obsolete syntax is supported, for now)"
 msgstr ""
-"Zmìna syntaxe pro disk a cdrom. Byla pøidána podpora ATA a v bochsrc "
-"musíte pou¾ít nové pøíkazy ata-*. Pro pøíklad viz vzorový "
-"bochsrc. (zastaralá syntaxe je prozatím podporována)"
+"Zmìna syntaxe pro disk a cdrom. Byla pøidána podpora ATA a v bochsrc musíte "
+"pou¾ít nové pøíkazy ata-*. Pro pøíklad viz vzorový bochsrc. (zastaralá "
+"syntaxe je prozatím podporována)"
 
 #. Type: note
 #. Description
@@ -75,6 +75,6 @@ msgid ""
 "homedir and the guest parameter. This is now done by Bochs, so you'll have "
 "to change every #home# and #guest# by $HOME and $GUEST."
 msgstr ""
-"Spou¹tìcí skript zamìòoval znaèky #home# a #guest# za parametry "
-"homedir a guest. To teï dìlá Bochs, vy tedy musíte zamìnit ka¾dé "
-"#home# a #guest# za $HOME a $GUEST."
+"Spou¹tìcí skript zamìòoval znaèky #home# a #guest# za parametry homedir a "
+"guest. To teï dìlá Bochs, vy tedy musíte zamìnit ka¾dé #home# a #guest# za "
+"$HOME a $GUEST."

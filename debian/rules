@@ -77,6 +77,14 @@ ifeq ($(DEB_HOST_GNU_TYPE),i386-linux)
   conf_args += --with-svga
 endif
 
+ifeq ($(DEB_HOST_GNU_CPU),m68k)
+CXX = g++-3.4
+CC = gcc
+else
+CXX = g++
+CC = gcc
+endif
+
 include debian/patch.mk
 
 clean::
@@ -96,7 +104,8 @@ clean::
 
 configure: patch configure-stamp
 configure-stamp:
-	`which autoconf2.50 || which autoconf` && ./configure $(conf_args)
+	`which autoconf2.50 || which autoconf` && \
+	  CC=$(CC) CXX=$(CXX) ./configure $(conf_args)
 	
 	touch configure-stamp
 
@@ -155,6 +164,9 @@ install: build
 	
 	cp -a debian/etc debian/tmp/
 	chmod 755 $(tmpdir)/etc/bochs-init/init.sh
+	
+	# remove possible RPATH
+	chrpath --delete $(tmpdir)/usr/lib/bochs/plugins/libbx_sdl.so
 	
 ifeq ($(DEB_HOST_GNU_CPU),i386)
 	cp misc/sb16/sb16ctrl \

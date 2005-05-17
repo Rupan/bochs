@@ -1,0 +1,51 @@
+#DPATCHLEVEL=0
+
+diff -urN ../tmp-orig/bochs-2.1.1+20041109/gdbstub.cc ./gdbstub.cc
+--- ../tmp-orig/bochs-2.1.1+20041109/gdbstub.cc	2004-11-01 18:14:02.000000000 +0100
++++ ./gdbstub.cc	2004-12-08 14:22:38.243412880 +0100
+@@ -314,7 +314,7 @@
+        valid = access_linear(laddress,
+                              len + (laddress & 0xfff) - 4096,
+                              rw,
+-                             (Bit8u *)((unsigned int)data + 
++                             (Bit8u *)((unsigned long)data + 
+                                       4096 - (laddress & 0xfff)));
+        return(valid);
+      }
+diff -urN ../tmp-orig/bochs-2.1.1+20041109/gui/x.cc ./gui/x.cc
+--- ../tmp-orig/bochs-2.1.1+20041109/gui/x.cc	2004-11-06 18:03:43.000000000 +0100
++++ ./gui/x.cc	2004-12-08 14:23:22.171734760 +0100
+@@ -128,7 +128,7 @@
+ 
+ static Pixmap vgafont[256];
+ 
+-struct {
++static struct {
+   Pixmap bmap;
+   unsigned xdim;
+   unsigned ydim;
+diff -urN ../tmp-orig/bochs-2.1.1+20041109/gui/wx.cc ./gui/wx.cc
+--- ../tmp-orig/bochs-2.1.1+20041109/gui/wx.cc	2004-11-06 18:03:43.000000000 +0100
++++ ./gui/wx.cc	2004-12-08 14:24:20.801821632 +0100
+@@ -101,7 +101,7 @@
+ static Bit8u h_panning = 0, v_panning = 0;
+ static Bit16u line_compare = 1023;
+ static unsigned vga_bpp=8;
+-struct {
++static struct {
+   unsigned char red;
+   unsigned char green;
+   unsigned char blue;
+diff -urN ../tmp-orig/bochs-2.1.1+20041109/iodev/eth_linux.cc ./iodev/eth_linux.cc
+--- ../tmp-orig/bochs-2.1.1+20041109/iodev/eth_linux.cc	2004-10-07 19:38:03.000000000 +0200
++++ ./iodev/eth_linux.cc	2004-12-08 14:26:36.241231712 +0100
+@@ -215,7 +215,7 @@
+   this->filter[3].k = (macaddr[0] & 0xff) << 8 | (macaddr[1] & 0xff);
+   fp.len = BX_LSF_ICNT;
+   fp.filter = this->filter;
+-  BX_INFO(("eth_linux: fp.len=%d fp.filter=%x", fp.len, (unsigned) fp.filter));
++  BX_INFO(("eth_linux: fp.len=%d fp.filter=%lx", fp.len, (unsigned long) fp.filter));
+   if (setsockopt(this->fd, SOL_SOCKET, SO_ATTACH_FILTER, &fp, sizeof(fp)) < 0) {
+     BX_PANIC(("eth_linux: could not set socket filter: %s", strerror(errno)));
+     close(this->fd);
+
