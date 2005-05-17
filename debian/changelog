@@ -1,3 +1,14 @@
+bochs (2.1.1+20041109-4) UNRELEASED; urgency=low
+
+  * Added Brazilian Portuguese debconf translation. (Closes: #301734)
+    Thanks to Rodrigo Tadeu Claro <rlinux@cipsga.org.br>.
+  * Line wrapped Build-Depends.
+  * Explicitly state architectures and stop using type-handling.
+  * Do not use a stamp file for configure.
+  * Update copyright year.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 30 Mar 2005 01:46:23 +0300
+
 bochs (2.1.1+20041109-3) unstable; urgency=high
 
   * Remove rombios pcibios initialization code. It lets the virtual box

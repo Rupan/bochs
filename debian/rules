@@ -93,21 +93,12 @@ clean::
 	
 	rm -f *-stamp
 	
-	cat debian/control.in \
-	| sed \
-	  -e "s/@i386@/`type-handling i386 any`/g" \
-	  -e "s/@libasound@/`type-handling any linux-gnu`/g" \
-	  -e "s/@svgalib@/`type-handling i386 linux-gnu`/g" \
-	> debian/control
-	
 	dh_clean
 
-configure: patch configure-stamp
-configure-stamp:
+configure: patch config.status
+config.status: patch
 	`which autoconf2.50 || which autoconf` && \
 	  CC=$(CC) CXX=$(CXX) ./configure $(conf_args)
-	
-	touch configure-stamp
 
 build: build-arch
 
@@ -232,7 +223,7 @@ binary-arch: build install
 	dh_installdeb -s
 #	dh_perl -s
 	dh_shlibdeps -s
-	dh_gencontrol -s
+	dh_gencontrol -s -Vsb16ctrl-bochs:Architecture="$(sb16ctrl_arches)"
 	dh_md5sums -s
 	dh_builddeb -s
 
