@@ -87,7 +87,7 @@ clean::
 	dh_clean
 
 configure: patch config.status
-config.status: patch
+config.status:
 	`which autoconf2.50 || which autoconf` && \
 	  ./configure $(conf_args)
 
