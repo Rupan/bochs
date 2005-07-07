@@ -14,6 +14,7 @@ bochs (2.2-1) UNRELEASED; urgency=low
   * Explicitly state architectures and stop using type-handling.
   * Switch Build-Dependency from aalib1-dev to libaa1-dev.
   * Do not use a stamp file for configure.
+  * Add Debian Subversion repository URL.
   * Update copyright year.
   * Update watch file version to 3 (no changes needed).
   * Now using Standards-Version 3.6.2 (no changes needed).

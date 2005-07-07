@@ -1,9 +1,15 @@
 This package was debianized by Robert Millan <zeratul2@wanadoo.es> on
 Sat, 12 Jan 2002 11:34:12 +0100.
 
-Now maintainer by Guillem Jover <guillem@debian.org>.
+Now maintained by Guillem Jover <guillem@debian.org>.
 
-It was downloaded from <http://bochs.sourceforge.net/>.
+It was downloaded from:
+
+    <http://bochs.sourceforge.net/>.
+
+The debian packages are maintained through Subversion on:
+
+    <svn://svn.debian.org/pkg-bochs/>
 
 Upstream Author:
 
