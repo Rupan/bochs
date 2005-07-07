@@ -15,6 +15,7 @@ bochs (2.2-1) UNRELEASED; urgency=low
   * Do not use a stamp file for configure.
   * Update copyright year.
   * Update watch file version to 3 (no changes needed).
+  * Now using Standards-Version 3.6.2 (no changes needed).
   * Use new QA SourceForge watch redirector.
   * Use new dpkg-architecture variables for os and cpu.
   * C++ ABI transition.
