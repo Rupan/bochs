@@ -13,6 +13,8 @@ bochs (2.2-1) UNRELEASED; urgency=low
   * Explicitly state architectures and stop using type-handling.
   * Do not use a stamp file for configure.
   * Update copyright year.
+  * Update watch file version to 3 (no changes needed).
+  * Use new QA SourceForge watch redirector.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 30 Mar 2005 01:46:23 +0300
 
