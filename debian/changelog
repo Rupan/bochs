@@ -10,7 +10,6 @@ bochs (2.2-1) UNRELEASED; urgency=low
     Thanks to Rodrigo Tadeu Claro <rlinux@cipsga.org.br>.
   * Added Vietnamese debconf translation. (Closes: #313170)
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
-  * Line wrapped Build-Depends.
   * Explicitly state architectures and stop using type-handling.
   * Do not use a stamp file for configure.
   * Update copyright year.
