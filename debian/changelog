@@ -12,6 +12,7 @@ bochs (2.2-1) UNRELEASED; urgency=low
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Provide a symlinked manpage for bochs-bin.
   * Explicitly state architectures and stop using type-handling.
+  * Switch Build-Dependency from aalib1-dev to libaa1-dev.
   * Do not use a stamp file for configure.
   * Update copyright year.
   * Update watch file version to 3 (no changes needed).
