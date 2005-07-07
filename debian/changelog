@@ -16,6 +16,8 @@ bochs (2.2-1) UNRELEASED; urgency=low
   * Update copyright year.
   * Update watch file version to 3 (no changes needed).
   * Use new QA SourceForge watch redirector.
+  * C++ ABI transition.
+    - Remove special case for m68k to use g++-3.4.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 30 Mar 2005 01:46:23 +0300
 

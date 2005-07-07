@@ -77,14 +77,6 @@ ifeq ($(DEB_HOST_GNU_TYPE),i386-linux)
   conf_args += --with-svga
 endif
 
-ifeq ($(DEB_HOST_GNU_CPU),m68k)
-CXX = g++-3.4
-CC = gcc
-else
-CXX = g++
-CC = gcc
-endif
-
 include debian/patch.mk
 
 clean::
@@ -98,7 +90,7 @@ clean::
 configure: patch config.status
 config.status: patch
 	`which autoconf2.50 || which autoconf` && \
-	  CC=$(CC) CXX=$(CXX) ./configure $(conf_args)
+	  ./configure $(conf_args)
 
 build: build-arch
 
