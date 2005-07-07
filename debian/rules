@@ -10,8 +10,8 @@ pkg_bochs = $(CURDIR)/debian/bochs
 
 DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_HOST_GNU_CPU	?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
-DEB_HOST_GNU_SYSTEM	?= $(shell dpkg-architecture -qDEB_HOST_GNU_SYSTEM)
+DEB_HOST_ARCH_CPU	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
+DEB_HOST_ARCH_OS	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
 CFLAGS = -Wall -g
 
@@ -53,14 +53,17 @@ conf_args = \
 sb16 = dummy
 cdrom = cdrom
 
-ifeq ($(DEB_HOST_GNU_SYSTEM),linux)
+ifeq ($(DEB_HOST_ARCH_OS),linux)
   kernel = linux
   conf_args += --enable-ne2000
   eth = eth0
   sb16 = linux
   com = ttyS0
+ifeq ($(DEB_HOST_ARCH_CPU),i386)
+  conf_args += --with-svga
 endif
-ifeq ($(DEB_HOST_GNU_SYSTEM),kfreebsd-gnu)
+endif
+ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   kernel = fbsd
   conf_args += --enable-ne2000
   eth = xl0
@@ -68,14 +71,10 @@ ifeq ($(DEB_HOST_GNU_SYSTEM),kfreebsd-gnu)
   com = cuua0
   cdrom = acd0
 endif
-ifeq ($(DEB_HOST_GNU_SYSTEM),gnu)
+ifeq ($(DEB_HOST_ARCH_OS),hurd)
   com = com0
 endif
 conf_args += --enable-sb16=$(sb16)
-
-ifeq ($(DEB_HOST_GNU_TYPE),i386-linux)
-  conf_args += --with-svga
-endif
 
 include debian/patch.mk
 
@@ -99,7 +98,7 @@ build-arch: configure
 	
 	$(MAKE)
 	
-ifeq ($(DEB_HOST_GNU_CPU),i386)
+ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	$(CC) misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
 endif
 
@@ -151,7 +150,7 @@ install: build
 	# remove possible RPATH
 	chrpath --delete $(tmpdir)/usr/lib/bochs/plugins/libbx_sdl.so
 	
-ifeq ($(DEB_HOST_GNU_CPU),i386)
+ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	cp misc/sb16/sb16ctrl \
 	   $(tmpdir)/usr/bin/
 endif
