@@ -1,8 +1,8 @@
 #DPATCHLEVEL=1
 
-diff -Naur bochs-2.1.1+20041109.orig/gui/Makefile.in bochs-2.1.1+20041109/gui/Makefile.in
---- bochs-2.1.1+20041109.orig/gui/Makefile.in	2004-04-05 14:09:25.000000000 +0200
-+++ bochs-2.1.1+20041109/gui/Makefile.in	2004-12-04 08:28:03.000000000 +0100
+diff -Naur bochs-2.2.orig/gui/Makefile.in bochs-2.2/gui/Makefile.in
+--- bochs-2.2.orig/gui/Makefile.in	2004-12-13 21:10:35.000000000 +0200
++++ bochs-2.2/gui/Makefile.in	2005-07-07 19:43:49.000000000 +0300
 @@ -112,47 +112,47 @@
  
  ##### building plugins with libtool
@@ -65,17 +65,17 @@ diff -Naur bochs-2.1.1+20041109.orig/gui/Makefile.in bochs-2.1.1+20041109/gui/Ma
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-diff -Naur bochs-2.1.1+20041109.orig/iodev/Makefile.in bochs-2.1.1+20041109/iodev/Makefile.in
---- bochs-2.1.1+20041109.orig/iodev/Makefile.in	2004-10-03 22:02:08.000000000 +0200
-+++ bochs-2.1.1+20041109/iodev/Makefile.in	2004-12-04 08:27:27.000000000 +0100
-@@ -122,38 +122,38 @@
+diff -Naur bochs-2.2.orig/iodev/Makefile.in bochs-2.2/iodev/Makefile.in
+--- bochs-2.2.orig/iodev/Makefile.in	2004-12-13 21:10:36.000000000 +0200
++++ bochs-2.2/iodev/Makefile.in	2005-07-07 19:46:00.000000000 +0300
+@@ -123,38 +123,38 @@
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
 -	$(LIBTOOL) --mode=compile $(CXX) -c $(CXXFLAGS) $(LOCAL_CXXFLAGS) $< -o $@
 +	$(LIBTOOL) --mode=compile --tag CXX $(CXX) -c $(CXXFLAGS) $(LOCAL_CXXFLAGS) $< -o $@
  
- pcidev.lo : %.lo : %.@CPP_SUFFIX@
+ pcidev.lo : pcidev.@CPP_SUFFIX@
 -	$(LIBTOOL) --mode=compile $(CXX) -c $(CXXFLAGS) $(LOCAL_CXXFLAGS) $(PCIDEV_CXXFLAGS) $< -o $@
 +	$(LIBTOOL) --mode=compile --tag CXX $(CXX) -c $(CXXFLAGS) $(LOCAL_CXXFLAGS) $(PCIDEV_CXXFLAGS) $< -o $@
  
@@ -118,10 +118,10 @@ diff -Naur bochs-2.1.1+20041109.orig/iodev/Makefile.in bochs-2.1.1+20041109/iode
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-diff -Naur bochs-2.1.1+20041109.orig/configure.in bochs-2.1.1+20041109/configure.in
---- bochs-2.1.1+20041109.orig/configure.in	2004-12-04 08:29:11.000000000 +0100
-+++ bochs-2.1.1+20041109/configure.in	2004-12-04 08:36:08.000000000 +0100
-@@ -2031,8 +2031,8 @@
+diff -Naur bochs-2.2.orig/configure.in bochs-2.2/configure.in
+--- bochs-2.2.orig/configure.in	2005-05-28 15:15:19.000000000 +0300
++++ bochs-2.2/configure.in	2005-07-07 19:43:49.000000000 +0300
+@@ -2043,8 +2043,8 @@
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

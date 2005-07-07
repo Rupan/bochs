@@ -1,17 +1,5 @@
 #DPATCHLEVEL=1
 
-diff -Naur bochs-2.1.1+20041109/doc/docbook/user/user.dbk bochs-2.1.1+20041109.doc/doc/docbook/user/user.dbk
---- bochs-2.1.1+20041109/doc/docbook/user/user.dbk	2004-11-06 11:50:03.000000000 +0100
-+++ bochs-2.1.1+20041109.doc/doc/docbook/user/user.dbk	2004-12-04 06:41:40.000000000 +0100
-@@ -6199,7 +6199,7 @@
- </para></listitem>
- <listitem><para>
- Harddisk emulation : a hard disk image in burnt inside the cd. The 
--Bios has to redirect all hard disk accesses to that image. The rel hard disks
-+Bios has to redirect all hard disk accesses to that image. The real hard disks
- are still available, with bios numbers #81 and up.
- </para></listitem>
- </itemizedlist>
 diff -Naur bochs-2.1.1+20041109/doc/man/bochs.1 bochs-2.1.1+20041109.doc/doc/man/bochs.1
 --- bochs-2.1.1+20041109/doc/man/bochs.1	2004-10-09 17:58:46.000000000 +0200
 +++ bochs-2.1.1+20041109.doc/doc/man/bochs.1	2004-12-04 07:21:49.000000000 +0100
@@ -36,22 +24,9 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/m
 @@ -1,4 +1,4 @@
 -.\Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
 +.\"Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
- .TH bochsrc 5 "08 Dec 2002" "bochsrc" "The Bochs Project"
+ .TH bochsrc 5 "26 Mar 2005" "bochsrc" "The Bochs Project"
  .\"SKIP_SECTION"
  .SH NAME
-@@ -134,9 +134,9 @@
- C0000.
- 
- Examples:
--  vgaromimage: bios/VGABIOS-elpin-2.40
--  vgaromimage: bios/VGABIOS-lgpl-latest
--  vgaromimage: $BXSHARE/VGABIOS-lgpl-latest
-+  vgaromimage: file=bios/VGABIOS-elpin-2.40
-+  vgaromimage: file=bios/VGABIOS-lgpl-latest
-+  vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
- 
- .TP
- .I "floppya: \fPor \fIfloppyb:"
 diff -Naur bochs-2.1.1+20041109/doc/man/bxcommit.1 bochs-2.1.1+20041109.doc/doc/man/bxcommit.1
 --- bochs-2.1.1+20041109/doc/man/bxcommit.1	2004-10-09 17:58:47.000000000 +0200
 +++ bochs-2.1.1+20041109.doc/doc/man/bxcommit.1	2004-12-04 07:21:37.000000000 +0100
