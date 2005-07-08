@@ -43,7 +43,6 @@ conf_args = \
 	--enable-fpu \
 	--enable-mmx \
 	--enable-3dnow \
-	--enable-x86-64 \
 	\
 	--enable-gdb-stub \
 	--enable-idle-hack \

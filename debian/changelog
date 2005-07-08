@@ -14,7 +14,6 @@ bochs (2.2-1) UNRELEASED; urgency=low
     the addition in the README.Debian file.
     Thanks to Robert Millan <rmh@aybabtu.com> for the pointer.
   * Cosmetic cleaning of README.Debian.
-  * Enable amd64 instructions support.
   * Provide a symlinked manpage for bochs-bin.
   * Add a man page for sb16ctrl.
   * Explicitly state architectures and stop using type-handling.
