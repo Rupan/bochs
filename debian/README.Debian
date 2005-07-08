@@ -3,13 +3,15 @@ bochs for Debian
 
 In order to use Bochs you need to follow these steps:
 
-- Gunzip the sample bochsrc file (in examples/bochsrc.gz) into ~/.bochsrc.
+  - Gunzip the sample bochsrc file (in examples/bochsrc.gz) into ~/.bochsrc.
 
-- Take a look at ~/.bochsrc and adapt it to your needs. In particular you
-need to set the "boot:" parameter. The default is to use /dev/cdrom for boot.
-If you want to start from floppy or hard disk you'll need to change that.
+  - Take a look at ~/.bochsrc and adapt it to your needs. In particular you
+    need to set the "boot:" parameter. The default is to use /dev/cdrom for
+    boot. If you want to start from floppy or hard disk you'll need to
+    change that.
 
-- Now invoke bochs from command line or from the menu entry.
+  - Now invoke bochs from command line or from the menu entry.
+
 
 Upstream documentation
 ----------------------
@@ -23,7 +25,7 @@ sb16ctrl
 The sb16ctrl utility can be used to query the emulated SB16 device from
 WITHIN the emulator. You can compile it with:
 
-gcc sb16ctrl.c -o sb16ctrl
+	gcc sb16ctrl.c -o sb16ctrl
 
 Add -static if you're not certain that the libc version of the guest
 and the system where you compile are the same.
@@ -35,15 +37,16 @@ can use.
 amd64 / x86-64 support
 ----------------------
 
-amd64 support in Bochs turned out to be not mature enough to be enabled as
-default in the package, but you can easily re-enable it by adding
---enable-x86-64 to conf_args in debian/rules and rebuilding the bochs package.
+amd64 support in Bochs turned out to be not mature enough to be enabled
+as default in the package, but you can easily re-enable it by adding
+"--enable-x86-64" to conf_args in debian/rules and rebuilding the bochs
+package.
 
 You can find an image of Linux, the kernel, for x86-64 in
-http://bochs.sourceforge.net/diskimages.html.
+<http://bochs.sourceforge.net/diskimages.html>.
 
-The site http://www.x86-64.org/ contains an x86-64 toolchain, cpu specification
-and other resources.
+The site <http://www.x86-64.org/> contains an x86-64 toolchain, cpu
+specification and other resources.
 
 
 Bochs as init
@@ -70,8 +73,6 @@ slight modifications.
 
 I had to remove the propietary VGA BIOS software in bios/VGABIOS-elpin-2.40,
 which is not free software as per the DFSG.
-
- -- Robert Millan <rmh@debian.org>  Tue, 27 Apr 2004 09:44:37 +0200
 
 
 EtherBoot support
