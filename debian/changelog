@@ -11,6 +11,7 @@ bochs (2.2-1) UNRELEASED; urgency=low
   * Added Vietnamese debconf translation. (Closes: #313170)
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Provide a symlinked manpage for bochs-bin.
+  * Add a man page for sb16ctrl.
   * Explicitly state architectures and stop using type-handling.
   * Add libaa1-dev as an alternative Build-Dependency to aalib1-dev.
   * Do not use a stamp file for configure.
