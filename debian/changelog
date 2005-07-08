@@ -12,7 +12,7 @@ bochs (2.2-1) UNRELEASED; urgency=low
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Provide a symlinked manpage for bochs-bin.
   * Explicitly state architectures and stop using type-handling.
-  * Switch Build-Dependency from aalib1-dev to libaa1-dev.
+  * Add libaa1-dev as an alternative Build-Dependency to aalib1-dev.
   * Do not use a stamp file for configure.
   * Add Debian Subversion repository URL.
   * Update copyright year.
