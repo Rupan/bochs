@@ -72,3 +72,16 @@ I had to remove the propietary VGA BIOS software in bios/VGABIOS-elpin-2.40,
 which is not free software as per the DFSG.
 
  -- Robert Millan <rmh@debian.org>  Tue, 27 Apr 2004 09:44:37 +0200
+
+
+EtherBoot support
+-----------------
+
+To be able to use EtherBoot within Bochs you can read the following
+info:
+
+	<http://wiki.etherboot.org/pmwiki.php/Main/EtherbootBochs>
+
+The pseudo NIC is now enabled by default, so there is no need to rebuild
+the package.
+

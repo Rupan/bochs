@@ -10,7 +10,9 @@ bochs (2.2-1) UNRELEASED; urgency=low
     Thanks to Rodrigo Tadeu Claro <rlinux@cipsga.org.br>.
   * Added Vietnamese debconf translation. (Closes: #313170)
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
-  * Enable the pseudo NIC interface to be used with EtherBoot.
+  * Enable the pseudo NIC interface to be used with EtherBoot and document
+    the addition in the README.Debian file.
+    Thanks to Robert Millan <rmh@aybabtu.com> for the pointer.
   * Enable amd64 instructions support.
   * Provide a symlinked manpage for bochs-bin.
   * Add a man page for sb16ctrl.
