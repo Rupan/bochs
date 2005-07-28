@@ -10,6 +10,9 @@ bochs (2.2.1-1) UNRELEASED; urgency=low
     Thanks to Rodrigo Tadeu Claro <rlinux@cipsga.org.br>.
   * Added Vietnamese debconf translation. (Closes: #313170)
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
+  * Fix typos in the bochsrc man page. (Closes: #310359)
+    - debian/patches/01_doc.patch: Update.
+    Thanks to A Costa <agcosta@gis.net>.
   * Enable the pseudo NIC interface to be used with EtherBoot and document
     the addition in the README.Debian file.
     Thanks to Robert Millan <rmh@aybabtu.com> for the pointer.
