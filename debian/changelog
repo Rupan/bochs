@@ -1,4 +1,4 @@
-bochs (2.2.1-1) UNRELEASED; urgency=low
+bochs (2.2.1-1) unstable; urgency=low
 
   * New Upstream Release.
     - debian/patches/00_base.patch: Synced.
@@ -20,8 +20,8 @@ bochs (2.2.1-1) UNRELEASED; urgency=low
   * Provide a symlinked manpage for bochs-bin.
   * Add a man page for sb16ctrl.
   * Explicitly state architectures and stop using type-handling.
-  * Add libaa1-dev as an alternative Build-Dependency to aalib1-dev.
-  * Replace xlibs-dev Build-Depepends with the fain grained only ones
+  * Replace aalib1-dev Build-Depends with libaa1-dev.
+  * Replace xlibs-dev Build-Depends with the fain grained only ones
     needed: libx11-dev, libxpm-dev, libice-dev, libsm-dev.
   * Tighten dependencies on bochsbios and vgabios. (Closes: #290188)
   * Do not use a stamp file for configure.
@@ -34,7 +34,7 @@ bochs (2.2.1-1) UNRELEASED; urgency=low
   * C++ ABI transition.
     - Remove special case for m68k to use g++-3.4.
 
- -- Guillem Jover <guillem@debian.org>  Wed, 30 Mar 2005 01:46:23 +0300
+ -- Guillem Jover <guillem@debian.org>  Fri, 29 Jul 2005 03:18:33 +0300
 
 bochs (2.1.1+20041109-3) unstable; urgency=high
 
