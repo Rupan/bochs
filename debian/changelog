@@ -24,6 +24,7 @@ bochs (2.2.1-1) UNRELEASED; urgency=low
   * Add libaa1-dev as an alternative Build-Dependency to aalib1-dev.
   * Replace xlibs-dev Build-Depepends with the fain grained only ones
     needed: libx11-dev, libxpm-dev, libice-dev, libsm-dev.
+  * Tighten dependencies on bochsbios and vgabios. (Closes: #290188)
   * Do not use a stamp file for configure.
   * Add Debian Subversion repository URL.
   * Update copyright year.
