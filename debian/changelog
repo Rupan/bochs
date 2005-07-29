@@ -8,8 +8,6 @@ bochs (2.2.1-1) UNRELEASED; urgency=low
     - debian/patches/04_no_pcibios_init.patch: Removed.
     - Fix ">>PANIC<< prefetch: RIP > CS.limit". (Closes: #162785, #288766)
     - Fix TUN/TAP network interface. (Closes: #268422)
-  * Added Brazilian Portuguese debconf translation. (Closes: #301734)
-    Thanks to Rodrigo Tadeu Claro <rlinux@cipsga.org.br>.
   * Added Vietnamese debconf translation. (Closes: #313170)
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Fix typos in the bochsrc man page. (Closes: #310359)
