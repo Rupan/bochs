@@ -8,7 +8,7 @@ Standards-Version: 3.6.2
 
 Package: bochs
 Architecture: any
-Depends: ${shlibs:Depends}, bochs-wx | bochs-gui, bochsbios (= ${Source-Version}), vgabios (>= 0.5c-1), debconf
+Depends: ${shlibs:Depends}, ${misc:Depends}, bochs-wx | bochs-gui, bochsbios (= ${Source-Version}), vgabios (>= 0.5c-1)
 Recommends: bximage | createdisk
 Suggests: bochs-doc, debootstrap, grub-disk, gcc | c-compiler, libc-dev
 Description: IA-32 PC emulator
