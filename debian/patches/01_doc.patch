@@ -36,6 +36,15 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/m
  in the simulation, that can be retrieved by the boot loader
  
  Example:
+@@ -157,7 +157,7 @@
+ a bootable disk.
+ 
+ You can set the initial status of the media to
+-'ejected' or 'inserted'. Usually you will want
++\&'ejected' or 'inserted'. Usually you will want
+ to use 'inserted'.
+ 
+ Example:
 @@ -202,7 +202,7 @@
     spt=        only valid for disks
     status=     only valid for cdroms [inserted|ejected]

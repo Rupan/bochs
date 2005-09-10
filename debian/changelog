@@ -2,6 +2,10 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
 
   * Use misc:Depends instead of an explicit dependency to debconf
     to get the alternative debconf-2.0 as well.
+  * Fix typo in bochsrc.5 that prevents the line from being displayed.
+    (Closes: #326528)
+    - debian/patches/01_doc.patch: Updated.
+    Thanks to Nicolas François <nicolas.francois@centraliens.net>.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 
