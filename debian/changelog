@@ -6,6 +6,7 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
     (Closes: #326528)
     - debian/patches/01_doc.patch: Updated.
     Thanks to Nicolas François <nicolas.francois@centraliens.net>.
+  * Update LGPL to 2.1 and fix FSF address in debian/copyright.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 
