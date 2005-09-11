@@ -206,7 +206,7 @@ binary-arch: build install
 #	dh_installmime -s
 #	dh_installinit -s
 #	dh_installcron -s
-	dh_installinfo -s
+	dh_installman -i
 	dh_installchangelogs -s CHANGES
 	dh_link -s
 	dh_strip -s
