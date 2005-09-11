@@ -12,6 +12,10 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
   * Fix bashisms in bochs.config and bochs.postinst.
   * Added missing angle to email address in sb16ctrl.1.
   * Install sb16ctl.1 in the binary.
+  * Use variable assignment and handle spaces in filenames correctly.
+    - debian/launcher: Updated.
+  * Do not use a variable with read and use $() instead of backticks.
+    - debian/launcher/etc/bochs-init/init.sh: Reindent. Updated.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 

@@ -3,7 +3,8 @@
 # Wrapper script for Bochs.
 
 # this allows use of a GUEST variable in bochsrc
-if test -z "$GUEST" ; then GUEST=guest ; fi
+: ${GUEST:=guest}
 
 # now we run bochs
-GUEST=$GUEST bochs-bin -q $@
+GUEST=$GUEST bochs-bin -q "$@"
+
