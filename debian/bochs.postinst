@@ -30,7 +30,7 @@ case "$1" in
 
     DEVICE=/dev/net/tun
 
-    if test ! -e /dev/.devfsd -a ! -c $DEVICE; then
+    if [ ! -e /dev/.devfsd ] && [ ! -c $DEVICE ]; then
       cd /dev
       /sbin/MAKEDEV tun
     fi

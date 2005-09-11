@@ -9,6 +9,7 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
   * Update LGPL to 2.1 and fix FSF address in debian/copyright.
   * Change Build-Depends to 'libreadline5-dev | libreadline-dev' from
     'libreadline4-dev'.
+  * Fix bashisms in bochs.config and bochs.postinst.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 
