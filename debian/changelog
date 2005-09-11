@@ -10,6 +10,7 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
   * Change Build-Depends to 'libreadline5-dev | libreadline-dev' from
     'libreadline4-dev'.
   * Fix bashisms in bochs.config and bochs.postinst.
+  * Added missing angle to email address in sb16ctrl.1.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 
