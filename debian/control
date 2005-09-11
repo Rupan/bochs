@@ -2,7 +2,7 @@ Source: bochs
 Section: misc
 Priority: extra
 Maintainer: Guillem Jover <guillem@debian.org>
-Build-Depends: debhelper (>= 4.1.16), chrpath, libncurses5-dev, libx11-dev, libxpm-dev, libice-dev, libsm-dev, libsdl1.2-dev, libwxgtk2.4-dev, libgtk1.2-dev, autoconf, libasound2-dev [i386 amd64 powerpc alpha sparc m68k arm mips mipsel s390], libaa1-dev, libsvga1-dev [i386 amd64], libreadline4-dev, libz-dev
+Build-Depends: debhelper (>= 4.1.16), chrpath, libncurses5-dev, libx11-dev, libxpm-dev, libice-dev, libsm-dev, libsdl1.2-dev, libwxgtk2.4-dev, libgtk1.2-dev, autoconf, libasound2-dev [i386 amd64 powerpc alpha sparc m68k arm mips mipsel s390], libaa1-dev, libsvga1-dev [i386 amd64], libreadline5-dev | libreadline-dev, libz-dev
 Build-Depends-Indep: bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl, docbook-utils
 Standards-Version: 3.6.2
 

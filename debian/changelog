@@ -7,6 +7,8 @@ bochs (2.2.1-2) UNRELEASED; urgency=low
     - debian/patches/01_doc.patch: Updated.
     Thanks to Nicolas François <nicolas.francois@centraliens.net>.
   * Update LGPL to 2.1 and fix FSF address in debian/copyright.
+  * Change Build-Depends to 'libreadline5-dev | libreadline-dev' from
+    'libreadline4-dev'.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 04:32:06 +0300
 
