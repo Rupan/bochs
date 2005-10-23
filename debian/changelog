@@ -2,6 +2,8 @@ bochs (2.2.1-3) UNRELEASED; urgency=low
 
   * Added Spanish debconf template. (Closes: #333897)
     Thanks to César Gómez Martín <cesar.gomez@gmail.com>.
+  * Added Swedish debconf template. (Closes: #330987)
+    Thanks to Daniel Nylander <po@danielnylander.se>.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 23 Oct 2005 11:06:43 +0300
 
