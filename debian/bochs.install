@@ -8,6 +8,7 @@ usr/lib/bochs/plugins/libbx_harddrv.*
 usr/lib/bochs/plugins/libbx_keyboard.*
 usr/lib/bochs/plugins/libbx_ne2k.*
 usr/lib/bochs/plugins/libbx_parallel.*
+usr/lib/bochs/plugins/libbx_pci*
 usr/lib/bochs/plugins/libbx_pic.*
 usr/lib/bochs/plugins/libbx_sb16.*
 usr/lib/bochs/plugins/libbx_serial.*
