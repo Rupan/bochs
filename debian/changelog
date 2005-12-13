@@ -8,6 +8,8 @@ bochs (2.2.1-3) UNRELEASED; urgency=low
     Thanks to Simão Pedro Cardoso <pthell@gmail.com>.
   * Include pci plugins into bochs package. (Closes: #341436)
     Thanks to Robert Millan <rmh@aybabtu.com>
+  * Fix more typos in bochs and bochsrc manpages. (Closes: #335334, #335336)
+    Thanks to A Costa <agcosta@gis.net>.
   * Wrap lines in debian/control fields (knowingly breaking policy).
 
  -- Guillem Jover <guillem@debian.org>  Sun, 23 Oct 2005 11:06:43 +0300

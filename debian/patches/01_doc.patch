@@ -9,6 +9,15 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochs.1 bochs-2.1.1+20041109.doc/doc/man
  .TH bochs 1 "09 Dec 2002" "bochs @version@" "The Bochs Project"
  .\"SKIP_SECTION"
  .SH NAME
+@@ -59,7 +59,7 @@
+ Lesser General Public License as published  by  the  Free
+ Software  Foundation.  See  the LGPL file located  in
+ /usr/share/common-licenses/ for details on the license and
+-the lack of warrantee.
++the lack of warranty.
+ .\"SKIP_SECTION"
+ .SH AVAILABILITY
+ The latest version of this program can be found at:
 diff -Naur bochs-2.1.1+20041109/doc/man/bochs-dlx.1 bochs-2.1.1+20041109.doc/doc/man/bochs-dlx.1
 --- bochs-2.1.1+20041109/doc/man/bochs-dlx.1	2004-10-09 17:58:46.000000000 +0200
 +++ bochs-2.1.1+20041109.doc/doc/man/bochs-dlx.1	2004-12-04 07:21:53.000000000 +0100
@@ -54,6 +63,15 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/m
     model=      string returned by identify device command
     journal=    optional filename of the redolog for undoable and volatile disks
     
+@@ -305,7 +305,7 @@
+ .TP
+ .I "log:"
+ Give the path of the log file you'd like Bochs
+-debug and misc. verbage to be written to.   If
++debug and misc. verbiage to be written to.   If
+ you really don't want it, make it /dev/null.
+ 
+ Example:
 @@ -467,7 +467,7 @@
  dmatimer:
  
@@ -81,6 +99,15 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/m
   - fbsd   : ethernet on freebsd and openbsd
   - linux  : ethernet on linux
   - win32  : ethernet on win32
+@@ -681,7 +681,7 @@
+  - arpback: ARP is simulated (disabled by default)
+  - vnet   : ARP, ICMP-echo(ping) and DHCP are simulated
+             The virtual host uses 192.168.10.1
+-            DHCP assignes 192.168.10.2 to the guest
++            DHCP assigns 192.168.10.2 to the guest
+ 
+ ethdev:
+ The ethdev value is the name of the network interface on your host
 @@ -691,7 +691,7 @@
  binary releases.
  
