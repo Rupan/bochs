@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 4.1.16), autoconf, chrpath, libncurses5-dev,
  libreadline5-dev | libreadline-dev, libaa1-dev, libsvga1-dev [i386 amd64],
  libasound2-dev [i386 amd64 powerpc alpha sparc m68k arm mips mipsel s390],
  libx11-dev, libxpm-dev, libice-dev, libsm-dev, libsdl1.2-dev, libwxgtk2.6-dev,
- libz-dev
+ libgtk2.0-dev, libz-dev
 Build-Depends-Indep: bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl, docbook-utils
 Standards-Version: 3.6.2
 
