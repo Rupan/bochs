@@ -1,69 +1,9 @@
 #DPATCHLEVEL=1
 
-diff -Naur bochs-2.1.1+20041109/doc/man/bochs.1 bochs-2.1.1+20041109.doc/doc/man/bochs.1
---- bochs-2.1.1+20041109/doc/man/bochs.1	2004-10-09 17:58:46.000000000 +0200
-+++ bochs-2.1.1+20041109.doc/doc/man/bochs.1	2004-12-04 07:21:49.000000000 +0100
-@@ -1,4 +1,4 @@
--.\Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
-+.\"Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
- .TH bochs 1 "09 Dec 2002" "bochs @version@" "The Bochs Project"
- .\"SKIP_SECTION"
- .SH NAME
-@@ -59,7 +59,7 @@
- Lesser General Public License as published  by  the  Free
- Software  Foundation.  See  the LGPL file located  in
- /usr/share/common-licenses/ for details on the license and
--the lack of warrantee.
-+the lack of warranty.
- .\"SKIP_SECTION"
- .SH AVAILABILITY
- The latest version of this program can be found at:
-diff -Naur bochs-2.1.1+20041109/doc/man/bochs-dlx.1 bochs-2.1.1+20041109.doc/doc/man/bochs-dlx.1
---- bochs-2.1.1+20041109/doc/man/bochs-dlx.1	2004-10-09 17:58:46.000000000 +0200
-+++ bochs-2.1.1+20041109.doc/doc/man/bochs-dlx.1	2004-12-04 07:21:53.000000000 +0100
-@@ -1,4 +1,4 @@
--.\Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
-+.\"Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
- .TH bochs-dlx 1 "29 Jun 2002" "bochs-dlx" "The Bochs Project"
- .\"SKIP_SECTION"
- .SH NAME
-diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/man/bochsrc.5
---- bochs-2.1.1+20041109/doc/man/bochsrc.5	2004-10-09 17:58:46.000000000 +0200
-+++ bochs-2.1.1+20041109.doc/doc/man/bochsrc.5	2004-12-04 07:21:46.000000000 +0100
-@@ -1,4 +1,4 @@
--.\Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
-+.\"Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
- .TH bochsrc 5 "26 Mar 2005" "bochsrc" "The Bochs Project"
- .\"SKIP_SECTION"
- .SH NAME
-@@ -122,7 +122,7 @@
- F0000-FFFFF) and the videobios (located at C0000-C7FFF).
- Those ROM images will be initialized by the bios if they contain
- the right signature (0x55AA).
--It can also be a convenient way to upload some arbitary code/data
-+It can also be a convenient way to upload some arbitrary code/data
- in the simulation, that can be retrieved by the boot loader
- 
- Example:
-@@ -157,7 +157,7 @@
- a bootable disk.
- 
- You can set the initial status of the media to
--'ejected' or 'inserted'. Usually you will want
-+\&'ejected' or 'inserted'. Usually you will want
- to use 'inserted'.
- 
- Example:
-@@ -202,7 +202,7 @@
-    spt=        only valid for disks
-    status=     only valid for cdroms [inserted|ejected]
-    biosdetect= type of biosdetection [none|auto], only for disks on ata0 [cmos]
--   translation=type of transation of the bios, only for disks [none|lba|large|rechs|auto]
-+   translation=type of translation of the bios, only for disks [none|lba|large|rechs|auto]
-    model=      string returned by identify device command
-    journal=    optional filename of the redolog for undoable and volatile disks
-    
-@@ -305,7 +305,7 @@
+diff -Naur -x .svn -x CVS bochs-2.2.5.orig/doc/man/bochsrc.5 bochs-2.2.5/doc/man/bochsrc.5
+--- bochs-2.2.5.orig/doc/man/bochsrc.5	2005-12-29 21:51:00.000000000 +0200
++++ bochs-2.2.5/doc/man/bochsrc.5	2006-01-01 23:19:11.000000000 +0200
+@@ -310,7 +310,7 @@
  .TP
  .I "log:"
  Give the path of the log file you'd like Bochs
@@ -72,75 +12,12 @@ diff -Naur bochs-2.1.1+20041109/doc/man/bochsrc.5 bochs-2.1.1+20041109.doc/doc/m
  you really don't want it, make it /dev/null.
  
  Example:
-@@ -467,7 +467,7 @@
- dmatimer:
- 
- Microseconds per second for a DMA cycle.  Make
--it smaller to fix non-continous sound.  750000
-+it smaller to fix non-continuous sound.  750000
- is  usually  a  good  value.    This  needs  a
- reasonably  correct   setting  for  IPS   (see
- below).
-@@ -570,7 +570,7 @@
- 
- sync
- 
--TO BE COMPLETED (see Greg explaination in bug #536329)
-+TO BE COMPLETED (see Greg explanation in bug #536329)
- 
- time0
- 
-@@ -668,7 +668,7 @@
- 
- ethmod:
- The ethmod value defines which low level OS specific module to be used
--to access pysical ethernet interface. Current implemented values include
-+to access physical ethernet interface. Current implemented values include
-  - fbsd   : ethernet on freebsd and openbsd
-  - linux  : ethernet on linux
-  - win32  : ethernet on win32
-@@ -681,7 +681,7 @@
-  - arpback: ARP is simulated (disabled by default)
-  - vnet   : ARP, ICMP-echo(ping) and DHCP are simulated
+@@ -677,7 +677,7 @@
+  - vde    : Virtual Distributed Ethernet
+  - vnet   : ARP, ICMP-echo(ping), DHCP and TFTP are simulated
              The virtual host uses 192.168.10.1
 -            DHCP assignes 192.168.10.2 to the guest
 +            DHCP assigns 192.168.10.2 to the guest
+             The TFTP server use ethdev for the root directory and doesn't
+             overwrite files
  
- ethdev:
- The ethdev value is the name of the network interface on your host
-@@ -691,7 +691,7 @@
- binary releases.
- 
- script:
--The script value is optionnal, and is the name of a script that
-+The script value is optional, and is the name of a script that
- is executed after bochs initialize the network interface. You can use
- this script to configure this network interface, or enable masquerading.
- This is mainly useful for the tun/tap devices that only exist during
-@@ -782,7 +782,7 @@
- Lesser General Public License as published  by  the  Free
- Software  Foundation.  See  the  COPYING file located  in
- /usr/local/share/doc/bochs/ for details on the license and
--the lack of warrantee.
-+the lack of warranty.
- .\"SKIP_SECTION"
- .SH AVAILABILITY
- The latest version of this program can be found at:
-diff -Naur bochs-2.1.1+20041109/doc/man/bxcommit.1 bochs-2.1.1+20041109.doc/doc/man/bxcommit.1
---- bochs-2.1.1+20041109/doc/man/bxcommit.1	2004-10-09 17:58:47.000000000 +0200
-+++ bochs-2.1.1+20041109.doc/doc/man/bxcommit.1	2004-12-04 07:21:37.000000000 +0100
-@@ -1,4 +1,4 @@
--.\Document Author:  Christophe Bothamy   -   cbothamy@free.fr
-+.\"Document Author:  Christophe Bothamy   -   cbothamy@free.fr
- .TH bximage 1 "01 May 2003" "bximage" "The Bochs Project"
- .\"SKIP_SECTION"
- .SH NAME
-diff -Naur bochs-2.1.1+20041109/doc/man/bximage.1 bochs-2.1.1+20041109.doc/doc/man/bximage.1
---- bochs-2.1.1+20041109/doc/man/bximage.1	2004-10-09 17:58:47.000000000 +0200
-+++ bochs-2.1.1+20041109.doc/doc/man/bximage.1	2004-12-04 07:21:32.000000000 +0100
-@@ -1,4 +1,4 @@
--.\Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
-+.\"Document Author:  Timothy R. Butler   -   tbutler@uninetsolutions.com
- .TH bximage 1 "29 Jun 2002" "bximage" "The Bochs Project"
- .\"SKIP_SECTION"
- .SH NAME

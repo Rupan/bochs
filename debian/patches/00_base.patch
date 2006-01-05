@@ -1,8 +1,8 @@
 #DPATCHLEVEL=1
 
-diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
---- bochs-2.2.orig/.bochsrc	2005-05-13 21:10:58.000000000 +0300
-+++ bochs-2.2/.bochsrc	2005-07-07 19:36:21.000000000 +0300
+diff -Naur bochs-2.2.5.orig/.bochsrc bochs-2.2.5/.bochsrc
+--- bochs-2.2.5.orig/.bochsrc	2005-12-29 21:51:00.000000000 +0200
++++ bochs-2.2.5/.bochsrc	2006-01-01 23:10:26.000000000 +0200
 @@ -17,7 +17,7 @@
  # the "wx" display library.
  #=======================================================================
@@ -46,36 +46,33 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  #display_library: x
  
  #=======================================================================
-@@ -70,10 +58,10 @@
- # You can also use the environment variable $BXSHARE to specify the
- # location of the BIOS.
+@@ -74,9 +62,10 @@
+ # now supported, but we still recommend to use the BIOS distributed with
+ # Bochs. Now the start address can be calculated from image size.
  #=======================================================================
 -romimage: file=$BXSHARE/BIOS-bochs-latest, address=0xf0000
 -#romimage: file=bios/BIOS-bochs-2-processors, address=0xf0000
 -#romimage: file=bios/BIOS-bochs-4-processors, address=0xf0000
--#romimage: file=bios/rombios.bin, address=0xf0000
 +romimage: file=/usr/share/bochs/BIOS-bochs-latest, address=0xf0000
 +#romimage: file=/usr/share/bochs/BIOS-bochs-2-processors, address=0xf0000
 +#romimage: file=/usr/share/bochs/BIOS-bochs-4-processors, address=0xf0000
 +#romimage: file=/usr/share/bochs/BIOS-bochs-8-processors, address=0xf0000
+ #romimage: file=mybios.bin, address=0xfff80000 # 512k at memory top
+ #romimage: file=mybios.bin # calculate start address from image size
  
- #=======================================================================
- # MEGS
-@@ -108,10 +96,9 @@
+@@ -118,9 +107,8 @@
  # VGAROMIMAGE
  # You now need to load a VGA ROM BIOS into C0000.
  #=======================================================================
 -#vgaromimage: file=bios/VGABIOS-elpin-2.40
 -vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
 -#vgaromimage: file=bios/VGABIOS-lgpl-latest-cirrus
--
 +vgaromimage: file=/usr/share/vgabios/vgabios.bin
 +#vgaromimage: file=/usr/share/vgabios/vgabios.debug.bin
-+ 
+ 
  #=======================================================================
  # VGA:
- # Here you can specify the display extension to be used. With the value
-@@ -227,11 +214,8 @@
+@@ -239,11 +227,8 @@
  #   ata3-master: type=disk, mode=flat, path=483M.sample, cylinders=1024, heads=15, spt=63
  #   ata3-slave:  type=cdrom, path=iso.sample, status=inserted
  #=======================================================================
@@ -89,7 +86,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # BOOT:
-@@ -247,7 +231,8 @@
+@@ -259,7 +244,8 @@
  #   boot: cdrom, floppy, disk
  #=======================================================================
  #boot: floppy
@@ -99,7 +96,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # IPS:
-@@ -326,8 +311,9 @@
+@@ -338,8 +324,9 @@
  #   log: ./bochs.out
  #   log: /dev/tty
  #=======================================================================
@@ -110,16 +107,16 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # LOGPREFIX:
-@@ -406,7 +392,7 @@
- #   com2: enabled=1, mode=file, dev=serial.out
+@@ -420,7 +407,7 @@
  #   com3: enabled=1, mode=raw, dev=com1
+ #   com3: enabled=1, mode=socket, dev=localhost:8888
  #=======================================================================
 -#com1: enabled=1, mode=term, dev=/dev/ttyp9
 +com1: enabled=1, mode=term, dev=/dev/#com#
  
  
  #=======================================================================
-@@ -422,7 +408,7 @@
+@@ -436,7 +423,7 @@
  #   parport2: enabled=1, file="/dev/lp0"
  #   parport1: enabled=0
  #=======================================================================
@@ -128,7 +125,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # SB16:
-@@ -459,7 +445,7 @@
+@@ -473,7 +460,7 @@
  # For an example look at the next line:
  #=======================================================================
  
@@ -137,7 +134,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # VGA_UPDATE_INTERVAL:
-@@ -551,18 +537,6 @@
+@@ -554,18 +541,6 @@
  private_colormap: enabled=0
  
  #=======================================================================
@@ -156,8 +153,8 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Examples:
-@@ -600,10 +574,7 @@
- #         TFTP uses the ethdev value for the root directory.
+@@ -605,10 +580,7 @@
+ #         overwrite files.
  #
  #=======================================================================
 -# ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=fbsd, ethdev=en0 #macosx
@@ -168,7 +165,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  # ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x240, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
  # ne2k: ioaddr=0x240, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
-@@ -618,7 +589,7 @@
+@@ -624,7 +596,7 @@
  # Examples:
  #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
  #=======================================================================
@@ -177,7 +174,7 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
  
  #=======================================================================
  # KEYBOARD_TYPE:
-@@ -691,52 +662,3 @@
+@@ -713,11 +685,3 @@
  #=======================================================================
  #gdbstub: enabled=0, port=1234, text_base=0, data_base=0, bss_base=0
  
@@ -189,58 +186,17 @@ diff -Naur bochs-2.2.orig/.bochsrc bochs-2.2/.bochsrc
 -# romimage: file=:bios:BIOS-bochs-latest, address=0xf0000
 -# floppya: 1_44=[fd:], status=inserted
 -#=======================================================================
--
--
--#=======================================================================
--#
--# The following directives are DEPRECATED 
--# Please convert them to the new syntax  or remove them
--#
--#=======================================================================
--
--#=======================================================================
--#
--# The TIME0 directive is DEPRECATED. Use the CLOCK directive instead
--#
--# TIME0:
--# Specifies the start (boot) time of the virtual machine. Use a time 
--# value as returned by the time(2) system call. If no time0 value is 
--# set or if time0 equal to 1 (special case), the simulation will be
--# started at the current time of the host. 
--#
--# Examples:
--#   time0: 1           # Now
--#   time0: 315529200   # Tue Jan  1 00:00:00 1980
--#   time0: 631148400   # Mon Jan  1 00:00:00 1990
--#   time0: 938581955   # Wed Sep 29 07:12:35 1999
--#   time0: 946681200   # Sat Jan  1 00:00:00 2000
--#=======================================================================
--#time0: 938581955
--
--#=======================================================================
--#
--# The PIT directive is DEPRECATED. Use the CLOCK directive instead
--#
--# PIT:
--# The PIT is the programmable interval timer.  It has an option that tries to
--# keep the PIT in sync with real time.  This feature is still experimental,
--# but it may be useful if you want to prevent Bochs from running too fast, for
--# example a DOS video game.  Be aware that with the realtime pit option, your
--# simulation will not be repeatable; this can a problem if you are debugging.
--#=======================================================================
--#pit: realtime=1
--
-diff -Naur bochs-2.2.orig/doc/man/bochs.1 bochs-2.2/doc/man/bochs.1
---- bochs-2.2.orig/doc/man/bochs.1	2004-10-09 18:58:46.000000000 +0300
-+++ bochs-2.2/doc/man/bochs.1	2005-07-07 19:29:12.000000000 +0300
+diff -Naur bochs-2.2.5.orig/doc/man/bochs.1 bochs-2.2.5/doc/man/bochs.1
+--- bochs-2.2.5.orig/doc/man/bochs.1	2005-12-29 21:51:00.000000000 +0200
++++ bochs-2.2.5/doc/man/bochs.1	2006-01-01 23:05:50.000000000 +0200
 @@ -57,8 +57,8 @@
  .SH LICENSE
  This program  is distributed  under the terms of the  GNU
  Lesser General Public License as published  by  the  Free
 -Software  Foundation.  See  the  COPYING file located  in
 -/usr/local/share/doc/bochs/ for details on the license and
-+Software  Foundation.  See  the LGPL file located  in
++Software Foundation. See the LGPL file located in
 +/usr/share/common-licenses/ for details on the license and
- the lack of warrantee.
+ the lack of warranty.
  .\"SKIP_SECTION"
  .SH AVAILABILITY

@@ -1,8 +1,8 @@
 #DPATCHLEVEL=1
 
-diff -Naur bochs-2.2.orig/gui/Makefile.in bochs-2.2/gui/Makefile.in
---- bochs-2.2.orig/gui/Makefile.in	2004-12-13 21:10:35.000000000 +0200
-+++ bochs-2.2/gui/Makefile.in	2005-07-07 19:43:49.000000000 +0300
+diff -Naur -x .svn -x CVS bochs-2.2.5.orig/gui/Makefile.in bochs-2.2.5/gui/Makefile.in
+--- bochs-2.2.5.orig/gui/Makefile.in	2004-12-13 21:10:35.000000000 +0200
++++ bochs-2.2.5/gui/Makefile.in	2006-01-01 23:20:19.000000000 +0200
 @@ -112,47 +112,47 @@
  
  ##### building plugins with libtool
@@ -65,10 +65,10 @@ diff -Naur bochs-2.2.orig/gui/Makefile.in bochs-2.2/gui/Makefile.in
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-diff -Naur bochs-2.2.orig/iodev/Makefile.in bochs-2.2/iodev/Makefile.in
---- bochs-2.2.orig/iodev/Makefile.in	2004-12-13 21:10:36.000000000 +0200
-+++ bochs-2.2/iodev/Makefile.in	2005-07-07 19:46:00.000000000 +0300
-@@ -123,38 +123,38 @@
+diff -Naur -x .svn -x CVS bochs-2.2.5.orig/iodev/Makefile.in bochs-2.2.5/iodev/Makefile.in
+--- bochs-2.2.5.orig/iodev/Makefile.in	2005-12-10 20:37:35.000000000 +0200
++++ bochs-2.2.5/iodev/Makefile.in	2006-01-01 23:22:12.000000000 +0200
+@@ -124,38 +124,38 @@
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -84,9 +84,9 @@ diff -Naur bochs-2.2.orig/iodev/Makefile.in bochs-2.2/iodev/Makefile.in
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH)
  
  # special link rules for plugins that require more than one object file
- libbx_harddrv.la: harddrv.lo vmware3.lo $(CDROM_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module harddrv.lo vmware3.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module harddrv.lo vmware3.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
+ libbx_harddrv.la: harddrv.lo hdimage.lo vmware3.lo $(CDROM_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module harddrv.lo hdimage.lo vmware3.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module harddrv.lo hdimage.lo vmware3.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
  
  libbx_keyboard.la: keyboard.lo scancodes.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module keyboard.lo scancodes.lo -o libbx_keyboard.la -rpath $(PLUGIN_PATH)
@@ -118,10 +118,10 @@ diff -Naur bochs-2.2.orig/iodev/Makefile.in bochs-2.2/iodev/Makefile.in
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-diff -Naur bochs-2.2.orig/configure.in bochs-2.2/configure.in
---- bochs-2.2.orig/configure.in	2005-05-28 15:15:19.000000000 +0300
-+++ bochs-2.2/configure.in	2005-07-07 19:43:49.000000000 +0300
-@@ -2043,8 +2043,8 @@
+diff -Naur -x .svn -x CVS bochs-2.2.5.orig/configure.in bochs-2.2.5/configure.in
+--- bochs-2.2.5.orig/configure.in	2005-12-30 18:07:54.000000000 +0200
++++ bochs-2.2.5/configure.in	2006-01-01 23:20:19.000000000 +0200
+@@ -2064,8 +2064,8 @@
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool
