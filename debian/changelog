@@ -14,8 +14,6 @@ bochs (2.2.5-1) UNRELEASED; urgency=low
     Thanks to Robert Millan <rmh@aybabtu.com>
   * Fix more typos in bochs and bochsrc manpages. (Closes: #335334, #335336)
     Thanks to A Costa <agcosta@gis.net>.
-  * Upgrade Build-Depends libgtk1.2-dev to libgtk2.0-dev and libwxgtk2.4-dev 
-    to libwxgtk2.6-dev.
   * Wrap lines in debian/control fields (knowingly breaking policy).
   * Clean up debian/patch.mk:
     - Rename clean to unpatch.
