@@ -15,6 +15,7 @@ bochs (2.2.5-1) UNRELEASED; urgency=low
   * Fix more typos in bochs and bochsrc manpages. (Closes: #335334, #335336)
     Thanks to A Costa <agcosta@gis.net>.
   * Wrap lines in debian/control fields (knowingly breaking policy).
+  * Switch to debhelper compat level 5.
   * Clean up debian/patch.mk:
     - Rename clean to unpatch.
     - Switch patch and unpatch to single-colon targets.
