@@ -1,9 +1,11 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
-
-bochs = bochs
-null =
+#
+# $Id$
+#
+# Copyright (C) 1997-1999 Joey Hess <joeyh@debian.org>
+# Copyright (C) 2002-2004 Robert Millan <rmh@debian.org>
+# Copyright (C) 2004-2006 Guillem Jover <guillem@debian.org>
+#
 
 tmpdir = $(CURDIR)/debian/tmp
 pkg_bochs = $(CURDIR)/debian/bochs
@@ -19,9 +21,6 @@ ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O0
 else
   CFLAGS += -O2
-endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-  INSTALL_PROGRAM += -s
 endif
 
 conf_args = \
@@ -48,8 +47,7 @@ conf_args = \
 	--enable-idle-hack \
 	--enable-all-optimizations \
 	--enable-plugins \
-	--enable-compressed-hd \
-	$(null)
+	--enable-compressed-hd
 
 sb16 = dummy
 cdrom = cdrom
@@ -79,22 +77,27 @@ conf_args += --enable-sb16=$(sb16)
 
 include debian/patch.mk
 
-clean::
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	
-	rm -f *-stamp
+	-$(MAKE) clean
 	
 	dh_clean
 
-configure: patch config.status
-config.status:
-	`which autoconf2.50 || which autoconf` && \
-	  ./configure $(conf_args)
+config.status: configure
+	dh_testdir
+	
+	./configure $(conf_args)
+
+configure: configure.in
+	dh_testdir
+	
+	autoconf
 
 build: build-arch
 
-build-arch: configure
+build-arch: patch config.status
 	dh_testdir
 	
 	$(MAKE)
@@ -103,7 +106,7 @@ ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	$(CC) misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
 endif
 
-build-indep: configure
+build-indep: patch config.status
 	dh_testdir
 	
 	# bochsbios
@@ -164,34 +167,23 @@ install-indep: build-indep install
 	cp bios/BIOS* \
 	   $(tmpdir)/usr/share/bochs/
 
-binary-indep: binary-arch build-indep install install-indep
+binary-indep: install-indep
 	dh_testdir -i
 	dh_testroot -i
 	dh_install -i --sourcedir=$(tmpdir)
 	
-#	dh_installdebconf -i
 	dh_installdocs -i
 	dh_installexamples -i
-#	dh_installmenu -i
-#	dh_installlogrotate -i
-#	dh_installemacsen -i
-#	dh_installpam -i
-#	dh_installmime -i
-#	dh_installinit -i
-#	dh_installcron -i
-#	dh_installman -i
-#	dh_installinfo -i
 	dh_installchangelogs -i CHANGES
 	dh_link -i
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
-#	dh_perl -i
 	dh_gencontrol -i
 	dh_md5sums -i
 	dh_builddeb -i
 
-binary-arch: build install
+binary-arch: install
 	dh_testdir -s
 	dh_testroot -s
 	dh_install -s -Nbochs --sourcedir=$(tmpdir)
@@ -200,21 +192,13 @@ binary-arch: build install
 	dh_installdocs -s
 	dh_installexamples -s
 	dh_installmenu -s
-#	dh_installlogrotate -s
-#	dh_installemacsen -s
-#	dh_installpam -s
-#	dh_installmime -s
-#	dh_installinit -s
-#	dh_installcron -s
 	dh_installman -s
 	dh_installchangelogs -s CHANGES
 	dh_link -s
 	dh_strip -s
 	dh_compress -s
 	dh_fixperms -s
-#	dh_makeshlibs -s
 	dh_installdeb -s
-#	dh_perl -s
 	dh_shlibdeps -s
 	dh_gencontrol -s -Vsb16ctrl-bochs:Architecture="$(sb16ctrl_arches)"
 	dh_md5sums -s
@@ -222,6 +206,6 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 
-.PHONY: configure build build-arch build-indep clean install install-indep
+.PHONY: build build-arch build-indep clean install install-indep
 .PHONY: binary-indep binary-arch binary
 

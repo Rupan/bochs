@@ -17,6 +17,23 @@ bochs (2.2.5-1) UNRELEASED; urgency=low
   * Upgrade Build-Depends libgtk1.2-dev to libgtk2.0-dev and libwxgtk2.4-dev 
     to libwxgtk2.6-dev.
   * Wrap lines in debian/control fields (knowingly breaking policy).
+  * Clean up debian/patch.mk:
+    - Rename clean to unpatch.
+    - Switch patch and unpatch to single-colon targets.
+    - Add patch, unpatch, apply-patches and reverse-patches to the PHONY
+      targets.
+  * Clean up debian/rules file:
+    - Add a proper copyright comment header.
+    - Remove null, bochs and INSTALL_PROGRAM variables.
+    - Switch clean to single-colon target, make it depend on unpatch and call
+      make clean.
+    - Swap config.status and configure from target to dependency.
+    - Remove configure from the PHONY targets.
+    - Just use autoconf, and do not try autoconf2.50.
+    - Split autoconf and configure commands in different targets.
+    - Make build-arch and build-indep depend on patch and config.status.
+    - Make binary-indep depend on install-indep, and binary-arch on install.
+    - Remove commented debhelper commands.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 23 Oct 2005 11:06:43 +0300
 
