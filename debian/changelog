@@ -1,15 +1,16 @@
-bochs (2.2.5-1) UNRELEASED; urgency=low
+bochs (2.2.5-1) unstable; urgency=low
 
   * New Upstream Release.
     - debian/patches/00_base.patch: Synced.
     - debian/patches/01_doc.patch: Likewise.
     - debian/patches/02_libtool.patch: Likewise.
-  * Added Spanish debconf template. (Closes: #333897)
-    Thanks to César Gómez Martín <cesar.gomez@gmail.com>.
-  * Added Swedish debconf template. (Closes: #330987)
-    Thanks to Daniel Nylander <po@danielnylander.se>.
-  * Added Portuguese debconf template. (Closes: #338892)
-    Thanks to Simão Pedro Cardoso <pthell@gmail.com>.
+  * Debconf templates:
+    - Added Spanish. (Closes: #333897)
+      Thanks to César Gómez Martín <cesar.gomez@gmail.com>.
+    - Added Swedish. (Closes: #330987)
+      Thanks to Daniel Nylander <po@danielnylander.se>.
+    - Added Portuguese. (Closes: #338892)
+      Thanks to Simão Pedro Cardoso <pthell@gmail.com>.
   * Include pci plugins into bochs package. (Closes: #341436)
     Thanks to Robert Millan <rmh@aybabtu.com>
   * Fix more typos in bochs and bochsrc manpages. (Closes: #335334, #335336)
@@ -37,7 +38,7 @@ bochs (2.2.5-1) UNRELEASED; urgency=low
     - Make binary-indep depend on install-indep, and binary-arch on install.
     - Remove commented debhelper commands.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 23 Oct 2005 11:06:43 +0300
+ -- Guillem Jover <guillem@debian.org>  Sat,  7 Jan 2006 08:19:52 +0200
 
 bochs (2.2.1-2) unstable; urgency=low
 
