@@ -23,32 +23,6 @@ else
   CFLAGS += -O2
 endif
 
-conf_args = \
-	--host=$(DEB_HOST_GNU_TYPE) \
-	--build=$(DEB_BUILD_GNU_TYPE) \
-	--prefix=/usr \
-	--mandir=\$${prefix}/share/man \
-	\
-	--with-x11 \
-	--with-term \
-	--with-sdl \
-	--with-wx \
-	\
-	--enable-cdrom \
-	--enable-vbe \
-	--enable-pci \
-	\
-	--enable-cpu-level=5 \
-	--enable-fpu \
-	--enable-mmx \
-	--enable-3dnow \
-	\
-	--enable-gdb-stub \
-	--enable-idle-hack \
-	--enable-all-optimizations \
-	--enable-plugins \
-	--enable-compressed-hd
-
 sb16 = dummy
 cdrom = cdrom
 
@@ -73,7 +47,6 @@ endif
 ifeq ($(DEB_HOST_ARCH_OS),hurd)
   com = com0
 endif
-conf_args += --enable-sb16=$(sb16)
 
 include debian/patch.mk
 
@@ -85,15 +58,25 @@ clean: unpatch
 	
 	dh_clean
 
-config.status: configure
-	dh_testdir
-	
-	./configure $(conf_args)
-
 configure: configure.in
 	dh_testdir
 	
 	autoconf
+
+config.status: configure
+	dh_testdir
+	
+	./configure \
+	  --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
+	  --prefix=/usr \
+	  --mandir=\$${prefix}/share/man \
+	  --with-x11 --with-term --with-sdl --with-wx \
+	  --enable-cdrom --enable-vbe --enable-pci \
+	  --enable-cpu-level=5 --enable-fpu --enable-mmx --enable-3dnow \
+	  --enable-gdb-stub --enable-idle-hack --enable-all-optimizations \
+	  --enable-plugins --enable-compressed-hd \
+	  --enable-sb16=$(sb16) \
+	  $(conf_args)
 
 build: build-arch
 

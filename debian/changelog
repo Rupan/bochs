@@ -28,6 +28,7 @@ bochs (2.2.5-1) UNRELEASED; urgency=low
       make clean.
     - Swap config.status and configure from target to dependency.
     - Remove configure from the PHONY targets.
+    - Inline the main conf_args to the configure invokation.
     - Just use autoconf, and do not try autoconf2.50.
     - Split autoconf and configure commands in different targets.
     - Make build-arch and build-indep depend on patch and config.status.
