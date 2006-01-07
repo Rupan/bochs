@@ -8,6 +8,7 @@ Build-Depends: debhelper (>= 5), autoconf, chrpath, libz-dev, libncurses5-dev,
  libx11-dev, libxpm-dev, libice-dev, libsm-dev, libsdl1.2-dev,
  libwxgtk2.4-dev, libgtk1.2-dev
 Build-Depends-Indep: bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl, docbook-utils
+Build-Conflicts: libwxgtk2.6-dev
 Standards-Version: 3.6.2
 
 Package: bochs
