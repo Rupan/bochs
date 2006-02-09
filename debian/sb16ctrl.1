@@ -1,5 +1,5 @@
 .\"Document Author:  Guillem Jover   -   <guillem@debian.org>
-.TH sb16ctrl 1 2005-07-08 sb16ctrl "The Bochs Project"
+.TH sb16ctrl 1 2006-02-09 sb16ctrl "The Bochs Project"
 .\"SKIP_SECTION"
 .SH NAME
 sb16ctrl \- SoundBlaster16 emulator control program for Bochs
@@ -15,7 +15,7 @@ emulator for bochs.
 .\".\"DONT_SPLIT"
 .SH OPTIONS
 .LP
-Any number of commands can be given. If none are present "-f -"
+Any number of commands can be given. If none are present "\-f \-"
 is assumed. The value "#" can be decimal, octal (first digit 0)
 or hexadecimal (0x..).
 .TP
@@ -32,7 +32,7 @@ resets the patch translation table
 sends the given midi message (up to 255 bytes)
 .TP
 .BI \-f filename
-loads commands from the given file, or stdin if "-"
+loads commands from the given file, or stdin if "\-"
 .TP
 .BI \-v
 be verbose
@@ -49,14 +49,17 @@ The latest version of this program can be found at:
   http://bochs.sourceforge.net/getcurrent.html
 .\"SKIP_SECTION"
 .SH SEE ALSO
-bochs(1), bochsrc(5), bochs-dlx(1), bximage(1).
+.BR bochs (1),
+.BR bochsrc (5),
+.BR bochs-dlx (1),
+.BR bximage (1).
 .PP
 .nf
 The Bochs IA-32 Emulator site on the World Wide Web:
   http://bochs.sourceforge.net
 
-Online Bochs Documentation
-	http://bochs.sourceforge.net/doc/docbook
+Online Bochs Documentation:
+   http://bochs.sourceforge.net/doc/docbook
 .fi
 .\"SKIP_SECTION"
 .SH AUTHORS
