@@ -6,7 +6,7 @@ bochs (2.2.6-1) UNRELEASED; urgency=low
     - debian/patches/00_base.patch: Sync.
     - debian/patches/02_libtool.patch: Likewise.
   * Do not install ROM BIOS that are not built anymore.
-  * Do not create fake stamp files for the roms, not needed anymore.
+  * Do not create a fake stamp file for the ROM BIOS.
   * Fix debian/sb16ctrl.1:
     - Change the SEE ALSO references to be bold.
     - Escaped some hyphens.
