@@ -1,3 +1,15 @@
+bochs (2.2.6-1) UNRELEASED; urgency=low
+
+  * New Upstream Release.
+    - debian/patches/01_doc.patch: Integrated upstream. Remove.
+    - debian/patches/03_gcc-4.0.patch: Likewise.
+    - debian/patches/00_base.patch: Sync.
+    - debian/patches/02_libtool.patch: Likewise.
+  * Do not install ROM BIOS that are not built anymore.
+  * Do not create fake stamp files for the roms, not needed anymore.
+
+ -- Guillem Jover <guillem@debian.org>  Thu,  9 Feb 2006 03:32:02 +0200
+
 bochs (2.2.5-1) unstable; urgency=low
 
   * New Upstream Release.

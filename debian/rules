@@ -101,10 +101,6 @@ install: build
 	dh_clean -k
 	dh_installdirs -s
 	
-	# Hack to keep install target happy
-	touch bios/BIOS-stamp \
-	      bios/VGABIOS-stamp
-	
 	$(MAKE) install DESTDIR=$(tmpdir)
 	
 	# misc cleanup

@@ -121,7 +121,7 @@ diff -Naur -x .svn -x CVS bochs-2.2.5.orig/iodev/Makefile.in bochs-2.2.5/iodev/M
 diff -Naur -x .svn -x CVS bochs-2.2.5.orig/configure.in bochs-2.2.5/configure.in
 --- bochs-2.2.5.orig/configure.in	2005-12-30 18:07:54.000000000 +0200
 +++ bochs-2.2.5/configure.in	2006-01-01 23:20:19.000000000 +0200
-@@ -2064,8 +2064,8 @@
+@@ -1996,8 +1996,8 @@
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool
