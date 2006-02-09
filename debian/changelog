@@ -1,4 +1,4 @@
-bochs (2.2.6-1) UNRELEASED; urgency=low
+bochs (2.2.6-1) unstable; urgency=low
 
   * New Upstream Release.
     - debian/patches/01_doc.patch: Integrated upstream. Remove.
@@ -14,7 +14,7 @@ bochs (2.2.6-1) UNRELEASED; urgency=low
   * Build the svga module on amd64. (Closes: #346577)
     Thanks to Kaare Hviid <ukh@svansen.se> for the initial patch.
 
- -- Guillem Jover <guillem@debian.org>  Thu,  9 Feb 2006 03:32:02 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu,  9 Feb 2006 04:30:50 +0200
 
 bochs (2.2.5-1) unstable; urgency=low
 
