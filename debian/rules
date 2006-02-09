@@ -32,7 +32,7 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
   eth = eth0
   sb16 = linux
   com = ttyS0
-ifneq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64)
+ifneq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
   conf_args += --with-svga
 endif
 endif
