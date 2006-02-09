@@ -11,6 +11,8 @@ bochs (2.2.6-1) UNRELEASED; urgency=low
     - Change the SEE ALSO references to be bold.
     - Escaped some hyphens.
     - Reindent the Bochs Online Documentation's URL.
+  * Build the svga module on amd64. (Closes: #346577)
+    Thanks to Kaare Hviid <ukh@svansen.se> for the initial patch.
 
  -- Guillem Jover <guillem@debian.org>  Thu,  9 Feb 2006 03:32:02 +0200
 
