@@ -5,6 +5,9 @@ bochs (2.2.6-2) UNRELEASED; urgency=low
     Thanks to A Costa <agcosta@gis.net>.
   * Fix clean target by calling upstream dist-clean, bios-clean under bios/,
     and removing the misc/sb16/sb16ctrl and bios/VGABIOS-*.
+  * Switch to libwxgtk2.6-dev and libgtk2.0-dev.
+    - debian/patches/04_wx2.6.patch: New file.
+    Thanks to Hans de Goede <j.w.r.degoede@hhs.nl>.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 21 Mar 2006 02:31:22 +0200
 
