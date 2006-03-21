@@ -3,6 +3,8 @@ bochs (2.2.6-2) UNRELEASED; urgency=low
   * Fix typos in bochsrc(5). (Closes: #356012)
     - debian/patches/01_man.patch: New file.
     Thanks to A Costa <agcosta@gis.net>.
+  * Fix clean target by calling upstream dist-clean, bios-clean under bios/,
+    and removing the misc/sb16/sb16ctrl and bios/VGABIOS-*.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 21 Mar 2006 02:31:22 +0200
 
