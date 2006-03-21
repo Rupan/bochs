@@ -1,3 +1,11 @@
+bochs (2.2.6-2) UNRELEASED; urgency=low
+
+  * Fix typos in bochsrc(5). (Closes: #356012)
+    - debian/patches/01_man.patch: New file.
+    Thanks to A Costa <agcosta@gis.net>.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 21 Mar 2006 02:31:22 +0200
+
 bochs (2.2.6-1) unstable; urgency=low
 
   * New Upstream Release.
