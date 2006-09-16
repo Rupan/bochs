@@ -48,7 +48,7 @@ ifeq ($(DEB_HOST_ARCH_OS),hurd)
   com = com0
 endif
 
-include debian/patch.mk
+include /usr/share/quilt/quilt.make
 
 clean: unpatch
 	dh_testdir

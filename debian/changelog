@@ -4,6 +4,11 @@ bochs (2.3-1) UNRELEASED; urgency=low
     - debian/patches/00_base.patch: Sync.
     - debian/patches/03_g++-4.1.patch: Integrated upstream. Remove.
     - debian/patches/04_wx2.6.patch: Likewise.
+  * Switched to quilt:
+    - Add new debian/patches/series file.
+    - Add Build-Depends on 'quilt (>= 0.40)'.
+    - Include quilt.make from debian/rules.
+    - Remove now unused debian/patch.mk.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
