@@ -9,6 +9,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
     - Add Build-Depends on 'quilt (>= 0.40)'.
     - Include quilt.make from debian/rules.
     - Remove now unused debian/patch.mk.
+  * Now using Standards-Version 3.7.2 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
