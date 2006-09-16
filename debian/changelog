@@ -1,3 +1,12 @@
+bochs (2.3-1) UNRELEASED; urgency=low
+
+  * New Upstream Release.
+    - debian/patches/00_base.patch: Sync.
+    - debian/patches/03_g++-4.1.patch: Integrated upstream. Remove.
+    - debian/patches/04_wx2.6.patch: Likewise.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
+
 bochs (2.2.6-2) unstable; urgency=low
 
   * Fix typos in bochsrc(5). (Closes: #356012)
