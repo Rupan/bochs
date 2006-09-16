@@ -11,6 +11,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
     - Remove now unused debian/patch.mk.
   * Now using Standards-Version 3.7.2 (no changes needed).
   * Add 2006 to the copyright years in debian/copyright.
+  * Remove obsolete template note and all debconf support with it.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 

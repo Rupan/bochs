@@ -26,8 +26,6 @@ set -e
 case "$1" in
   configure)
 
-    . /usr/share/debconf/confmodule
-
     DEVICE=/dev/net/tun
 
     if [ ! -e /dev/.devfsd ] && [ ! -c $DEVICE ]; then

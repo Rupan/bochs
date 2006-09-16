@@ -173,7 +173,6 @@ binary-arch: install
 	dh_testroot -s
 	dh_install -s -Nbochs --sourcedir=$(tmpdir)
 	dh_install -pbochs --sourcedir=$(tmpdir) # bochs should be last
-	dh_installdebconf -s
 	dh_installdocs -s
 	dh_installexamples -s
 	dh_installmenu -s
