@@ -4,6 +4,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
     - debian/patches/00_base.patch: Sync.
     - debian/patches/03_g++-4.1.patch: Integrated upstream. Remove.
     - debian/patches/04_wx2.6.patch: Likewise.
+    - debian/patches/03_redolog_FTBFS.patch: New file. Fix build failure.
   * Switched to quilt:
     - Add new debian/patches/series file.
     - Add Build-Depends on 'quilt (>= 0.40)'.
