@@ -29,6 +29,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Add a small README.plugins in the bochs package to document how to use
     the ui plugin packages. (Closes: #250194)
     Thanks to A Costa <agcosta@gis.net> for the initial text.
+  * Include bxcommit in the bximage package.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
