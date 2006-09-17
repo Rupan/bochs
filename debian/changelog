@@ -26,6 +26,9 @@ bochs (2.3-1) UNRELEASED; urgency=low
     files which contain development information not interesting to the user,
     neither sb16ctrl example and source code which are provided in a separete
     package already.
+  * Add a small README.plugins in the bochs package to document how to use
+    the ui plugin packages. (Closes: #250194)
+    Thanks to A Costa <agcosta@gis.net> for the initial text.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
