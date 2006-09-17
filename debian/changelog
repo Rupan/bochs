@@ -17,6 +17,8 @@ bochs (2.3-1) UNRELEASED; urgency=low
     it anymore, do not Build-Depend on chrpath anymore.
   * Use source:Version in bochs' bochsbios Depencency, to make the package
     binNMU safe, and Build-Depend on dpkg 1.13.19.
+  * Fix manpage warning due to unwrappable long line by using a table.
+    - debian/patches/04_man_table.patch: New file.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 

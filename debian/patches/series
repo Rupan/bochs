@@ -2,3 +2,4 @@
 01_man.patch -p0
 02_libtool.patch -p1
 03_redolog_FTBFS.patch
+04_man_table.patch
