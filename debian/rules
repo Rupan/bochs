@@ -196,7 +196,7 @@ binary-arch: install
 	dh_fixperms -s
 	dh_installdeb -s
 	dh_shlibdeps -s
-	dh_gencontrol -s -Vsb16ctrl-bochs:Architecture="$(sb16ctrl_arches)"
+	dh_gencontrol -s
 	dh_md5sums -s
 	dh_builddeb -s
 
