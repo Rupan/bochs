@@ -6,6 +6,7 @@ usr/lib/bochs/plugins/libbx_gameport.*
 usr/lib/bochs/plugins/libbx_floppy.*
 usr/lib/bochs/plugins/libbx_harddrv.*
 usr/lib/bochs/plugins/libbx_keyboard.*
+usr/lib/bochs/plugins/libbx_busmouse.*
 usr/lib/bochs/plugins/libbx_ne2k.*
 usr/lib/bochs/plugins/libbx_parallel.*
 usr/lib/bochs/plugins/libbx_pci*

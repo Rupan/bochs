@@ -30,6 +30,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
     the ui plugin packages. (Closes: #250194)
     Thanks to A Costa <agcosta@gis.net> for the initial text.
   * Include bxcommit in the bximage package.
+  * Include busmouse plugin in the bochs package.
   * Do not set unused substvar sb16ctrl-bochs:Architecture in debian/rules.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
