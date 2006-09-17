@@ -80,14 +80,24 @@ config.status: configure
 	  --enable-cdrom \
 	  --enable-vbe \
 	  --enable-pci \
+	  --enable-usb \
+	  --enable-new-pit \
+	  --enable-apic \
 	  --enable-cpu-level=5 \
+	  --enable-x86-64 \
+	  --enable-vme \
 	  --enable-fpu \
 	  --enable-mmx \
 	  --enable-3dnow \
+	  --enable-sse=4 \
 	  --enable-gdb-stub \
+	  --enable-disasm \
 	  --enable-idle-hack \
 	  --enable-all-optimizations \
+	  --enable-repeat-speedups \
+	  --enable-icache \
 	  --enable-plugins \
+	  --enable-save-restore \
 	  --enable-compressed-hd \
 	  --enable-sb16=$(sb16) \
 	  $(conf_args)

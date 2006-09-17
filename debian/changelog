@@ -32,6 +32,9 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Include bxcommit in the bximage package.
   * Include busmouse plugin in the bochs package.
   * Do not set unused substvar sb16ctrl-bochs:Architecture in debian/rules.
+  * Enable new PIT model, APIC, Virtual 8086 Mode Extensions, x86_64, SSE4,
+    icache, internal disassembler, io and memory repetition speedups,
+    simulation save and restore, and limited USB support.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
