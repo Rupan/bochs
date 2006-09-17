@@ -73,11 +73,22 @@ config.status: configure
 	  --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
 	  --prefix=/usr \
 	  --mandir=\$${prefix}/share/man \
-	  --with-x11 --with-term --with-sdl --with-wx \
-	  --enable-cdrom --enable-vbe --enable-pci \
-	  --enable-cpu-level=5 --enable-fpu --enable-mmx --enable-3dnow \
-	  --enable-gdb-stub --enable-idle-hack --enable-all-optimizations \
-	  --enable-plugins --enable-compressed-hd \
+	  --with-x11 \
+	  --with-term \
+	  --with-sdl \
+	  --with-wx \
+	  --enable-cdrom \
+	  --enable-vbe \
+	  --enable-pci \
+	  --enable-cpu-level=5 \
+	  --enable-fpu \
+	  --enable-mmx \
+	  --enable-3dnow \
+	  --enable-gdb-stub \
+	  --enable-idle-hack \
+	  --enable-all-optimizations \
+	  --enable-plugins \
+	  --enable-compressed-hd \
 	  --enable-sb16=$(sb16) \
 	  $(conf_args)
 
