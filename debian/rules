@@ -117,6 +117,10 @@ install: build
 	  $(tmpdir)/usr/share/doc/bochs/COPYING.gz \
 	  $(tmpdir)/usr/bin/bochs-docs
 	
+	# bochs-doc
+	cp /usr/share/sgml/docbook/stylesheet/dsssl/modular/images/note.gif \
+	  $(tmpdir)/usr/share/doc/bochs/images/
+	
 	# bochs
 	cat $(tmpdir)/usr/share/doc/bochs/bochsrc-sample.txt \
 	| sed \
