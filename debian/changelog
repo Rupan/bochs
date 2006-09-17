@@ -22,6 +22,10 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Fix manpage warning due to unwrappable long line by using a table.
     - debian/patches/04_man_table.patch: New file.
   * Include the note.gif image in the bochs-doc package. (Closes: #198766)
+  * Do not install into bochs doc dir the README-plugins and README-wxWindows
+    files which contain development information not interesting to the user,
+    neither sb16ctrl example and source code which are provided in a separete
+    package already.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
