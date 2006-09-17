@@ -1,4 +1,4 @@
-bochs (2.3-1) UNRELEASED; urgency=low
+bochs (2.3-1) unstable; urgency=low
 
   * New Upstream Release.
     - debian/patches/00_base.patch: Sync.
@@ -38,7 +38,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Upgrade cpu-level to 6, as required by the x86_64 support.
   * Add a Tag: field to all binary packages, using the data from debtags.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
+ -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 20:07:05 +0300
 
 bochs (2.2.6-2) unstable; urgency=low
 
