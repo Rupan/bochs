@@ -15,6 +15,8 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Remove obsolete template note and all debconf support with it.
   * Remove code to strip possible RPATH in SDL plugin as it should not contain
     it anymore, do not Build-Depend on chrpath anymore.
+  * Use source:Version in bochs' bochsbios Depencency, to make the package
+    binNMU safe, and Build-Depend on dpkg 1.13.19.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
