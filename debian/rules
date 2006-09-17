@@ -136,9 +136,6 @@ install: build
 	cp -a debian/etc debian/tmp/
 	chmod 755 $(tmpdir)/etc/bochs-init/init.sh
 	
-	# remove possible RPATH
-	chrpath --delete $(tmpdir)/usr/lib/bochs/plugins/libbx_sdl.so
-	
 ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	cp misc/sb16/sb16ctrl \
 	   $(tmpdir)/usr/bin/
