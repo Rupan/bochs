@@ -83,7 +83,7 @@ config.status: configure
 	  --enable-usb \
 	  --enable-new-pit \
 	  --enable-apic \
-	  --enable-cpu-level=5 \
+	  --enable-cpu-level=6 \
 	  --enable-x86-64 \
 	  --enable-vme \
 	  --enable-fpu \

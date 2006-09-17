@@ -35,6 +35,7 @@ bochs (2.3-1) UNRELEASED; urgency=low
   * Enable new PIT model, APIC, Virtual 8086 Mode Extensions, x86_64, SSE4,
     icache, internal disassembler, io and memory repetition speedups,
     simulation save and restore, and limited USB support.
+  * Upgrade cpu-level to 6, as required by the x86_64 support.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 17 Sep 2006 00:54:58 +0300
 
