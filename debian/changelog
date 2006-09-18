@@ -1,6 +1,8 @@
 bochs (2.3-2) UNRELEASED; urgency=low
 
   * Install the notes.gif only if building the binary independent packages.
+  * Make the bochs wrapper exec the real binary, to avoid unneeded running
+    processes.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 18 Sep 2006 03:12:39 +0300
 

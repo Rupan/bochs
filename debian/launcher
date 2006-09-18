@@ -6,5 +6,5 @@
 : ${GUEST:=guest}
 
 # now we run bochs
-GUEST=$GUEST bochs-bin -q "$@"
+GUEST=$GUEST exec bochs-bin -q "$@"
 
