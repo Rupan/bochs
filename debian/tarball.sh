@@ -4,7 +4,7 @@
 #
 # $Id$
 #
-# Copyright (C) 2004 Guillem Jover <guillem@debian.org>
+# Copyright (C) 2004, 2007 Guillem Jover <guillem@debian.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 set -e
 
 SRCDIR="bochs-snapshot"
-export CVSROOT=":pserver:anonymous@cvs.sf.net:/cvsroot/bochs"
+export CVSROOT=":pserver:anonymous@bochs.cvs.sf.net:/cvsroot/bochs"
 
 case "$1" in
   snapshot)

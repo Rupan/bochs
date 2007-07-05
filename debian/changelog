@@ -2,6 +2,7 @@ bochs (2.3-3) UNRELEASED; urgency=low
 
   * Update Tag: field to the latest vocabulary. 
   * Use binary:Version instead of deprecated Source-Version substvar.
+  * Update CVSROOT in tarball.sh.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 07:17:36 +0300
 
