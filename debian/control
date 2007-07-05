@@ -50,7 +50,7 @@ Description: BIOS for the Bochs emulator
 
 Package: bochs-wx
 Architecture: any
-Depends: ${shlibs:Depends}, bochs (= ${Source-Version})
+Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
 XB-Tag: hardware::emulation, interface::x11, implemented-in::c++, role::plugin, uitoolkit::wxwidgets
@@ -63,7 +63,7 @@ Description: WxWindows plugin for Bochs
 
 Package: bochs-sdl
 Architecture: any
-Depends: ${shlibs:Depends}, bochs (= ${Source-Version})
+Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
 XB-Tag: hardware::emulation, implemented-in::c++, role::plugin, uitoolkit::sdl
@@ -78,7 +78,7 @@ Description: SDL plugin for Bochs
 
 Package: bochs-term
 Architecture: any
-Depends: ${shlibs:Depends}, bochs (= ${Source-Version})
+Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1), bochs-curses
 Provides: bochs-gui
 XB-Tag: hardware::emulation, interface::text-mode, implemented-in::c++, role::plugin, uitoolkit::ncurses
@@ -91,7 +91,7 @@ Description: Terminal (ncurses-based) plugin for Bochs
 
 Package: bochs-x
 Architecture: any
-Depends: ${shlibs:Depends}, bochs (= ${Source-Version})
+Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
 XB-Tag: hardware::emulation, interface::x11, implemented-in::c++, role::plugin
@@ -104,7 +104,7 @@ Description: X11 plugin for Bochs
 
 Package: bochs-svga
 Architecture: i386 amd64
-Depends: ${shlibs:Depends}, bochs (= ${Source-Version})
+Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Provides: bochs-gui
 XB-Tag: hardware::emulation, interface::svga, implemented-in::c++, role::plugin
 Description: SVGA plugin for Bochs
