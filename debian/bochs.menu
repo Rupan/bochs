@@ -1,7 +1,5 @@
-!C menu-2
-?package(bochs):
-  section="Applications/Emulators"
-  needs="x11"
-  title="Bochs"
+?package(bochs): \
+  section="Applications/Emulators" \
+  needs="x11" \
+  title="Bochs" \
   command="/usr/bin/bochs"
-;

@@ -13,7 +13,6 @@ bochs (2.3+20070705-1) UNRELEASED; urgency=low
   * Use binary:Version instead of deprecated Source-Version substvar.
   * Update CVSROOT in tarball.sh.
   * Explicitely point to LGPL 2.1 in debian/copyright.
-  * Switch menu entry to compat level 2.
   * Update menu entry section.
   * Do not ignore make errors on clean.
   * Switch configuration variables to simply expanded ones in debian/rules.
