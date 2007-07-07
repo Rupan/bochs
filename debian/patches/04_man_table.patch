@@ -1,7 +1,7 @@
-Index: bochs-2.3/doc/man/bochsrc.5
+Index: doc/man/bochsrc.5
 ===================================================================
---- bochs-2.3.orig/doc/man/bochsrc.5	2006-09-17 03:39:22.000000000 +0300
-+++ bochs-2.3/doc/man/bochsrc.5	2006-09-17 03:38:27.000000000 +0300
+--- doc/man/bochsrc.5.orig	2007-07-05 19:41:06.000000000 +0300
++++ doc/man/bochsrc.5	2007-07-05 19:41:23.000000000 +0300
 @@ -146,13 +146,18 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  

@@ -4,7 +4,7 @@
 #
 # Copyright (C) 1997-1999 Joey Hess <joeyh@debian.org>
 # Copyright (C) 2002-2004 Robert Millan <rmh@debian.org>
-# Copyright (C) 2004-2006 Guillem Jover <guillem@debian.org>
+# Copyright (C) 2004-2007 Guillem Jover <guillem@debian.org>
 #
 
 tmpdir = $(CURDIR)/debian/tmp
@@ -81,7 +81,6 @@ config.status: configure
 	  --enable-vbe \
 	  --enable-pci \
 	  --enable-usb \
-	  --enable-new-pit \
 	  --enable-apic \
 	  --enable-cpu-level=6 \
 	  --enable-x86-64 \

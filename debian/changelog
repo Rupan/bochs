@@ -1,5 +1,14 @@
-bochs (2.3-3) UNRELEASED; urgency=low
+bochs (2.3+20070705-1) UNRELEASED; urgency=low
 
+  * New upstream snapshot.
+    - Do not provoke a BSOD for Windows 2000 from bochsbios. (Closes: #417416)
+    - Fix heap buffer overflow in ne2k emulated driver. (Closes: #427144)
+      CVE-2007-2893
+    - debian/patches/03_redolog_FTBFS.patch: Fixed upstream. Remove.
+    - debian/patches/00_base.patch: Sync.
+    - debian/patches/01_man.patch: Likewise.
+    - debian/patches/02_libtool.patch: Likewise.
+    - debian/patches/04_man_table.patch: Likewise.
   * Update Tag: field to the latest vocabulary. 
   * Use binary:Version instead of deprecated Source-Version substvar.
   * Update CVSROOT in tarball.sh.
