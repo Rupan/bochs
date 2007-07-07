@@ -16,6 +16,7 @@ bochs (2.3+20070705-1) UNRELEASED; urgency=low
   * Update menu entry section.
   * Do not ignore make errors on clean.
   * Switch configuration variables to simply expanded ones in debian/rules.
+  * Update config.sub and config.guess on clean.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 07:17:36 +0300
 
