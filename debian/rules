@@ -54,10 +54,10 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	
-	-$(MAKE) -C bios bios-clean
+	[ ! -f bios/Makefile ] || $(MAKE) -C bios bios-clean
 	rm -f bios/VGABIOS-*
 	rm -f misc/sb16/sb16ctrl
-	-$(MAKE) dist-clean
+	[ ! -f Makefile ] || $(MAKE) dist-clean
 	
 	dh_clean
 

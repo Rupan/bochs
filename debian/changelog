@@ -15,6 +15,7 @@ bochs (2.3+20070705-1) UNRELEASED; urgency=low
   * Explicitely point to LGPL 2.1 in debian/copyright.
   * Switch menu entry to compat level 2.
   * Update menu entry section.
+  * Do not ignore make errors on clean.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 07:17:36 +0300
 
