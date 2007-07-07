@@ -1,15 +1,18 @@
-bochs (2.3+20070705-1) UNRELEASED; urgency=low
+bochs (2.3+20070705-1) unstable; urgency=low
 
   * New upstream snapshot.
     - Do not provoke a BSOD for Windows 2000 from bochsbios. (Closes: #417416)
+    - Fix OpenBSD 3.9 installation iso booting up to the installer with
+      qemu. (Closes: #382795)
     - Fix heap buffer overflow in ne2k emulated driver. (Closes: #427144)
       CVE-2007-2893
+    - Support spaces in command line bochsrc-like options. (Closes: #250196)
     - debian/patches/03_redolog_FTBFS.patch: Fixed upstream. Remove.
     - debian/patches/00_base.patch: Sync.
     - debian/patches/01_man.patch: Likewise.
     - debian/patches/02_libtool.patch: Likewise.
     - debian/patches/04_man_table.patch: Likewise.
-  * Update Tag: field to the latest vocabulary. 
+  * Update Tag: field to the latest vocabulary.
   * Use binary:Version instead of deprecated Source-Version substvar.
   * Update CVSROOT in tarball.sh.
   * Explicitely point to LGPL 2.1 in debian/copyright.
@@ -18,7 +21,7 @@ bochs (2.3+20070705-1) UNRELEASED; urgency=low
   * Switch configuration variables to simply expanded ones in debian/rules.
   * Update config.sub and config.guess on clean.
 
- -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 07:17:36 +0300
+ -- Guillem Jover <guillem@debian.org>  Sat, 07 Jul 2007 05:07:01 +0300
 
 bochs (2.3-2) unstable; urgency=low
 
