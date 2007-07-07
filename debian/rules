@@ -7,8 +7,8 @@
 # Copyright (C) 2004-2007 Guillem Jover <guillem@debian.org>
 #
 
-tmpdir = $(CURDIR)/debian/tmp
-pkg_bochs = $(CURDIR)/debian/bochs
+tmpdir := $(CURDIR)/debian/tmp
+pkg_bochs := $(CURDIR)/debian/bochs
 
 DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -23,29 +23,29 @@ else
   CFLAGS += -O2
 endif
 
-sb16 = dummy
-cdrom = cdrom
+sb16 := dummy
+cdrom := cdrom
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
-  kernel = linux
+  kernel := linux
   conf_args += --enable-ne2000 --enable-pnic
-  eth = eth0
-  sb16 = linux
-  com = ttyS0
+  eth := eth0
+  sb16 := linux
+  com := ttyS0
 ifneq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
   conf_args += --with-svga
 endif
 endif
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
-  kernel = fbsd
+  kernel := fbsd
   conf_args += --enable-ne2000 --enable-pnic
-  eth = xl0
-  sb16 = freebsd
-  com = cuua0
-  cdrom = acd0
+  eth := xl0
+  sb16 := freebsd
+  com := cuua0
+  cdrom := acd0
 endif
 ifeq ($(DEB_HOST_ARCH_OS),hurd)
-  com = com0
+  com := com0
 endif
 
 include /usr/share/quilt/quilt.make
