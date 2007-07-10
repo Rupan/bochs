@@ -1,0 +1,13 @@
+Index: iodev/eth_vnet.cc
+===================================================================
+--- iodev/eth_vnet.cc.orig	2007-07-01 10:28:14.000000000 +0300
++++ iodev/eth_vnet.cc	2007-07-10 04:18:28.000000000 +0300
+@@ -199,7 +199,7 @@ private:
+   void tftp_send_optack(
+     Bit8u *buffer,
+     unsigned sourceport, unsigned targetport,
+-    unsigned tsize_option, unsigned blksize_option);
++    size_t tsize_option, unsigned blksize_option);
+ 
+   char tftp_filename[BX_PATHNAME_LEN];
+   char tftp_rootdir[BX_PATHNAME_LEN];
