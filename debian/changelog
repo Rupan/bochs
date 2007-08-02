@@ -1,3 +1,11 @@
+bochs (2.3-3etch1) UNRELEASED; urgency=low
+
+  * Fix heap buffer overflow in ne2k emulated driver. (Closes: #427144)
+    CVE-2007-2893
+    - debian/patches/05_security_ne2k.patch: New file.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 02 Aug 2007 06:50:05 +0300
+
 bochs (2.3-2) unstable; urgency=low
 
   * Install the note.gif only if building the binary independent packages.
