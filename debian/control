@@ -16,7 +16,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, bochs-wx | bochs-gui,
  bochsbios (= ${source:Version}), vgabios (>= 0.5c-1)
 Recommends: bximage | createdisk
 Suggests: bochs-doc, debootstrap, grub-disk, gcc | c-compiler, libc-dev
-XB-Tag: hardware::emulation, implemented-in::c++, role::program, scope::application
 Description: IA-32 PC emulator
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -27,7 +26,6 @@ Description: IA-32 PC emulator
 
 Package: bochs-doc
 Architecture: all
-XB-Tag: hardware::emulation, made-of::data:html, role::documentation
 Description: Bochs upstream documentation
  This package contains the HTML documentation of the Bochs project.
  .
@@ -40,7 +38,6 @@ Description: Bochs upstream documentation
 Package: bochsbios
 Architecture: all
 Replaces: bochs (<< 2.0)
-XB-Tag: hardware::emulation, implemented-in::c++, role::data
 Description: BIOS for the Bochs emulator
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -53,7 +50,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
-XB-Tag: hardware::emulation, interface::x11, implemented-in::c++, role::plugin, uitoolkit::wxwidgets
 Description: WxWindows plugin for Bochs
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -66,7 +62,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
-XB-Tag: hardware::emulation, implemented-in::c++, role::plugin, uitoolkit::sdl
 Description: SDL plugin for Bochs
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -81,7 +76,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1), bochs-curses
 Provides: bochs-gui
-XB-Tag: hardware::emulation, interface::text-mode, implemented-in::c++, role::plugin, uitoolkit::ncurses
 Description: Terminal (ncurses-based) plugin for Bochs
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -94,7 +88,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Replaces: bochs (<< 2.0rel-1)
 Provides: bochs-gui
-XB-Tag: hardware::emulation, interface::x11, implemented-in::c++, role::plugin
 Description: X11 plugin for Bochs
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -106,7 +99,6 @@ Package: bochs-svga
 Architecture: i386 amd64
 Depends: ${shlibs:Depends}, bochs (= ${binary:Version})
 Provides: bochs-gui
-XB-Tag: hardware::emulation, interface::svga, implemented-in::c++, role::plugin
 Description: SVGA plugin for Bochs
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,
@@ -122,7 +114,6 @@ Description: SVGA plugin for Bochs
 Package: bximage
 Architecture: any
 Depends: ${shlibs:Depends}
-XB-Tag: admin::boot, hardware::emulation, interface::commandline, role::program
 Description: Disk Image Creation Tool for Bochs
  This tool is part of the Bochs project. Its purpose is to generate
  disk images that are used to allocate the guest operating system in
@@ -132,7 +123,6 @@ Package: sb16ctrl-bochs
 Architecture: i386 hurd-i386 kfreebsd-i386 knetbsd-i386
 Replaces: sb16ctrl
 Depends: ${shlibs:Depends}
-XB-Tag: admin::configuring, admin::hardware, hardware::emulation, interface::commandline, role::program, use::configuring
 Description: control utility for Bochs emulated SB16 card
  You can use this utility to perform some query operations on
  the Bochs emulated SB16 card. It needs to be installed in your
