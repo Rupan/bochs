@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # tarball.sh
 #
@@ -13,44 +13,83 @@
 #
 
 set -e
+set -u
 
-SRCDIR="bochs-snapshot"
-export CVSROOT=":pserver:anonymous@bochs.cvs.sf.net:/cvsroot/bochs"
+action=$1
+shift
 
-case "$1" in
+get_version()
+{
+  local d=$1
+
+  eval $(grep '^VERSION=' $d/configure.in | sed -e 's/\.cvs//' )
+
+  echo $VERSION
+}
+
+echo "-> getting the source."
+case "$action" in
   snapshot)
-    echo "-> getting new snapshot."
-    cvs login
-    cvs co -d $SRCDIR bochs
+    echo " -> making a cvs snapshot."
+
+    snapshot_dir="bochs-snapshot"
+
+    if [ -d $snapshot_dir ]; then
+      cvs up -dP $snapshot_dir
+    else
+      export CVSROOT=":pserver:anonymous@bochs.cvs.sf.net:/cvsroot/bochs"
+      cvs login
+      cvs co -d $snapshot_dir bochs
+    fi
+
+    version="$(get_version $snapshot_dir)+$(date +%Y%m%d)"
     ;;
-  update)
-    echo "-> updating snapshot."
-    cvs up -dP $SRCDIR
+  tarball)
+    echo " -> unpacking upstream tarball."
+
+    upstream_dir="bochs-tarball"
+    upstream_tarball=$1
+
+    mkdir $upstream_dir
+    cd $upstream_dir
+    tar xzf ../$upstream_tarball --strip 1
+    cd ..
+
+    version=$(get_version $upstream_dir)
     ;;
 esac
 
-if ! [ -e $SRCDIR/bochs.h ]
+tarball=bochs_$version.orig.tar.gz
+tree=bochs-$version
+
+echo "-> filling the working tree."
+case "$action" in
+  snapshot)
+    cp -al $snapshot_dir $tree
+    ;;
+  tarball)
+    mv $upstream_dir $tree
+    ;;
+esac
+
+if ! [ -e $tree/bochs.h ]
 then
-  echo "error: no bochs source dir available."
+  echo "error: no bochs tree available."
   exit 1
 fi
 
-echo "-> creating new directory tree."
-eval $(grep '^VERSION=' $SRCDIR/configure.in | sed -e 's/\.cvs//' )
-SNAPSHOTVERSION="$VERSION+$(date +%Y%m%d)"
-TARBALLDIR="bochs-$SNAPSHOTVERSION"
-cp -al $SRCDIR $TARBALLDIR
-
-echo "-> cleaning snapshot."
+echo "-> cleaning tree."
 # Clean non-free stuff
-rm -f $TARBALLDIR/bios/BIOS*
-rm -f $TARBALLDIR/bios/VGABIOS*
+rm -f $tree/bios/BIOS*
+rm -f $tree/bios/VGABIOS*
+rm -f $tree/bios/acpi-dsdt.hex
+rm -f $tree/patches/beos-gui-fabo.capture-filter
 # Clean cvs stuff
-find $TARBALLDIR -name 'CVS' -o -name '.cvsignore' | xargs rm -rf
+find $tree -name 'CVS' -o -name '.cvsignore' | xargs rm -rf
 
 echo "-> creating new tarball."
-tar czf bochs_$SNAPSHOTVERSION.orig.tar.gz $TARBALLDIR
+tar czf $tarball $tree
 
 echo "-> cleaning directory tree."
-rm -rf $TARBALLDIR
+rm -rf $tree
 

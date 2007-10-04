@@ -2,6 +2,8 @@ bochs (2.3+20070705-3) UNRELEASED; urgency=low
 
   * Remove versioned Build-Depends on dpkg, which is already on stable.
   * Remove Tag fields, they are better maintainer outside the package.
+  * Improve tarball.sh to support cleaning upstream tarballs, and document
+    its usage in README.Debian.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 

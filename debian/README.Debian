@@ -69,10 +69,17 @@ Source tree
 -----------
 
 This package's orig file contains a pristine Bochs source tree, with some
-slight modifications.
+binary blobs removed (like the propietary BIOS VGABIOS-elpin-2.40 which is
+not free software as per the DFSG).
 
-I had to remove the propietary VGA BIOS software in bios/VGABIOS-elpin-2.40,
-which is not free software as per the DFSG.
+There's a script to help generating this cleaned tarball (or a snapshot
+from CVS):
+
+	$ debian/tarball.sh tarball <upstream-tarball>
+
+or
+
+	$ debian/tarball.sh snapshot
 
 
 EtherBoot support
