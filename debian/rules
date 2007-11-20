@@ -15,6 +15,12 @@ DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_HOST_ARCH_CPU	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 DEB_HOST_ARCH_OS	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  conf_gnu_type += --build $(DEB_HOST_GNU_TYPE)
+else
+  conf_gnu_type += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
 CFLAGS = -Wall -g
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -75,7 +81,7 @@ config.status: configure
 	dh_testdir
 	
 	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CFLAGS)" ./configure \
-	  --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
+	  $(conf_gnu_type) \
 	  --prefix=/usr \
 	  --mandir=\$${prefix}/share/man \
 	  --with-x11 \
