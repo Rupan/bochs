@@ -1,7 +1,7 @@
-Index: .bochsrc
+Index: b/.bochsrc
 ===================================================================
---- .bochsrc.orig	2007-03-27 20:47:13.000000000 +0300
-+++ .bochsrc	2007-07-05 19:31:17.000000000 +0300
+--- a/.bochsrc	2007-09-15 19:00:17.000000000 +0300
++++ b/.bochsrc	2007-11-20 04:25:51.000000000 +0200
 @@ -17,7 +17,7 @@
  # the "wx" display library.
  #=======================================================================
@@ -27,7 +27,7 @@ Index: .bochsrc
  #   wx             use wxWidgets library, cross platform
  #   nogui          no display at all
  #
-@@ -50,16 +44,10 @@
+@@ -50,17 +44,10 @@
  # Some display libraries now support specific option to control their
  # behaviour. See the examples below for currently supported options.
  #=======================================================================
@@ -40,12 +40,13 @@ Index: .bochsrc
  #display_library: sdl, options="fullscreen" # startup in fullscreen mode
  #display_library: term
 -#display_library: win32, options="legacyF12" # use F12 to toggle mouse
+-#display_library: win32, options="windebug" # use experimental debugger gui
 -#display_library: wx
 +display_library: wx
  #display_library: x
  
  #=======================================================================
-@@ -75,7 +63,7 @@
+@@ -76,7 +63,7 @@
  # now supported, but we still recommend to use the BIOS distributed with
  # Bochs. Now the start address can be calculated from image size.
  #=======================================================================
@@ -54,7 +55,7 @@ Index: .bochsrc
  #romimage: file=mybios.bin, address=0xfff80000 # 512k at memory top
  
  #=======================================================================
-@@ -161,9 +149,8 @@ megs: 32
+@@ -162,9 +149,8 @@ megs: 32
  # VGAROMIMAGE
  # You now need to load a VGA ROM BIOS into C0000.
  #=======================================================================
@@ -66,7 +67,7 @@ Index: .bochsrc
  
  #=======================================================================
  # VGA:
-@@ -282,13 +269,10 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
+@@ -283,13 +269,10 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
  #   ata3-master: type=disk, mode=flat, path=483M.sample, cylinders=1024, heads=15, spt=63
  #   ata3-slave:  type=cdrom, path=iso.sample, status=inserted
  #=======================================================================
@@ -83,7 +84,7 @@ Index: .bochsrc
  
  #=======================================================================
  # BOOT:
-@@ -304,7 +288,8 @@ ata0-master: type=disk, mode=flat, path=
+@@ -303,7 +286,8 @@ ata0-master: type=disk, mode=flat, path=
  #   boot: cdrom, floppy, disk
  #=======================================================================
  #boot: floppy
@@ -93,7 +94,7 @@ Index: .bochsrc
  
  #=======================================================================
  # CLOCK:
-@@ -359,8 +344,9 @@ floppy_bootsig_check: disabled=0
+@@ -358,8 +342,9 @@ floppy_bootsig_check: disabled=0
  #   log: ./bochs.out
  #   log: /dev/tty
  #=======================================================================
@@ -104,7 +105,7 @@ Index: .bochsrc
  
  #=======================================================================
  # LOGPREFIX:
-@@ -441,7 +427,7 @@ debugger_log: -
+@@ -440,7 +425,7 @@ debugger_log: -
  #   com3: enabled=1, mode=raw, dev=com1
  #   com3: enabled=1, mode=socket, dev=localhost:8888
  #=======================================================================
@@ -113,7 +114,7 @@ Index: .bochsrc
  
  
  #=======================================================================
-@@ -457,7 +443,7 @@ debugger_log: -
+@@ -456,7 +441,7 @@ debugger_log: -
  #   parport2: enabled=1, file="/dev/lp0"
  #   parport1: enabled=0
  #=======================================================================
@@ -122,7 +123,7 @@ Index: .bochsrc
  
  #=======================================================================
  # SB16:
-@@ -494,7 +480,7 @@ parport1: enabled=1, file="parport.out"
+@@ -493,7 +478,7 @@ parport1: enabled=1, file="parport.out"
  # For an example look at the next line:
  #=======================================================================
  
@@ -131,7 +132,7 @@ Index: .bochsrc
  
  #=======================================================================
  # VGA_UPDATE_INTERVAL:
-@@ -575,18 +561,6 @@ mouse: enabled=0
+@@ -574,18 +559,6 @@ mouse: enabled=0
  private_colormap: enabled=0
  
  #=======================================================================
@@ -150,7 +151,7 @@ Index: .bochsrc
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Examples:
-@@ -626,10 +600,7 @@ private_colormap: enabled=0
+@@ -625,10 +598,7 @@ private_colormap: enabled=0
  #         overwrite files.
  #
  #=======================================================================
@@ -162,7 +163,7 @@ Index: .bochsrc
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
  # ne2k: ioaddr=0x300, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
-@@ -645,7 +616,7 @@ private_colormap: enabled=0
+@@ -644,7 +614,7 @@ private_colormap: enabled=0
  # Examples:
  #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
  #=======================================================================
@@ -171,7 +172,7 @@ Index: .bochsrc
  
  #=======================================================================
  # KEYBOARD_TYPE:
-@@ -753,11 +724,3 @@ i440fxsupport: enabled=1
+@@ -752,11 +722,3 @@ i440fxsupport: enabled=1
  #=======================================================================
  #ips: 10000000
  
@@ -183,10 +184,10 @@ Index: .bochsrc
 -# romimage: file=:bios:BIOS-bochs-latest, address=0xf0000
 -# floppya: 1_44=[fd:], status=inserted
 -#=======================================================================
-Index: doc/man/bochs.1
+Index: b/doc/man/bochs.1
 ===================================================================
---- doc/man/bochs.1.orig	2005-12-29 21:51:00.000000000 +0200
-+++ doc/man/bochs.1	2007-07-05 19:25:14.000000000 +0300
+--- a/doc/man/bochs.1	2005-12-29 21:51:00.000000000 +0200
++++ b/doc/man/bochs.1	2007-11-20 04:24:58.000000000 +0200
 @@ -57,8 +57,8 @@ Example:
  .SH LICENSE
  This program  is distributed  under the terms of the  GNU

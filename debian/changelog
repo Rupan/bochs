@@ -1,5 +1,10 @@
-bochs (2.3+20070705-3) UNRELEASED; urgency=low
+bochs (2.3.5-1) UNRELEASED; urgency=low
 
+  * New upstream release.
+    - debian/patches/01_man.patch: Fixed upstream. Remove.
+    - debian/patches/03_redolog_FTBFS.patch: Likewise.
+    - debian/patches/05_64_bit_cleanliness.patch: Likewise.
+    - debian/patches/00_base.patch: Sync.
   * Remove versioned Build-Depends on dpkg, which is already on stable.
   * Remove Tag fields, they are better maintainer outside the package.
   * Improve tarball.sh to support cleaning upstream tarballs, and document

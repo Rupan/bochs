@@ -1,6 +1,3 @@
-00_base.patch -p0
-01_man.patch -p0
+00_base.patch 
 02_libtool.patch -p0
-03_redolog_FTBFS.patch
 04_man_table.patch -p0
-05_64_bit_cleanliness.patch -p0
