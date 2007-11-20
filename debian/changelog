@@ -9,6 +9,7 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
   * Remove Tag fields, they are better maintainer outside the package.
   * Improve tarball.sh to support cleaning upstream tarballs, and document
     its usage in README.Debian.
+  * Turn failures when creating the tun device file non-fatal.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 
