@@ -30,10 +30,10 @@ bochs (2.3+20070705-1) unstable; urgency=low
     - Fix heap buffer overflow in ne2k emulated driver. (Closes: #427144)
       CVE-2007-2893
     - Support spaces in command line bochsrc-like options. (Closes: #250196)
-    - debian/patches/03_redolog_FTBFS.patch: Fixed upstream. Remove.
     - debian/patches/00_base.patch: Sync.
     - debian/patches/01_man.patch: Likewise.
     - debian/patches/02_libtool.patch: Likewise.
+    - debian/patches/03_redolog_FTBFS.patch: Likewise.
     - debian/patches/04_man_table.patch: Likewise.
   * Update Tag: field to the latest vocabulary.
   * Use binary:Version instead of deprecated Source-Version substvar.
@@ -56,7 +56,7 @@ bochs (2.3-2) unstable; urgency=low
 
 bochs (2.3-1) unstable; urgency=low
 
-  * New Upstream Release.
+  * New upstream release.
     - debian/patches/00_base.patch: Sync.
     - debian/patches/03_g++-4.1.patch: Integrated upstream. Remove.
     - debian/patches/04_wx2.6.patch: Likewise.
@@ -114,7 +114,7 @@ bochs (2.2.6-2) unstable; urgency=low
 
 bochs (2.2.6-1) unstable; urgency=low
 
-  * New Upstream Release.
+  * New upstream release.
     - debian/patches/01_doc.patch: Integrated upstream. Remove.
     - debian/patches/03_gcc-4.0.patch: Likewise.
     - debian/patches/00_base.patch: Sync.
@@ -132,7 +132,7 @@ bochs (2.2.6-1) unstable; urgency=low
 
 bochs (2.2.5-1) unstable; urgency=low
 
-  * New Upstream Release.
+  * New upstream release.
     - debian/patches/00_base.patch: Synced.
     - debian/patches/01_doc.patch: Likewise.
     - debian/patches/02_libtool.patch: Likewise.
@@ -195,7 +195,7 @@ bochs (2.2.1-2) unstable; urgency=low
 
 bochs (2.2.1-1) unstable; urgency=low
 
-  * New Upstream Release.
+  * New upstream release.
     - debian/patches/00_base.patch: Synced.
     - debian/patches/01_doc.patch: Likewise.
     - debian/patches/02_libtool.patch: Likewise.
