@@ -25,6 +25,7 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
     targets to configure.in.
   * Fail and print an error explaining that build-indep will only succeed
     on any-i386. (Closes: #451409)
+  * Now using Standards-Version 3.7.3 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 
