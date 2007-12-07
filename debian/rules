@@ -72,6 +72,9 @@ clean: unpatch
 	
 	dh_clean
 
+# XXX: This can be moved, once we do not need to patch this file
+configure.in: patch
+
 configure: configure.in
 	dh_testdir
 	
@@ -114,7 +117,7 @@ config.status: configure
 
 build: build-arch
 
-build-arch: patch config.status
+build-arch: config.status
 	dh_testdir
 	
 	$(MAKE)
@@ -123,7 +126,7 @@ ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	$(CC) misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
 endif
 
-build-indep: patch config.status
+build-indep: config.status
 	dh_testdir
 	
 	# bochsbios

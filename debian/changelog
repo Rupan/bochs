@@ -21,6 +21,8 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
   * Build and ship a qemu specific bios (BIOS-qemu-latest) in bochsbios.
     - debian/patches/03_qemu_bios.patch: New file.
     Based on a patch by Soren Hansen <soren@ubuntu.com>.
+  * Move patch dependency in debian/rules from build-arch and build-indep
+    targets to configure.in.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 
