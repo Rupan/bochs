@@ -129,6 +129,10 @@ endif
 build-indep: config.status
 	dh_testdir
 	
+ifneq ($(DEB_HOST_ARCH_CPU),i386)
+	$(error "build-indep will only succeed on any-i386")
+endif
+	
 	# bochsbios
 	$(MAKE) -C bios
 
