@@ -18,6 +18,9 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
     - debian/patches/01_build.patch: New file.
   * Do not directly use the QA SourceForge redirector, instead use an URL
     to sf.net. (Closes: #453546)
+  * Build and ship a qemu specific bios (BIOS-qemu-latest) in bochsbios.
+    - debian/patches/03_qemu_bios.patch: New file.
+    Based on a patch by Soren Hansen <soren@ubuntu.com>.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 

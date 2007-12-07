@@ -1,5 +1,6 @@
 00_base.patch 
 01_build.patch
 02_libtool.patch -p0
+03_qemu_bios.patch
 04_man_table.patch -p0
 10_enable_iasl.patch
