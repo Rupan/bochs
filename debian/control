@@ -30,6 +30,7 @@ Description: IA-32 PC emulator
 
 Package: bochs-doc
 Architecture: all
+Section: doc
 Description: Bochs upstream documentation
  This package contains the HTML documentation of the Bochs project.
  .
