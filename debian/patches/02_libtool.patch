@@ -1,7 +1,7 @@
-Index: gui/Makefile.in
+Index: b/gui/Makefile.in
 ===================================================================
---- gui/Makefile.in.orig	2007-07-05 19:41:00.000000000 +0300
-+++ gui/Makefile.in	2007-07-05 19:41:18.000000000 +0300
+--- a/gui/Makefile.in	2007-04-09 00:57:05.000000000 +0300
++++ b/gui/Makefile.in	2007-12-07 08:15:05.000000000 +0200
 @@ -112,47 +112,47 @@ libgui.a: $(NONPLUGIN_OBJS)
  
  ##### building plugins with libtool
@@ -64,10 +64,10 @@ Index: gui/Makefile.in
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-Index: iodev/Makefile.in
+Index: b/iodev/Makefile.in
 ===================================================================
---- iodev/Makefile.in.orig	2007-07-05 19:41:00.000000000 +0300
-+++ iodev/Makefile.in	2007-07-05 19:41:18.000000000 +0300
+--- a/iodev/Makefile.in	2007-09-10 19:00:15.000000000 +0300
++++ b/iodev/Makefile.in	2007-12-07 08:15:05.000000000 +0200
 @@ -129,41 +129,41 @@ pcidev.o : pcidev.@CPP_SUFFIX@
  
  ##### building plugins with libtool
@@ -122,11 +122,11 @@ Index: iodev/Makefile.in
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
-Index: configure.in
+Index: b/configure.in
 ===================================================================
---- configure.in.orig	2007-07-05 19:41:00.000000000 +0300
-+++ configure.in	2007-07-05 19:41:18.000000000 +0300
-@@ -2018,8 +2018,8 @@ OFP="-o "
+--- a/configure.in	2007-09-16 10:53:00.000000000 +0300
++++ b/configure.in	2007-12-07 08:15:05.000000000 +0200
+@@ -2052,8 +2052,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

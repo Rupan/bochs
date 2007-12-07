@@ -1,7 +1,7 @@
-Index: doc/man/bochsrc.5
+Index: b/doc/man/bochsrc.5
 ===================================================================
---- doc/man/bochsrc.5.orig	2007-07-05 19:41:06.000000000 +0300
-+++ doc/man/bochsrc.5	2007-07-05 19:41:23.000000000 +0300
+--- a/doc/man/bochsrc.5	2007-09-15 19:00:25.000000000 +0300
++++ b/doc/man/bochsrc.5	2007-12-07 08:15:25.000000000 +0200
 @@ -146,13 +146,18 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  
