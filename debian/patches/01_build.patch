@@ -1,0 +1,58 @@
+Index: b/bios/Makefile.in
+===================================================================
+--- a/bios/Makefile.in	2007-12-05 05:51:27.000000000 +0200
++++ b/bios/Makefile.in	2007-12-05 05:53:03.000000000 +0200
+@@ -74,9 +74,9 @@ BIOS-bochs-legacy: rombios.c apmbios.S b
+ 	$(GCC) $(BIOS_BUILD_DATE) -DLEGACY -E -P $< > _rombiosl_.c
+ 	$(BCC) -o rombiosl.s -C-c -D__i86__ -0 -S _rombiosl_.c
+ 	sed -e 's/^\.text//' -e 's/^\.data//' rombiosl.s > _rombiosl_.s
+-	$(AS86) _rombiosl_.s -b tmp.bin -u- -w- -g -0 -j -O -l rombiosl.txt
++	$(AS86) _rombiosl_.s -b $@.tmp.bin -u- -w- -g -0 -j -O -l rombiosl.txt
+ 	-perl ${srcdir}/makesym.perl < rombiosl.txt > rombiosl.sym
+-	mv tmp.bin $@
++	mv $@.tmp.bin $@
+ 	./biossums $@
+ 	@RMCOMMAND@ _rombiosl_.s
+ 
+@@ -85,9 +85,9 @@ rombios16.bin: rombios.c apmbios.S bioss
+ 	$(GCC) $(BIOS_BUILD_DATE) -E -P $< > _rombios_.c
+ 	$(BCC) -o rombios.s -C-c -D__i86__ -0 -S _rombios_.c
+ 	sed -e 's/^\.text//' -e 's/^\.data//' rombios.s > _rombios_.s
+-	$(AS86) _rombios_.s -b tmp.bin -u- -w- -g -0 -j -O -l rombios.txt
++	$(AS86) _rombios_.s -b $@.tmp.bin -u- -w- -g -0 -j -O -l rombios.txt
+ 	-perl ${srcdir}/makesym.perl < rombios.txt > rombios.sym
+-	mv tmp.bin rombios16.bin
++	mv $@.tmp.bin rombios16.bin
+ 	./biossums rombios16.bin
+ 	@RMCOMMAND@ _rombios_.s
+ 
+Index: b/Makefile.in
+===================================================================
+--- a/Makefile.in	2007-12-05 05:49:34.000000000 +0200
++++ b/Makefile.in	2007-12-05 05:51:20.000000000 +0200
+@@ -383,13 +383,13 @@ install_doc::
+ 
+ 
+ build_docbook::
+-	cd doc/docbook; make
++	$(MAKE) -C doc/docbook
+ 
+ dl_docbook::
+-	cd doc/docbook; make dl_docs
++	$(MAKE) -C doc/docbook dl_docs
+ 
+ install_docbook: build_docbook
+-	cd doc/docbook; make install
++	$(MAKE) -C doc/docbook install
+ 
+ install_man::
+ 	-mkdir -p $(DESTDIR)$(man1dir)
+@@ -445,7 +445,7 @@ v6workspace:
+ win32_snap:
+ 	unzip $(V6WORKSPACE_ZIP)
+ 	$(SHELL) ./build/win32/cc2cpp
+-	make zip
++	$(MAKE) zip
+ 	$(SHELL) ./build/win32/cpp2cc
+ 
+ tar:

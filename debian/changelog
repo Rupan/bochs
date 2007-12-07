@@ -14,6 +14,8 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
   * Call configure with autotools-dev recommended --build and --host options.
   * Build-Depend on iasl and enable it to build acpi-dsdt.hex.
   * Ship BIOS-bochs-legacy in bochsbios.
+  * Fix parallel FTBFS and jobserver warnings.
+    - debian/patches/01_build.patch: New file.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 
