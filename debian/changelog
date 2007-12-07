@@ -16,6 +16,8 @@ bochs (2.3.5-1) UNRELEASED; urgency=low
   * Ship BIOS-bochs-legacy in bochsbios.
   * Fix parallel FTBFS and jobserver warnings.
     - debian/patches/01_build.patch: New file.
+  * Do not directly use the QA SourceForge redirector, instead use an URL
+    to sf.net. (Closes: #453546)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 04 Oct 2007 04:44:27 +0300
 
