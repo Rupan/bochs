@@ -2,6 +2,7 @@ bochs (2.3.5-2) UNRELEASED; urgency=low
 
   * Add armel to libasound2-dev architecture specifier in Build-Depends.
     Thanks to Joey Hess <joeyh@debian.org> for noticing.
+  * Add hppa to libasound2-dev architecture specifier in Build-Depends.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 09 Dec 2007 09:19:42 +0200
 
