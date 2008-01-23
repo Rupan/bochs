@@ -1,5 +1,12 @@
-bochs (2.3.5-2) UNRELEASED; urgency=low
+bochs (2.3.6-1) UNRELEASED; urgency=low
 
+  * New upstream release.
+    - debian/patches/00_base.patch: Sync.
+    - debian/patches/01_build.patch: Likewise.
+    - debian/patches/02_libtool.patch: Likewise.
+    - debian/patches/03_qemu_bios.patch: Likewise.
+    - debian/patches/10_enable_iasl.patch: Likewise.
+  * Do no use obsolete --enable-save-restore configure option.
   * Add armel to libasound2-dev architecture specifier in Build-Depends.
     Thanks to Joey Hess <joeyh@debian.org> for noticing.
   * Add hppa to libasound2-dev architecture specifier in Build-Depends.

@@ -110,7 +110,6 @@ config.status: configure
 	  --enable-repeat-speedups \
 	  --enable-icache \
 	  --enable-plugins \
-	  --enable-save-restore \
 	  --enable-compressed-hd \
 	  --enable-sb16=$(sb16) \
 	  $(conf_args)
