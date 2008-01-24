@@ -4,3 +4,4 @@
 03_qemu_bios.patch
 04_man_table.patch
 10_enable_iasl.patch
+20_use_pkg-config.patch
