@@ -72,9 +72,6 @@ clean: unpatch
 	
 	dh_clean
 
-# XXX: This can be moved, once we do not need to patch this file
-configure.in: patch
-
 configure: configure.in
 	dh_testdir
 	
@@ -114,9 +111,12 @@ config.status: configure
 	  --enable-sb16=$(sb16) \
 	  $(conf_args)
 
+setup-source: patch
+	$(MAKE) -f debian/rules config.status
+
 build: build-arch
 
-build-arch: config.status
+build-arch: setup-source
 	dh_testdir
 	
 	$(MAKE)
@@ -125,7 +125,7 @@ ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	$(CC) misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
 endif
 
-build-indep: config.status
+build-indep: setup-source
 	dh_testdir
 	
 ifneq ($(DEB_HOST_ARCH_CPU),i386)

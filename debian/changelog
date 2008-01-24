@@ -3,6 +3,11 @@ bochs (2.3.6-2) UNRELEASED; urgency=low
   * Try to use pkg-config before AC_PATH_XTRA. Add pkg-config to
     Build-Depends.
     - debian/patches/patches/20_use_pkg-config.patch: New file.
+  * Make sure autoconf is run if needed in debian/rules:
+    - Rename configure.in target to setup-source.
+    - Call config.status target in setup-source body.
+    - Make build-arch and build-indep depend on setup-source instead of
+      config.status.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 24 Jan 2008 02:40:09 +0200
 
