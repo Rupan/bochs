@@ -1,3 +1,12 @@
+bochs (2.3.6-3) UNRELEASED; urgency=low
+
+  * Fix delay loop used for processors to be brought up, being optimized
+    out when using gcc-4.2. (Closes: #471271)
+    - debian/patches/05_bios_delay_loop.patch: New file.
+    Thanks to Aurelien Jarno <aurel32@debian.org>
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 17 Mar 2008 04:13:42 +0200
+
 bochs (2.3.6-2) unstable; urgency=low
 
   * Try to use pkg-config before AC_PATH_XTRA (fixes a FTBFS). Add pkg-config

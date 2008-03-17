@@ -1,0 +1,18 @@
+Author: Aurelien Jarno <aurel32@debian.org>
+
+Since bochsbios is built with gcc-4.2, the delay loop that is used to
+wait for processors to be brought up is being optimized out. This result
+in -smp not working in QEMU.
+
+--- bochs-2.3.6.orig/bios/rombios32.c
++++ bochs-2.3.6/bios/rombios32.c
+@@ -353,7 +353,7 @@
+ 
+ void delay_ms(int n)
+ {
+-    int i, j;
++    volatile int i, j;
+     for(i = 0; i < n; i++) {
+ #ifdef BX_QEMU
+         /* approximative ! */
+
