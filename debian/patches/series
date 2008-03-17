@@ -3,5 +3,6 @@
 02_libtool.patch
 03_qemu_bios.patch
 04_man_table.patch
+05_bios_delay_loop.patch
 10_enable_iasl.patch
 20_use_pkg-config.patch
