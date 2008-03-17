@@ -4,6 +4,9 @@ bochs (2.3.6-3) UNRELEASED; urgency=low
     out when using gcc-4.2. (Closes: #471271)
     - debian/patches/05_bios_delay_loop.patch: New file.
     Thanks to Aurelien Jarno <aurel32@debian.org>
+  * Do not use pkg-config anymore before AC_PATH_XTRA, the build problem
+    was fixed by making sure autoconf was run if needed.
+    - debian/patches/20_use_pkg-config.patch: Remove.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 17 Mar 2008 04:13:42 +0200
 
