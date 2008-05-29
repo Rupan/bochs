@@ -5,6 +5,8 @@ bochs (2.3.6-4) UNRELEASED; urgency=low
     - Adds support for LBA32 and LBA48. (Closes: #471395)
     - debian/patches/03_qemu_bios.patch: Remove hunk already in upstream.
     - debian/patches/99_upstream_bios_update.patch: New file.
+  * Ship compressed man pages, just by rebuilding with a fixed debhelper.
+    (Closes: #472932)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 29 May 2008 04:57:15 +0300
 
