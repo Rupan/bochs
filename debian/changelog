@@ -1,4 +1,4 @@
-bochs (2.3.6-4) UNRELEASED; urgency=low
+bochs (2.3.6-4) unstable; urgency=low
 
   * Update bochsbios from uptream CVS:
     - Adds SMBIOS and DMI information. (Closes: #400902)
@@ -9,7 +9,7 @@ bochs (2.3.6-4) UNRELEASED; urgency=low
     (Closes: #472932)
   * Provide a compatibility symlink for VGABIOS-lgpl-latest. (Closes: #462024)
 
- -- Guillem Jover <guillem@debian.org>  Thu, 29 May 2008 04:57:15 +0300
+ -- Guillem Jover <guillem@debian.org>  Thu, 29 May 2008 05:12:50 +0300
 
 bochs (2.3.6-3) unstable; urgency=low
 
