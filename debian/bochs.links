@@ -1,1 +1,2 @@
 usr/share/man/man1/bochs.1 usr/share/man/man1/bochs-bin.1
+usr/share/vgabios/vgabios.bin usr/share/bochs/VGABIOS-lgpl-latest
