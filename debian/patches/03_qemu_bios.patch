@@ -67,19 +67,3 @@ Index: b/bios/Makefile.in
 +
  biossums: biossums.c
  	$(GCC) -o biossums biossums.c
-Index: b/bios/rombios32.c
-===================================================================
---- a/bios/rombios32.c	2007-12-09 17:37:27.000000000 +0200
-+++ b/bios/rombios32.c	2008-01-23 09:45:57.000000000 +0200
-@@ -873,6 +873,11 @@ static void mptable_init(void)
-     int ioapic_id, i, len;
-     int mp_config_table_size;
- 
-+#ifdef BX_QEMU
-+    if (smp_cpus <= 1)
-+        return;
-+#endif
-+
- #ifdef BX_USE_EBDA_TABLES
-     mp_config_table = (uint8_t *)(ram_size - ACPI_DATA_SIZE - MPTABLE_MAX_SIZE);
- #else

@@ -1,3 +1,13 @@
+bochs (2.3.6-4) UNRELEASED; urgency=low
+
+  * Update bochsbios from uptream CVS:
+    - Adds SMBIOS and DMI information. (Closes: #400902)
+    - Adds support for LBA32 and LBA48. (Closes: #471395)
+    - debian/patches/03_qemu_bios.patch: Remove hunk already in upstream.
+    - debian/patches/99_upstream_bios_update.patch: New file.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 29 May 2008 04:57:15 +0300
+
 bochs (2.3.6-3) unstable; urgency=low
 
   * Fix delay loop used for processors to be brought up, being optimized
