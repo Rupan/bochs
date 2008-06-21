@@ -7,10 +7,6 @@ It was downloaded from:
 
     <http://bochs.sourceforge.net/>.
 
-The debian packages are maintained through Subversion on:
-
-    <svn://svn.debian.org/pkg-bochs/>
-
 Upstream Author:
 
     The Bochs project
