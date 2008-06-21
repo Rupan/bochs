@@ -12,7 +12,7 @@ Build-Depends-Indep: iasl, bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2), perl,
 Homepage: http://bochs.sourceforge.net/
 Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/bochs.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/bochs.git
-Standards-Version: 3.7.3
+Standards-Version: 3.8.0
 
 Package: bochs
 Architecture: any
