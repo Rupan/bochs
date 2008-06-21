@@ -1,6 +1,8 @@
 bochs (2.3.6-5) UNRELEASED; urgency=low
 
   * Update packaging Vcs fields to the new URL.
+  * Add a debian/README.source file (and move information about how to
+    create the stripped tarballs from README.Debian).
 
  -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:06:16 +0300
 

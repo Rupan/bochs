@@ -1,0 +1,18 @@
+This package uses quilt to manage all modifications to the upstream
+source. Please refer to /usr/share/doc/quilt/README.source for more
+information.
+
+
+This package's orig file contains a pristine Bochs source tree, with some
+binary blobs removed (like the propietary BIOS VGABIOS-elpin-2.40 which is
+not free software as per the DFSG).
+
+There's a script to help generating this cleaned tarball (or a snapshot
+from CVS):
+
+	$ debian/tarball.sh tarball <upstream-tarball>
+
+or
+
+	$ debian/tarball.sh snapshot
+
