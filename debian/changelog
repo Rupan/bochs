@@ -1,3 +1,9 @@
+bochs (2.3.6-5) UNRELEASED; urgency=low
+
+  * Update packaging Vcs fields to the new URL.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:06:16 +0300
+
 bochs (2.3.6-4) unstable; urgency=low
 
   * Update bochsbios from uptream CVS:
