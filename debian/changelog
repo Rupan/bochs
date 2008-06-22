@@ -8,6 +8,7 @@ bochs (2.3.6-5) UNRELEASED; urgency=low
   * Cleanup debian/copyright:
     - Change 'Copyright' to 'Copyright Holders'.
     - Use UTF-8 copyright symbol.
+  * Remove perl from Build-Depends-Indep, it's Build-Essential.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:06:16 +0300
 
