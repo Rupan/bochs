@@ -7,12 +7,11 @@ This package's orig file contains a pristine Bochs source tree, with some
 binary blobs removed (like the propietary BIOS VGABIOS-elpin-2.40 which is
 not free software as per the DFSG).
 
-There's a script to help generating this cleaned tarball (or a snapshot
-from CVS):
+There's a script to help generating this cleaned tarball:
 
 	$ debian/tarball.sh tarball <upstream-tarball>
 
-or
+or a snapshot from CVS:
 
 	$ debian/tarball.sh snapshot
 
