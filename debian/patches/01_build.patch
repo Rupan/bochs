@@ -1,8 +1,8 @@
 Index: b/Makefile.in
 ===================================================================
---- a/Makefile.in	2008-01-23 09:49:04.000000000 +0200
-+++ b/Makefile.in	2008-01-23 09:49:13.000000000 +0200
-@@ -384,13 +384,13 @@ install_doc::
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -380,13 +380,13 @@ install_doc::
  
  
  build_docbook::
@@ -19,12 +19,3 @@ Index: b/Makefile.in
  
  install_man::
  	-mkdir -p $(DESTDIR)$(man1dir)
-@@ -446,7 +446,7 @@ v6workspace:
- win32_snap:
- 	unzip $(V6WORKSPACE_ZIP)
- 	$(SHELL) ./build/win32/cc2cpp
--	make zip
-+	$(MAKE) zip
- 	$(SHELL) ./build/win32/cpp2cc
- 
- tar:

@@ -1,12 +1,12 @@
 Index: b/bios/Makefile.in
 ===================================================================
---- a/bios/Makefile.in	2008-01-23 09:45:31.000000000 +0200
-+++ b/bios/Makefile.in	2008-01-23 09:48:36.000000000 +0200
+--- a/bios/Makefile.in
++++ b/bios/Makefile.in
 @@ -58,7 +58,7 @@ BIOS_BUILD_DATE = "-DBIOS_BUILD_DATE=\"$
  	$(CXX) -c $(BX_INCDIRS) $(CXXFLAGS) $(LOCAL_CXXFLAGS) @CXXFP@$< @OFP@$@
  
  
--bios: biossums BIOS-bochs-latest BIOS-bochs-legacy 
+-bios: biossums BIOS-bochs-latest BIOS-bochs-legacy
 +bios: biossums BIOS-bochs-latest BIOS-bochs-legacy BIOS-qemu-latest
  
  clean:

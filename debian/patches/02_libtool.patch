@@ -1,7 +1,7 @@
 Index: b/gui/Makefile.in
 ===================================================================
---- a/gui/Makefile.in	2008-01-23 09:49:04.000000000 +0200
-+++ b/gui/Makefile.in	2008-01-23 09:49:17.000000000 +0200
+--- a/gui/Makefile.in
++++ b/gui/Makefile.in
 @@ -113,47 +113,47 @@ libgui.a: $(NONPLUGIN_OBJS)
  
  ##### building plugins with libtool
@@ -66,8 +66,8 @@ Index: b/gui/Makefile.in
  bx_%.dll: %.o
 Index: b/iodev/Makefile.in
 ===================================================================
---- a/iodev/Makefile.in	2008-01-23 09:49:04.000000000 +0200
-+++ b/iodev/Makefile.in	2008-01-23 09:49:17.000000000 +0200
+--- a/iodev/Makefile.in
++++ b/iodev/Makefile.in
 @@ -130,41 +130,41 @@ pcidev.o : pcidev.@CPP_SUFFIX@
  
  ##### building plugins with libtool
@@ -124,9 +124,9 @@ Index: b/iodev/Makefile.in
  bx_%.dll: %.o
 Index: b/configure.in
 ===================================================================
---- a/configure.in	2008-01-23 09:49:04.000000000 +0200
-+++ b/configure.in	2008-01-23 09:49:17.000000000 +0200
-@@ -2139,8 +2139,8 @@ OFP="-o "
+--- a/configure.in
++++ b/configure.in
+@@ -2171,8 +2171,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

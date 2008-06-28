@@ -1,7 +1,7 @@
 Index: b/.bochsrc
 ===================================================================
---- a/.bochsrc	2008-01-23 09:49:04.000000000 +0200
-+++ b/.bochsrc	2008-01-23 09:49:08.000000000 +0200
+--- a/.bochsrc
++++ b/.bochsrc
 @@ -17,7 +17,7 @@
  # the "wx" display library.
  #=======================================================================
@@ -43,12 +43,12 @@ Index: b/.bochsrc
 -#display_library: win32, options="windebug" # use experimental debugger gui
 -#display_library: wx
 +display_library: wx
- #display_library: x
+ #display_library: x, options="hideIPS" # disable IPS output in status bar
  
  #=======================================================================
 @@ -76,7 +63,7 @@
  # now supported, but we still recommend to use the BIOS distributed with
- # Bochs. Now the start address can be calculated from image size.
+ # Bochs. The start address optional, since it can be calculated from image size.
  #=======================================================================
 -romimage: file=$BXSHARE/BIOS-bochs-latest 
 +romimage: file=/usr/share/bochs/BIOS-bochs-latest
@@ -105,16 +105,16 @@ Index: b/.bochsrc
  
  #=======================================================================
  # LOGPREFIX:
-@@ -440,7 +425,7 @@ debugger_log: -
- #   com3: enabled=1, mode=raw, dev=com1
- #   com3: enabled=1, mode=socket, dev=localhost:8888
+@@ -451,7 +436,7 @@ debugger_log: -
+ #   com4: enabled=1, mode=pipe-client, dev=\\.\pipe\mypipe
+ #   com4: enabled=1, mode=pipe-server, dev=\\.\pipe\mypipe
  #=======================================================================
 -#com1: enabled=1, mode=term, dev=/dev/ttyp9
 +com1: enabled=1, mode=term, dev=/dev/#com#
  
  
  #=======================================================================
-@@ -456,7 +441,7 @@ debugger_log: -
+@@ -467,7 +452,7 @@ debugger_log: -
  #   parport2: enabled=1, file="/dev/lp0"
  #   parport1: enabled=0
  #=======================================================================
@@ -123,7 +123,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # SB16:
-@@ -493,7 +478,7 @@ parport1: enabled=1, file="parport.out"
+@@ -504,7 +489,7 @@ parport1: enabled=1, file="parport.out"
  # For an example look at the next line:
  #=======================================================================
  
@@ -132,7 +132,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # VGA_UPDATE_INTERVAL:
-@@ -574,18 +559,6 @@ mouse: enabled=0
+@@ -585,18 +570,6 @@ mouse: enabled=0
  private_colormap: enabled=0
  
  #=======================================================================
@@ -151,7 +151,7 @@ Index: b/.bochsrc
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Examples:
-@@ -625,10 +598,7 @@ private_colormap: enabled=0
+@@ -636,10 +609,7 @@ private_colormap: enabled=0
  #         overwrite files.
  #
  #=======================================================================
@@ -163,7 +163,7 @@ Index: b/.bochsrc
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
  # ne2k: ioaddr=0x300, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
-@@ -644,7 +614,7 @@ private_colormap: enabled=0
+@@ -655,7 +625,7 @@ private_colormap: enabled=0
  # Examples:
  #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
  #=======================================================================
@@ -172,9 +172,9 @@ Index: b/.bochsrc
  
  #=======================================================================
  # KEYBOARD_TYPE:
-@@ -753,11 +723,3 @@ i440fxsupport: enabled=1
+@@ -767,11 +737,3 @@ i440fxsupport: enabled=1
  #=======================================================================
- #ips: 10000000
+ #gdbstub: enabled=0, port=1234, text_base=0, data_base=0, bss_base=0
  
 -#=======================================================================
 -# for Macintosh, use the style of pathnames in the following
@@ -186,8 +186,8 @@ Index: b/.bochsrc
 -#=======================================================================
 Index: b/doc/man/bochs.1
 ===================================================================
---- a/doc/man/bochs.1	2008-01-23 09:49:04.000000000 +0200
-+++ b/doc/man/bochs.1	2008-01-23 09:49:08.000000000 +0200
+--- a/doc/man/bochs.1
++++ b/doc/man/bochs.1
 @@ -57,8 +57,8 @@ Example:
  .SH LICENSE
  This program  is distributed  under the terms of the  GNU

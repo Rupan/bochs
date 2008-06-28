@@ -1,3 +1,18 @@
+bochs (2.3.7-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+    - debian/patches/00_base.patch: Refresh.
+    - debian/patches/01_build.patch: Likewise.
+    - debian/patches/02_libtool.patch: Likewise.
+    - debian/patches/03_qemu_bios.patch: Likewise.
+    - debian/patches/04_man_table.patch: Likewise.
+    - debian/patches/05_bios_delay_loop.patch: Likewise.
+    - debian/patches/11_ftbfs_3dnow.patch: New file. Fix FTBFS.
+    - debian/patches/99_upstream_bios_update.patch: Remove, in sync with
+      upstream now.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 26 Jun 2008 08:00:25 +0300
+
 bochs (2.3.6-5) unstable; urgency=low
 
   * Update packaging Vcs fields to the new URL.
