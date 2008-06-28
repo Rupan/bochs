@@ -1,4 +1,4 @@
-bochs (2.3.7-1) UNRELEASED; urgency=low
+bochs (2.3.7-1) unstable; urgency=low
 
   * New upstream release.
     - debian/patches/00_base.patch: Refresh.
@@ -11,7 +11,7 @@ bochs (2.3.7-1) UNRELEASED; urgency=low
     - debian/patches/99_upstream_bios_update.patch: Remove, in sync with
       upstream now.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 26 Jun 2008 08:00:25 +0300
+ -- Guillem Jover <guillem@debian.org>  Sat, 28 Jun 2008 03:58:49 +0300
 
 bochs (2.3.6-5) unstable; urgency=low
 
