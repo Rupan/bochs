@@ -10,7 +10,7 @@ do
  - Run [S]hell
  - [R]eboot
 Choose an option: "
-  read
+  read REPLY
   case $REPLY in
     B|b)
       startx $(which bochs-bin) -qf /etc/bochs-init/bochsrc
