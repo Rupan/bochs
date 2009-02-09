@@ -2,6 +2,7 @@ bochs (2.3.7-2) UNRELEASED; urgency=low
 
   * Fix a bashism in /etc/bochs-init/init.sh by explicitely specifing the
     variable REPLY for read. (Closes: #489543)
+  * Switch to debhelper compatibility level 7.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 06 Jul 2008 23:56:01 +0300
 
