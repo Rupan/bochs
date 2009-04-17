@@ -14,6 +14,14 @@ bochs (2.3.7+20090416-1) UNRELEASED; urgency=low
     variable REPLY for read. (Closes: #489543)
   * Switch to debhelper compatibility level 7.
   * Use dh_prep instead of “dh_clean -k”.
+  * Add QEMU patches for bochsbios. (Closes: #523305)
+    - debian/patches/0006_qemu-bios-use-preprocessor-for-pci-link-routing.patch
+    - debian/patches/0007_bios-add-26-pci-slots,-bringing-the-total-to-32.patch
+    - debian/patches/0008_qemu-bios-provide-gpe-_l0x-methods.patch
+    - debian/patches/0009_qemu-bios-pci-hotplug-support.patch
+    - debian/patches/0011_read-additional-acpi-tables-from-a-vm.patch
+    - debian/patches/0012-load-smbios-entries-and-files-from-qemu.patch
+    - debian/patches/0013_fix-non-acpi-timer-interrupt-routing.patch
 
  -- Guillem Jover <guillem@debian.org>  Sun, 06 Jul 2008 23:56:01 +0300
 

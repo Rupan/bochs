@@ -2,6 +2,13 @@
 01_build.patch
 02_libtool.patch
 03_qemu_bios.patch
+0006_qemu-bios-use-preprocessor-for-pci-link-routing.patch
+0007_bios-add-26-pci-slots,-bringing-the-total-to-32.patch
+0008_qemu-bios-provide-gpe-_l0x-methods.patch
+0009_qemu-bios-pci-hotplug-support.patch
+0011_read-additional-acpi-tables-from-a-vm.patch
+0012-load-smbios-entries-and-files-from-qemu.patch
+0013_fix-non-acpi-timer-interrupt-routing.patch
 04_man_table.patch
 05_bios_delay_loop.patch
 10_enable_iasl.patch
