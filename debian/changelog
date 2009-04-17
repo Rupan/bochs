@@ -23,6 +23,8 @@ bochs (2.3.7+20090416-1) UNRELEASED; urgency=low
     - debian/patches/0012-load-smbios-entries-and-files-from-qemu.patch
     - debian/patches/0013_fix-non-acpi-timer-interrupt-routing.patch
   * Remove comment from README.Debian about x86-64 support not being enabled.
+  * Remove unused and obsolete plex86 patch.
+    - debian/patches/plex86.disabled
 
  -- Guillem Jover <guillem@debian.org>  Sun, 06 Jul 2008 23:56:01 +0300
 
