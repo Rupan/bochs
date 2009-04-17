@@ -37,11 +37,6 @@ can use.
 amd64 / x86-64 support
 ----------------------
 
-amd64 support in Bochs turned out to be not mature enough to be enabled
-as default in the package, but you can easily re-enable it by adding
-"--enable-x86-64" to conf_args in debian/rules and rebuilding the bochs
-package.
-
 You can find an image of Linux, the kernel, for x86-64 in
 <http://bochs.sourceforge.net/diskimages.html>.
 
