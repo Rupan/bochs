@@ -103,7 +103,6 @@ config.status: configure
 	  --enable-idle-hack \
 	  --enable-all-optimizations \
 	  --enable-repeat-speedups \
-	  --enable-icache \
 	  --enable-plugins \
 	  --enable-compressed-hd \
 	  --enable-sb16=$(sb16) \

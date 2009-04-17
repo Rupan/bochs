@@ -1,5 +1,15 @@
-bochs (2.3.7-2) UNRELEASED; urgency=low
+bochs (2.3.7+20090416-1) UNRELEASED; urgency=low
 
+  * New upstream snapshot.
+    - debian/patches/00_base.patch: Refresh.
+    - debian/patches/02_libtool.patch: Likewise.
+    - debian/patches/03_qemu_bios.patch: Likewise.
+    - debian/patches/04_man_table.patch: Likewise.
+    - debian/patches/05_bios_delay_loop.patch: Likewise.
+    - debian/patches/10_enable_iasl.patch: Likewise.
+    - debian/patches/11_docbook_section_name.patch: New file.
+    - debian/patches/11_ftbfs_3dnow.patch: Remove, fixed upstream.
+  * Do no use obsolete --enable-icache configure option.
   * Fix a bashism in /etc/bochs-init/init.sh by explicitely specifing the
     variable REPLY for read. (Closes: #489543)
   * Switch to debhelper compatibility level 7.

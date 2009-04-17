@@ -1,5 +1,7 @@
-Index: b/bios/Makefile.in
-===================================================================
+---
+ bios/Makefile.in |   26 ++++++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
+
 --- a/bios/Makefile.in
 +++ b/bios/Makefile.in
 @@ -58,7 +58,7 @@ BIOS_BUILD_DATE = "-DBIOS_BUILD_DATE=\"$
@@ -35,7 +37,12 @@ Index: b/bios/Makefile.in
  
  rombios16.bin: rombios.c apmbios.S biossums rombios.h
  	$(GCC32) $(BIOS_BUILD_DATE) -E -P $< > _rombios_.c
-@@ -97,12 +107,22 @@ rombios32.bin: rombios32.out rombios.h
+@@ -92,17 +102,26 @@ rombios16.bin: rombios.c apmbios.S bioss
+ 	./biossums rombios16.bin
+ 	@RMCOMMAND@ _rombios_.s
+ 
+-
+ rombios32.bin: rombios32.out rombios.h
  	objcopy -O binary $< $@
  	./biossums -pad $@
  
@@ -44,10 +51,10 @@ Index: b/bios/Makefile.in
 +	./biossums -pad $@
 +
  rombios32.out: rombios32start.o rombios32.o rombios32.ld
- 	ld -o $@ -T rombios32.ld rombios32start.o rombios32.o
+ 	ld -o $@ -T $(srcdir)/rombios32.ld rombios32start.o rombios32.o
  
 +rombios32-qemu.out: rombios32start.o rombios32-qemu.o rombios32.ld
-+	ld -o $@ -T rombios32.ld rombios32start.o rombios32-qemu.o
++	ld -o $@ -T $(srcdir)/rombios32.ld rombios32start.o rombios32-qemu.o
 +
  rombios32.o: rombios32.c acpi-dsdt.hex
  	$(GCC32) -O2 -Wall -c -o $@ $<
@@ -57,13 +64,12 @@ Index: b/bios/Makefile.in
 +
  ifeq ("1", "0")
  acpi-dsdt.hex: acpi-dsdt.dsl
- 	iasl -tc -p $@ $<
-@@ -114,5 +134,8 @@ rombios32start.o: rombios32start.S
+ 	cpp -P $< $<.i
+@@ -117,4 +136,7 @@ rombios32start.o: rombios32start.S
  BIOS-bochs-latest: rombios16.bin rombios32.bin
  	cat rombios32.bin rombios16.bin > $@
  
 +BIOS-qemu-latest: rombios16-qemu.bin rombios32-qemu.bin
 +	cat rombios32-qemu.bin rombios16-qemu.bin > $@
 +
- biossums: biossums.c
- 	$(GCC) -o biossums biossums.c
+ biossums: biossums.o

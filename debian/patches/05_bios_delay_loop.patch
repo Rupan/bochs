@@ -4,11 +4,13 @@ Since bochsbios is built with gcc-4.2, the delay loop that is used to
 wait for processors to be brought up is being optimized out. This result
 in -smp not working in QEMU.
 
-Index: b/bios/rombios32.c
-===================================================================
+---
+ bios/rombios32.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 --- a/bios/rombios32.c
 +++ b/bios/rombios32.c
-@@ -356,7 +356,7 @@ void bios_printf(int flags, const char *
+@@ -413,7 +413,7 @@ void bios_printf(int flags, const char *
  
  void delay_ms(int n)
  {

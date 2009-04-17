@@ -1,8 +1,10 @@
-Index: b/doc/man/bochsrc.5
-===================================================================
+---
+ doc/man/bochsrc.5 |   19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
 --- a/doc/man/bochsrc.5
 +++ b/doc/man/bochsrc.5
-@@ -155,13 +155,18 @@ starts to autorepeat,  and the measureme
+@@ -175,13 +175,18 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  
  Example Specifications[1]

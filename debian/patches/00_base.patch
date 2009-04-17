@@ -1,5 +1,8 @@
-Index: b/.bochsrc
-===================================================================
+---
+ .bochsrc        |   72 +++++++++++++-------------------------------------------
+ doc/man/bochs.1 |    4 +--
+ 2 files changed, 19 insertions(+), 57 deletions(-)
+
 --- a/.bochsrc
 +++ b/.bochsrc
 @@ -17,7 +17,7 @@
@@ -40,7 +43,7 @@ Index: b/.bochsrc
  #display_library: sdl, options="fullscreen" # startup in fullscreen mode
  #display_library: term
 -#display_library: win32, options="legacyF12" # use F12 to toggle mouse
--#display_library: win32, options="windebug" # use experimental debugger gui
+-#display_library: win32, options="gui_debug" # use Win32 debugger gui
 -#display_library: wx
 +display_library: wx
  #display_library: x, options="hideIPS" # disable IPS output in status bar
@@ -55,7 +58,7 @@ Index: b/.bochsrc
  #romimage: file=mybios.bin, address=0xfff80000 # 512k at memory top
  
  #=======================================================================
-@@ -162,9 +149,8 @@ megs: 32
+@@ -178,9 +165,8 @@ megs: 32
  # VGAROMIMAGE
  # You now need to load a VGA ROM BIOS into C0000.
  #=======================================================================
@@ -67,7 +70,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # VGA:
-@@ -283,13 +269,10 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
+@@ -302,13 +288,10 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
  #   ata3-master: type=disk, mode=flat, path=483M.sample, cylinders=1024, heads=15, spt=63
  #   ata3-slave:  type=cdrom, path=iso.sample, status=inserted
  #=======================================================================
@@ -84,7 +87,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # BOOT:
-@@ -303,7 +286,8 @@ ata0-master: type=disk, mode=flat, path=
+@@ -322,7 +305,8 @@ ata0-master: type=disk, mode=flat, path=
  #   boot: cdrom, floppy, disk
  #=======================================================================
  #boot: floppy
@@ -94,7 +97,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # CLOCK:
-@@ -358,8 +342,9 @@ floppy_bootsig_check: disabled=0
+@@ -377,8 +361,9 @@ floppy_bootsig_check: disabled=0
  #   log: ./bochs.out
  #   log: /dev/tty
  #=======================================================================
@@ -105,7 +108,7 @@ Index: b/.bochsrc
  
  #=======================================================================
  # LOGPREFIX:
-@@ -451,7 +436,7 @@ debugger_log: -
+@@ -470,7 +455,7 @@ debugger_log: -
  #   com4: enabled=1, mode=pipe-client, dev=\\.\pipe\mypipe
  #   com4: enabled=1, mode=pipe-server, dev=\\.\pipe\mypipe
  #=======================================================================
@@ -114,7 +117,7 @@ Index: b/.bochsrc
  
  
  #=======================================================================
-@@ -467,7 +452,7 @@ debugger_log: -
+@@ -486,7 +471,7 @@ debugger_log: -
  #   parport2: enabled=1, file="/dev/lp0"
  #   parport1: enabled=0
  #=======================================================================
@@ -123,16 +126,16 @@ Index: b/.bochsrc
  
  #=======================================================================
  # SB16:
-@@ -504,7 +489,7 @@ parport1: enabled=1, file="parport.out"
- # For an example look at the next line:
+@@ -524,7 +509,7 @@ parport1: enabled=1, file="parport.out"
+ #   sb16: midimode=1, midi="", wavemode=1, wave=""           # win32
+ #   sb16: midimode=1, midi=alsa:128:0, wavemode=1, wave=alsa # Linux with ALSA
  #=======================================================================
- 
 -#sb16: midimode=1, midi=/dev/midi00, wavemode=1, wave=/dev/dsp, loglevel=2, log=sb16.log, dmatimer=600000
 +sb16: midimode=1, midi=/dev/midi00, wavemode=1, wave=/dev/dsp, loglevel=2, log=/dev/stdout, dmatimer=600000
  
  #=======================================================================
  # VGA_UPDATE_INTERVAL:
-@@ -585,18 +570,6 @@ mouse: enabled=0
+@@ -604,18 +589,6 @@ mouse: enabled=0
  private_colormap: enabled=0
  
  #=======================================================================
@@ -151,7 +154,7 @@ Index: b/.bochsrc
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Examples:
-@@ -636,10 +609,7 @@ private_colormap: enabled=0
+@@ -656,10 +629,7 @@ private_colormap: enabled=0
  #         overwrite files.
  #
  #=======================================================================
@@ -163,7 +166,7 @@ Index: b/.bochsrc
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
  # ne2k: ioaddr=0x300, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
-@@ -655,7 +625,7 @@ private_colormap: enabled=0
+@@ -686,7 +656,7 @@ private_colormap: enabled=0
  # Examples:
  #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
  #=======================================================================
@@ -172,9 +175,9 @@ Index: b/.bochsrc
  
  #=======================================================================
  # KEYBOARD_TYPE:
-@@ -767,11 +737,3 @@ i440fxsupport: enabled=1
+@@ -830,11 +800,3 @@ i440fxsupport: enabled=1
  #=======================================================================
- #gdbstub: enabled=0, port=1234, text_base=0, data_base=0, bss_base=0
+ #user_plugin: name=testdev
  
 -#=======================================================================
 -# for Macintosh, use the style of pathnames in the following
@@ -184,8 +187,6 @@ Index: b/.bochsrc
 -# romimage: file=:bios:BIOS-bochs-latest, address=0xf0000
 -# floppya: 1_44=[fd:], status=inserted
 -#=======================================================================
-Index: b/doc/man/bochs.1
-===================================================================
 --- a/doc/man/bochs.1
 +++ b/doc/man/bochs.1
 @@ -57,8 +57,8 @@ Example:
