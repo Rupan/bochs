@@ -32,7 +32,10 @@ cdrom := cdrom
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
   kernel := linux
-  conf_args += --enable-ne2000 --enable-pnic
+  conf_args += \
+    --enable-pcidev \
+    --enable-ne2000 \
+    --enable-pnic
   eth := eth0
   sb16 := linux
   com := ttyS0
@@ -88,8 +91,11 @@ config.status: configure
 	  --with-wx \
 	  --enable-cdrom \
 	  --enable-vbe \
+	  --enable-acpi \
 	  --enable-pci \
 	  --enable-usb \
+	  --enable-usb-ohci \
+	  --enable-a20-pin \
 	  --enable-apic \
 	  --enable-cpu-level=6 \
 	  --enable-x86-64 \
@@ -98,6 +104,11 @@ config.status: configure
 	  --enable-mmx \
 	  --enable-3dnow \
 	  --enable-sse=4 \
+	  --enable-sse-extension \
+	  --enable-xsave \
+	  --enable-sep \
+	  --enable-popcnt \
+	  --enable-movbe \
 	  --enable-gdb-stub \
 	  --enable-disasm \
 	  --enable-idle-hack \

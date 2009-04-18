@@ -1,3 +1,4 @@
+usr/lib/bochs/plugins/libbx_acpi.*
 usr/lib/bochs/plugins/libbx_biosdev.*
 usr/lib/bochs/plugins/libbx_cmos.*
 usr/lib/bochs/plugins/libbx_dma.*
@@ -5,16 +6,19 @@ usr/lib/bochs/plugins/libbx_extfpuirq.*
 usr/lib/bochs/plugins/libbx_gameport.*
 usr/lib/bochs/plugins/libbx_floppy.*
 usr/lib/bochs/plugins/libbx_harddrv.*
+usr/lib/bochs/plugins/libbx_ioapic.*
 usr/lib/bochs/plugins/libbx_keyboard.*
 usr/lib/bochs/plugins/libbx_busmouse.*
 usr/lib/bochs/plugins/libbx_ne2k.*
 usr/lib/bochs/plugins/libbx_parallel.*
 usr/lib/bochs/plugins/libbx_pci*
 usr/lib/bochs/plugins/libbx_pic.*
+usr/lib/bochs/plugins/libbx_pit.*
 usr/lib/bochs/plugins/libbx_sb16.*
 usr/lib/bochs/plugins/libbx_serial.*
 usr/lib/bochs/plugins/libbx_speaker.*
 usr/lib/bochs/plugins/libbx_unmapped.*
+usr/lib/bochs/plugins/libbx_usb_*.*
 usr/lib/bochs/plugins/libbx_vga.*
 usr/share/man/man1/bochs.1.gz
 usr/share/man/man5/bochsrc.5.gz

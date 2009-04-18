@@ -27,6 +27,10 @@ bochs (2.3.7+20090416-1) UNRELEASED; urgency=low
     - debian/patches/plex86.disabled
   * Use $(filter ...) instead of $(findstring ...) to extract space separated
     options from DEB_BUILD_OPTIONS in debian/rules.
+  * Add following configure options (to explicitly enable them):
+    --enable-pcidev (only on Linux), --enable-acpi, --enable-usb-ohci,
+    --enable-a20-pin, --enable-sse-extension, --enable-xsave, --enable-sep,
+    --enable-popcnt, --enable-movbe.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 06 Jul 2008 23:56:01 +0300
 
