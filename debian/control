@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 7), quilt (>= 0.40),
  libsm-dev, libsdl1.2-dev, libwxgtk2.6-dev, libgtk2.0-dev,
  libasound2-dev [alpha amd64 arm armel hppa i386 ia64 m68k mips mipsel powerpc ppc64 s390]
 Build-Depends-Indep: iasl, bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2),
- docbook-utils
+ docbook-utils, gcc-multilib [any-amd64]
 Homepage: http://bochs.sourceforge.net/
 Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/bochs.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/bochs.git

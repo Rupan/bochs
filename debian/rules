@@ -136,8 +136,8 @@ endif
 build-indep: setup-source
 	dh_testdir
 	
-ifneq ($(DEB_HOST_ARCH_CPU),i386)
-	$(error "build-indep will only succeed on any-i386")
+ifeq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
+	$(error "build-indep will only succeed on any-i386 or any-amd64")
 endif
 	
 	# bochsbios
