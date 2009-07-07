@@ -8,6 +8,7 @@ bochs (2.4.1-1) UNRELEASED; urgency=low
   * Add support for building the bochsbios architecture independent package
     also on any-amd64 systems, and add gcc-multilib for such systems to
     Build-Depends-Indep.
+  * Now using Standards-Version 3.8.2 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Tue, 12 May 2009 21:09:15 +0200
 
