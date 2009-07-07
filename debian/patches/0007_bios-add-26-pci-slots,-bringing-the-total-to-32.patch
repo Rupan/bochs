@@ -5,10 +5,12 @@ lack of pci slots causes Windows to complain when installing too many devices.
 Signed-off-by: Avi Kivity <avi@qumranet.com>
 Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 
-Index: bochs/bios/acpi-dsdt.dsl
-===================================================================
---- bochs.orig/bios/acpi-dsdt.dsl
-+++ bochs/bios/acpi-dsdt.dsl
+---
+ bios/acpi-dsdt.dsl |   26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+--- a/bios/acpi-dsdt.dsl
++++ b/bios/acpi-dsdt.dsl
 @@ -63,6 +63,32 @@ DefinitionBlock (
                 prt_slot3(0x0003),
                 prt_slot0(0x0004),
@@ -42,8 +44,3 @@ Index: bochs/bios/acpi-dsdt.dsl
              })
  
              Name (_CRS, ResourceTemplate ()
-
--- 
-
-
-

@@ -1,10 +1,6 @@
----
- doc/docbook/user/user.dbk |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 --- a/doc/docbook/user/user.dbk
 +++ b/doc/docbook/user/user.dbk
-@@ -3914,7 +3914,7 @@ mouse usage at runtime (see <link linken
+@@ -3903,7 +3903,7 @@ mouse usage at runtime (see <link linken
    The default value is 'ps2'. The other choices are 'imps2' (wheel mouse
    on PS/2), 'serial', 'serial_wheel' and 'serial_msys' (one com port requires
    setting 'mode=mouse', see <link linkend="bochsopt-com">com option</link>).
@@ -13,7 +9,7 @@
    (requires PCI and USB support).
  </para>
  </section>
-@@ -3972,7 +3972,7 @@ located in the <constant>bochs/host/linu
+@@ -3961,7 +3961,7 @@ located in the <constant>bochs/host/linu
  </para>
  </section>
  
@@ -22,3 +18,22 @@
  <para>
  Examples:
  <screen>
+@@ -4000,7 +4000,7 @@ PCI support must be enabled.
+ </para></note>
+ </section>
+ 
+-<section id="bochsopt-usb_ohci"><title>usb_ohci</title>
++<section id="bochsopt-usb-ohci"><title>usb_ohci</title>
+ <para>
+ Example:
+ <screen>
+@@ -4008,7 +4008,7 @@ Example:
+ </screen>
+ This option controls the presence of the USB OHCI host controller with a
+ 2-port hub. The portX option accepts the same device types with the same
+-syntax as the UHCI controller (see the <link linkend="bochsopt-usb_uhci">usb_uhci option</link>).
++syntax as the UHCI controller (see the <link linkend="bochsopt-usb-uhci">usb_uhci option</link>).
+ The OHCI HC must be assigned to a PCI slot.
+ </para>
+ </section>
+

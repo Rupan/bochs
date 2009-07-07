@@ -18,4 +18,4 @@ in -smp not working in QEMU.
 +    volatile int i, j;
      for(i = 0; i < n; i++) {
  #ifdef BX_QEMU
-         /* approximative ! */
+         volatile int k;

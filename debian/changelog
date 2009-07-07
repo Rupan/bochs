@@ -1,3 +1,13 @@
+bochs (2.4.1-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+    - Refresh patches.
+    - debian/patches/0013_fix-non-acpi-timer-interrupt-routing.patch: Remove.
+    - debian/patches/11_docbook_section_name.patch: Fix another underscored
+      link.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 12 May 2009 21:09:15 +0200
+
 bochs (2.3.7+20090416-1) unstable; urgency=low
 
   * New upstream snapshot.

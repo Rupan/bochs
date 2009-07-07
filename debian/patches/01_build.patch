@@ -1,5 +1,7 @@
-Index: b/Makefile.in
-===================================================================
+---
+ Makefile.in |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -380,13 +380,13 @@ install_doc::

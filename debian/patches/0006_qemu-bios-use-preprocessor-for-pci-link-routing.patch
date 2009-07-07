@@ -3,10 +3,12 @@ qemu: bios: use preprocessor for pci link routing (Avi Kivity)
 Signed-off-by: Avi Kivity <avi@qumranet.com>
 Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 
-Index: bochs/bios/acpi-dsdt.dsl
-===================================================================
---- bochs.orig/bios/acpi-dsdt.dsl
-+++ bochs/bios/acpi-dsdt.dsl
+---
+ bios/acpi-dsdt.dsl |   52 ++++++++++++++++------------------------------------
+ 1 file changed, 16 insertions(+), 36 deletions(-)
+
+--- a/bios/acpi-dsdt.dsl
++++ b/bios/acpi-dsdt.dsl
 @@ -47,42 +47,22 @@ DefinitionBlock (
                     section 6.2.8.1 */
                  /* Note: we provide the same info as the PCI routing
@@ -66,8 +68,3 @@ Index: bochs/bios/acpi-dsdt.dsl
              })
  
              Name (_CRS, ResourceTemplate ()
-
--- 
-
-
-
