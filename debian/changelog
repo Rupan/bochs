@@ -1,6 +1,7 @@
 bochs (2.4.1-2) UNRELEASED; urgency=low
 
   * Remove unused “libreadline5-dev | libreadline-dev” from Build-Depends.
+  * Now using Standards-Version 3.8.3 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 19:22:43 +0200
 
