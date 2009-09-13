@@ -1,0 +1,15 @@
+---
+ plugin.cc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/plugin.cc
++++ b/plugin.cc
+@@ -41,7 +41,7 @@
+ #define PLUGIN_PATH ""
+ 
+ #ifndef WIN32
+-#define PLUGIN_FILENAME_FORMAT "libbx_%s.la"
++#define PLUGIN_FILENAME_FORMAT "libbx_%s.so"
+ #else
+ #define PLUGIN_FILENAME_FORMAT "bx_%s.dll"
+ #endif
