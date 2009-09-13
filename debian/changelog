@@ -1,4 +1,4 @@
-bochs (2.4.1-2) UNRELEASED; urgency=low
+bochs (2.4.1-2) unstable; urgency=low
 
   * Remove unused “libreadline5-dev | libreadline-dev” from Build-Depends.
   * Now using Standards-Version 3.8.3 (no changes needed).
@@ -11,7 +11,7 @@ bochs (2.4.1-2) UNRELEASED; urgency=low
     them on clean to avoid shipping them on the diff.
   * Build-Depend on autotools-dev to guarantee updated config.* files.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 19:22:43 +0200
+ -- Guillem Jover <guillem@debian.org>  Mon, 14 Sep 2009 16:16:38 +0200
 
 bochs (2.4.1-1) unstable; urgency=low
 
