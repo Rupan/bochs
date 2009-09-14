@@ -65,11 +65,7 @@ clean: unpatch
 	rm -f bios/VGABIOS-*
 	rm -f misc/sb16/sb16ctrl
 	[ ! -f Makefile ] || $(MAKE) dist-clean
-	
-	-test -r /usr/share/misc/config.sub && \
-	  cp -fu /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-	  cp -fu /usr/share/misc/config.guess config.guess
+	rm -f config.sub config.guess
 	
 	dh_clean
 
@@ -80,6 +76,11 @@ configure: configure.in
 
 config.status: configure
 	dh_testdir
+	
+	-test -r /usr/share/misc/config.sub && \
+	  cp -fu /usr/share/misc/config.sub config.sub
+	-test -r /usr/share/misc/config.guess && \
+	  cp -fu /usr/share/misc/config.guess config.guess
 	
 	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CFLAGS)" ./configure \
 	  $(conf_gnu_type) \
