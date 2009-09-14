@@ -9,6 +9,7 @@ bochs (2.4.1-2) UNRELEASED; urgency=low
   * Move -e from the shebang to a 'set -e' in debian/launcher.
   * Update config.guess and config.sub before running configure and remove
     them on clean to avoid shipping them on the diff.
+  * Build-Depend on autotools-dev to guarantee updated config.* files.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 19:22:43 +0200
 
