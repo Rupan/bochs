@@ -6,6 +6,7 @@ bochs (2.4.1-2) UNRELEASED; urgency=low
     stop shipping .la files.
     - debian/patches/12_use_so_plugins.patch: New file.
   * Rename conf_args to conf_arch_args in debian/rules.
+  * Move -e from the shebang to a 'set -e' in debian/launcher.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 19:22:43 +0200
 

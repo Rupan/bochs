@@ -1,6 +1,8 @@
-#!/bin/sh -e
+#!/bin/sh
 #
 # Wrapper script for Bochs.
+
+set -e
 
 # this allows use of a GUEST variable in bochsrc
 : ${GUEST:=guest}
