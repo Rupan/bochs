@@ -5,6 +5,7 @@ bochs (2.4.1-2) UNRELEASED; urgency=low
   * Use .so extensions instead of .la in the plugin loader so that we can
     stop shipping .la files.
     - debian/patches/12_use_so_plugins.patch: New file.
+  * Rename conf_args to conf_arch_args in debian/rules.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 19:22:43 +0200
 

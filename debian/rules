@@ -32,7 +32,7 @@ cdrom := cdrom
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
   kernel := linux
-  conf_args += \
+  conf_arch_args += \
     --enable-pcidev \
     --enable-ne2000 \
     --enable-pnic
@@ -40,12 +40,12 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
   sb16 := linux
   com := ttyS0
 ifneq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
-  conf_args += --with-svga
+  conf_arch_args += --with-svga
 endif
 endif
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   kernel := fbsd
-  conf_args += --enable-ne2000 --enable-pnic
+  conf_arch_args += --enable-ne2000 --enable-pnic
   eth := xl0
   sb16 := freebsd
   com := cuua0
@@ -117,7 +117,7 @@ config.status: configure
 	  --enable-plugins \
 	  --enable-compressed-hd \
 	  --enable-sb16=$(sb16) \
-	  $(conf_args)
+	  $(conf_arch_args)
 
 setup-source: patch
 	$(MAKE) -f debian/rules config.status
