@@ -55,9 +55,7 @@ ifeq ($(DEB_HOST_ARCH_OS),hurd)
   com := com0
 endif
 
-include /usr/share/quilt/quilt.make
-
-clean: unpatch
+clean:
 	dh_testdir
 	dh_testroot
 	
@@ -120,12 +118,9 @@ config.status: configure
 	  --enable-sb16=$(sb16) \
 	  $(conf_arch_args)
 
-setup-source: patch
-	$(MAKE) -f debian/rules config.status
-
 build: build-arch
 
-build-arch: setup-source
+build-arch: config.status
 	dh_testdir
 	
 	$(MAKE)
@@ -134,7 +129,7 @@ ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	$(CC) misc/sb16/sb16ctrl.c -o misc/sb16/sb16ctrl
 endif
 
-build-indep: setup-source
+build-indep: config.status
 	dh_testdir
 	
 ifeq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
@@ -239,5 +234,5 @@ binary-arch: install
 binary: binary-indep binary-arch
 
 .PHONY: build build-arch build-indep clean install install-indep
-.PHONY: binary-indep binary-arch binary setup-source
+.PHONY: binary-indep binary-arch binary
 
