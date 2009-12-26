@@ -130,7 +130,7 @@
  bx_%.dll: %.o
 --- a/configure.in
 +++ b/configure.in
-@@ -2286,8 +2286,8 @@ OFP="-o "
+@@ -2112,8 +2112,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

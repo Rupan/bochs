@@ -1,5 +1,9 @@
-bochs (2.4.1-3) UNRELEASED; urgency=low
+bochs (2.4.2-1) UNRELEASED; urgency=low
 
+  * New upstream release.
+    - Refresh patches.
+    - debian/patches/patches/14_fix_gdbstubs_FTBFS.patch: New file.
+  * Do no use obsolete --enable-vme configure option.
   * Switch to source format “3.0 (quilt)”:
     - Remove quilt from Build-Depends.
     - Remove quilt.make include from debian/rules.

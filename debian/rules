@@ -98,7 +98,6 @@ config.status: configure
 	  --enable-apic \
 	  --enable-cpu-level=6 \
 	  --enable-x86-64 \
-	  --enable-vme \
 	  --enable-fpu \
 	  --enable-mmx \
 	  --enable-3dnow \

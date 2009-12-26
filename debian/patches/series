@@ -14,3 +14,4 @@
 11_docbook_section_name.patch
 12_use_so_plugins.patch
 13_use_system_libltdl.patch
+14_fix_gdbstubs_FTBFS.patch
