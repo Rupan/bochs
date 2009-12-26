@@ -3,7 +3,7 @@ Section: misc
 Priority: extra
 Maintainer: Guillem Jover <guillem@debian.org>
 Build-Depends: debhelper (>= 7),
- autotools-dev, autoconf, libz-dev, libncurses5-dev,
+ autotools-dev, autoconf, libltdl-dev, libz-dev, libncurses5-dev,
  libaa1-dev, libsvga1-dev [i386 amd64], libx11-dev, libxpm-dev, libice-dev,
  libsm-dev, libsdl1.2-dev, libwxgtk2.6-dev, libgtk2.0-dev,
  libasound2-dev [alpha amd64 arm armel hppa i386 ia64 m68k mips mipsel powerpc ppc64 s390]
