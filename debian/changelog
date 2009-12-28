@@ -12,6 +12,7 @@ bochs (2.4.2-1) UNRELEASED; urgency=low
   * Use system libltdl shared library. (Closes: #560884)
   * Switch Build-Depends from libwxgtk2.6-dev to libwxgtk2.8-dev.
     Thanks to Ryan Niebur <ryan@debian.org>. (Closes: #561188)
+  * Add ${misc:Depends} to every package Depends field.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 14 Nov 2009 01:36:01 +0100
 
