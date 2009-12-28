@@ -1,4 +1,4 @@
-bochs (2.4.2-1) UNRELEASED; urgency=low
+bochs (2.4.2-1) unstable; urgency=low
 
   * New upstream release.
     - Refresh patches.
@@ -14,7 +14,7 @@ bochs (2.4.2-1) UNRELEASED; urgency=low
     Thanks to Ryan Niebur <ryan@debian.org>. (Closes: #561188)
   * Add ${misc:Depends} to every package Depends field.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 14 Nov 2009 01:36:01 +0100
+ -- Guillem Jover <guillem@debian.org>  Mon, 28 Dec 2009 20:16:50 +0100
 
 bochs (2.4.1-2) unstable; urgency=low
 
