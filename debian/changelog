@@ -24,6 +24,7 @@ bochs (2.4.5-1) UNRELEASED; urgency=low
       it's no longer set by configure).
     - On install-indep install doc/docbook, remove install target dependency,
       call dh_prep, and populate the debian/tmp directory.
+  * Now using Standards-Version 3.8.4 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
 
