@@ -25,6 +25,8 @@ bochs (2.4.5-1) UNRELEASED; urgency=low
     - On install-indep install doc/docbook, remove install target dependency,
       call dh_prep, and populate the debian/tmp directory.
   * Now using Standards-Version 3.8.4 (no changes needed).
+  * Add a source lintian override for the architecture wildcard used in
+    Build-Depends-Indep to allow cross-building the bios images.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
 

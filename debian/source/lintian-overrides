@@ -1,0 +1,4 @@
+# Even if policy does not yet allow arch wildcards, this is not really a
+# problem, as it just allows the arch-indep packages to be built by the
+# maintainer (or other users) additionally on amd64.
+bochs source: invalid-arch-string-in-source-relation any-amd64 [build-depends-indep: gcc-multilib [any-amd64]]
