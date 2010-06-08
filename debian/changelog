@@ -8,6 +8,7 @@ bochs (2.4.5-1) UNRELEASED; urgency=low
     --enable-xsave, --enable-sep, --enable-popcnt and --enable-movbe options.
   * Do not use incomplete --enable-3dnow option.
   * Improve tarball.sh to fix wrong permissions from upstream tarballs.
+  * Improve cleanup to fix building twice in a row.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
 

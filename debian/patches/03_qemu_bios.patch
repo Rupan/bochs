@@ -1,6 +1,6 @@
 ---
- bios/Makefile.in |   26 ++++++++++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+ bios/Makefile.in |   30 +++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
 
 --- a/bios/Makefile.in
 +++ b/bios/Makefile.in
@@ -13,7 +13,14 @@
  
  clean:
  	@RMCOMMAND@ *.o *.a *.s _rombios*_.c rombios*.txt rombios*.sym
-@@ -70,6 +70,7 @@ dist-clean: clean
+-	@RMCOMMAND@ usage biossums rombios16.bin
++	@RMCOMMAND@ usage biossums
++	@RMCOMMAND@ rombios16.bin rombios16-qemu.bin
+ 	@RMCOMMAND@ rombios32.bin rombios32.out
++	@RMCOMMAND@ rombios32-qemu.bin rombios32-qemu.out
+ 
+ dist-clean: clean
+ 	@RMCOMMAND@ Makefile
  
  bios-clean:
  	@RMCOMMAND@ BIOS-bochs-*
@@ -21,7 +28,7 @@
  
  BIOS-bochs-legacy: rombios.c apmbios.S biossums rombios.h
  	$(GCC32) $(BIOS_BUILD_DATE) -DLEGACY -E -P $< > _rombiosl_.c
-@@ -81,6 +82,15 @@ BIOS-bochs-legacy: rombios.c apmbios.S b
+@@ -81,6 +84,15 @@ BIOS-bochs-legacy: rombios.c apmbios.S b
  	./biossums $@
  	@RMCOMMAND@ _rombiosl_.s
  
@@ -37,7 +44,7 @@
  
  rombios16.bin: rombios.c apmbios.S biossums rombios.h
  	$(GCC32) $(BIOS_BUILD_DATE) -E -P $< > _rombios_.c
-@@ -92,17 +102,26 @@ rombios16.bin: rombios.c apmbios.S bioss
+@@ -92,17 +104,26 @@ rombios16.bin: rombios.c apmbios.S bioss
  	./biossums rombios16.bin
  	@RMCOMMAND@ _rombios_.s
  
@@ -65,7 +72,7 @@
  ifeq ("1", "0")
  acpi-dsdt.hex: acpi-dsdt.dsl
  	cpp -P $< $<.i
-@@ -117,4 +136,7 @@ rombios32start.o: rombios32start.S
+@@ -117,4 +138,7 @@ rombios32start.o: rombios32start.S
  BIOS-bochs-latest: rombios16.bin rombios32.bin
  	cat rombios32.bin rombios16.bin > $@
  

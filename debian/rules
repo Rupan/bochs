@@ -63,7 +63,9 @@ clean:
 	rm -f bios/VGABIOS-*
 	rm -f misc/sb16/sb16ctrl
 	[ ! -f Makefile ] || $(MAKE) dist-clean
+	rm -f bxversion.rc
 	rm -f config.sub config.guess
+	rm -f configure
 	
 	dh_clean
 
