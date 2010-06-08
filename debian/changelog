@@ -9,6 +9,13 @@ bochs (2.4.5-1) UNRELEASED; urgency=low
   * Do not use incomplete --enable-3dnow option.
   * Improve tarball.sh to fix wrong permissions from upstream tarballs.
   * Improve cleanup to fix building twice in a row.
+  * Use system ltdl.h. (Closes: #560884)
+    - Remove all file dependencies on ltdl.h.
+    - Run libtoolize and aclocal in configure target.
+    - Add automake and libtool to Build-Depends.
+    - Remove ltdl.c, ltdl.h, ltdlconf.h, ltmain.sh and aclocal.m4 on clean.
+    - Remove references to ltdlconf.h.
+    - Fix configure.in to use system AC_SYS_LARGEFILE instead of local one.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
 

@@ -64,6 +64,9 @@ clean:
 	rm -f misc/sb16/sb16ctrl
 	[ ! -f Makefile ] || $(MAKE) dist-clean
 	rm -f bxversion.rc
+	rm -f ltdl.* ltdlconf.*
+	rm -f ltmain.sh
+	rm -f aclocal.m4
 	rm -f config.sub config.guess
 	rm -f configure
 	
@@ -72,6 +75,10 @@ clean:
 configure: configure.in
 	dh_testdir
 	
+	libtoolize -c
+	# XXX: Make extra sure we link against the system shared library.
+	rm -rf libltdl
+	aclocal
 	autoconf
 
 config.status: configure
