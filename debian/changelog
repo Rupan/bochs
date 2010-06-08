@@ -16,6 +16,14 @@ bochs (2.4.5-1) UNRELEASED; urgency=low
     - Remove ltdl.c, ltdl.h, ltdlconf.h, ltmain.sh and aclocal.m4 on clean.
     - Remove references to ltdlconf.h.
     - Fix configure.in to use system AC_SYS_LARGEFILE instead of local one.
+  * Fix binary-arch target to not require Build-Depends-Indep packages to
+    be installed. (Closes: #562964)
+    - Disable docbook support in configure so that it does not fail when
+      we only want build-arch or binary-arch.
+    - On build-indep build doc/docbook and pass DOCBOOK2HTML to it (because
+      it's no longer set by configure).
+    - On install-indep install doc/docbook, remove install target dependency,
+      call dh_prep, and populate the debian/tmp directory.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
 

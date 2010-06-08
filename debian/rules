@@ -89,6 +89,9 @@ config.status: configure
 	-test -r /usr/share/misc/config.guess && \
 	  cp -fu /usr/share/misc/config.guess config.guess
 	
+	# Note: We disable docbook support here as a cheap way to avoid
+	# building it in build-arch, and only in build-indep. This works
+	# because configure only disables entering the directory.
 	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CFLAGS)" ./configure \
 	  $(conf_gnu_type) \
 	  --prefix=/usr \
@@ -97,6 +100,7 @@ config.status: configure
 	  --with-term \
 	  --with-sdl \
 	  --with-wx \
+	  --disable-docbook \
 	  --enable-cdrom \
 	  --enable-vbe \
 	  --enable-acpi \
@@ -137,6 +141,9 @@ endif
 	
 	# bochsbios
 	$(MAKE) -C bios
+	
+	# bochs-doc
+	$(MAKE) -C doc/docbook DOCBOOK2HTML=docbook2html
 
 install: build
 	dh_testdir
@@ -181,16 +188,21 @@ ifeq ($(DEB_HOST_ARCH_CPU),i386)
 	   $(tmpdir)/usr/bin/
 endif
 
-install-indep: build-indep install
+install-indep: build-indep
 	dh_testdir
 	dh_testroot
+	dh_prep
 	dh_installdirs -i
 	
 	# bochsbios
+	mkdir -p \
+	   $(tmpdir)/usr/share/bochs/
 	cp bios/BIOS* \
 	   $(tmpdir)/usr/share/bochs/
 	
 	# bochs-doc
+	$(MAKE) -C doc/docbook install DESTDIR=$(tmpdir)
+	
 	cp /usr/share/sgml/docbook/stylesheet/dsssl/modular/images/note.gif \
 	   $(tmpdir)/usr/share/doc/bochs/images/
 
