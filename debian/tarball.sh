@@ -2,7 +2,7 @@
 #
 # tarball.sh
 #
-# Copyright © 2004, 2007 Guillem Jover <guillem@debian.org>
+# Copyright © 2004, 2007-2010 Guillem Jover <guillem@debian.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -75,6 +75,14 @@ then
   echo "error: no bochs tree available."
   exit 1
 fi
+
+echo "-> fixing permissions."
+find $tree -type f -name '*.cc' -o -name '*.h' -o -name '*.inc' \
+  -o -name 'Makefile.in' -o -name 'patch.*' -o -name '*.diff' \
+  -o -name 'todo' -o -name '*.txt' \
+  -o -name '*.def' -o -name '*.rc' -o -name '*.rc.in' -o -name '*.r' \
+  -o -name '*.data' -o -name '*.ico' -o -name '*.xpm' \
+  | xargs chmod -x
 
 echo "-> cleaning tree."
 # Clean non-free stuff
