@@ -1,3 +1,15 @@
+bochs (2.4.5-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+    - Refresh patches.
+    - debian/patches/patches/14_fix_gdbstubs_FTBFS.patch: Remove.
+  * Do not use obsolete --enable-apic, --enable-cpu-level=6, --enable-x86-64,
+    --enable-fpu, --enable-mmx, --enable-sse=4, --enable-sse-extension,
+    --enable-xsave, --enable-sep, --enable-popcnt and --enable-movbe options.
+  * Do not use incomplete --enable-3dnow option.
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 04 Jun 2010 15:48:54 +0200
+
 bochs (2.4.2-1) unstable; urgency=low
 
   * New upstream release.

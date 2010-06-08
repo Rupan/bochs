@@ -9,7 +9,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 
 --- a/bios/rombios32.c
 +++ b/bios/rombios32.c
-@@ -478,6 +478,8 @@ void wrmsr_smp(uint32_t index, uint64_t 
+@@ -472,6 +472,8 @@ void wrmsr_smp(uint32_t index, uint64_t
  #define QEMU_CFG_SIGNATURE  0x00
  #define QEMU_CFG_ID         0x01
  #define QEMU_CFG_UUID       0x02
@@ -18,7 +18,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  int qemu_cfg_port;
  
-@@ -505,6 +507,27 @@ void qemu_cfg_read(uint8_t *buf, int len
+@@ -499,6 +501,27 @@ void qemu_cfg_read(uint8_t *buf, int len
      while (len--)
          *(buf++) = inb(QEMU_CFG_DATA_PORT);
  }
@@ -46,7 +46,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #endif
  
  void uuid_probe(void)
-@@ -1571,8 +1594,8 @@ void acpi_bios_init(void)
+@@ -1565,8 +1588,8 @@ void acpi_bios_init(void)
      uint32_t hpet_addr;
  #endif
      uint32_t base_addr, rsdt_addr, fadt_addr, addr, facs_addr, dsdt_addr, ssdt_addr;
@@ -55,9 +55,9 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 +    uint32_t acpi_tables_size, madt_addr, madt_size, rsdt_size;
 +    uint16_t i, external_tables;
  
-     /* reserve memory space for tables */
- #ifdef BX_USE_EBDA_TABLES
-@@ -1585,10 +1608,17 @@ void acpi_bios_init(void)
+     if (ram_size - ACPI_DATA_SIZE < 0x100000) {
+         BX_INFO("Not enough memory for ACPI tables\n");
+@@ -1584,10 +1607,17 @@ void acpi_bios_init(void)
      bios_table_cur_addr += sizeof(*rsdp);
  #endif
  
@@ -76,7 +76,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
      fadt_addr = addr;
      fadt = (void *)(addr);
-@@ -1627,12 +1657,6 @@ void acpi_bios_init(void)
+@@ -1626,12 +1656,6 @@ void acpi_bios_init(void)
      addr += sizeof(*hpet);
  #endif
  
@@ -89,7 +89,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* RSDP */
      memset(rsdp, 0, sizeof(*rsdp));
      memcpy(rsdp->signature, "RSD PTR ", 8);
-@@ -1644,17 +1668,6 @@ void acpi_bios_init(void)
+@@ -1643,17 +1667,6 @@ void acpi_bios_init(void)
      rsdp->rsdt_physical_address = cpu_to_le32(rsdt_addr);
      rsdp->checksum = acpi_checksum((void *)rsdp, 20);
  
@@ -107,7 +107,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* FADT */
      memset(fadt, 0, sizeof(*fadt));
      fadt->firmware_ctrl = cpu_to_le32(facs_addr);
-@@ -1731,6 +1744,7 @@ void acpi_bios_init(void)
+@@ -1730,6 +1743,7 @@ void acpi_bios_init(void)
                                  "APIC", madt_size, 1);
      }
  
@@ -115,7 +115,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #ifdef BX_QEMU
      /* HPET */
      memset(hpet, 0, sizeof(*hpet));
-@@ -1741,7 +1755,34 @@ void acpi_bios_init(void)
+@@ -1740,8 +1754,35 @@ void acpi_bios_init(void)
      hpet->addr.address = cpu_to_le32(ACPI_HPET_ADDRESS);
      acpi_build_table_header((struct  acpi_table_header *)hpet,
                               "HPET", sizeof(*hpet), 1);
@@ -130,15 +130,15 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 +        if(addr >= ram_size)
 +            BX_PANIC("ACPI table overflow\n");
 +    }
-+#endif
-+
+ #endif
+ 
 +    /* RSDT */
 +    rsdt->table_offset_entry[0] = cpu_to_le32(fadt_addr);
 +    rsdt->table_offset_entry[1] = cpu_to_le32(madt_addr);
 +    rsdt->table_offset_entry[2] = cpu_to_le32(ssdt_addr);
 +#ifdef BX_QEMU
 +    rsdt->table_offset_entry[3] = cpu_to_le32(hpet_addr);
- #endif
++#endif
 +    acpi_build_table_header((struct acpi_table_header *)rsdt,
 +                            "RSDT", rsdt_size, 1);
 +
@@ -147,6 +147,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 +    BX_INFO("ACPI tables: RSDP addr=0x%08lx ACPI DATA addr=0x%08lx size=0x%x\n",
 +            (unsigned long)rsdp,
 +            (unsigned long)rsdt, acpi_tables_size);
- 
++
  }
  
+ /* SMBIOS entry point -- must be written to a 16-bit aligned address

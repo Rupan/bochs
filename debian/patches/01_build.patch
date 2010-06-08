@@ -4,7 +4,7 @@
 
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -380,13 +380,13 @@ install_doc::
+@@ -374,13 +374,13 @@ install_doc::
  
  
  build_docbook::

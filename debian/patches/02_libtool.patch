@@ -6,7 +6,7 @@
 
 --- a/gui/Makefile.in
 +++ b/gui/Makefile.in
-@@ -113,47 +113,47 @@ libgui.a: $(NONPLUGIN_OBJS)
+@@ -107,47 +107,47 @@ libgui.a: $(NONPLUGIN_OBJS)
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -70,7 +70,7 @@
  bx_%.dll: %.o
 --- a/iodev/Makefile.in
 +++ b/iodev/Makefile.in
-@@ -132,44 +132,44 @@ pcidev.o : pcidev.@CPP_SUFFIX@
+@@ -125,44 +125,44 @@ pcidev.o : pcidev.@CPP_SUFFIX@
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -130,7 +130,7 @@
  bx_%.dll: %.o
 --- a/configure.in
 +++ b/configure.in
-@@ -2112,8 +2112,8 @@ OFP="-o "
+@@ -1860,8 +1860,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

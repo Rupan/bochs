@@ -4,8 +4,8 @@
 
 --- a/bios/Makefile.in
 +++ b/bios/Makefile.in
-@@ -122,13 +122,11 @@ rombios32.o: rombios32.c acpi-dsdt.hex
- rombios32-qemu.o: rombios32.c acpi-dsdt.hex
+@@ -122,13 +122,11 @@ rombios32.o: rombios32.c acpi-dsdt.hex r
+ rombios32-qemu.o: rombios32.c acpi-dsdt.hex rombios.h
  	$(GCC32) -DBX_QEMU -O2 -Wall -c -o $@ $<
  
 -ifeq ("1", "0")

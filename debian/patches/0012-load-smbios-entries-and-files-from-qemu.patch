@@ -7,12 +7,12 @@ Signed-off-by: Alex Williamson <alex.williamson@hp.com>
 Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 
 ---
- bios/rombios32.c |  297 +++++++++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 235 insertions(+), 62 deletions(-)
+ bios/rombios32.c |  300 +++++++++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 236 insertions(+), 64 deletions(-)
 
 --- a/bios/rombios32.c
 +++ b/bios/rombios32.c
-@@ -450,7 +450,6 @@ uint32_t cpuid_features;
+@@ -444,7 +444,6 @@ uint32_t cpuid_features;
  uint32_t cpuid_ext_features;
  unsigned long ram_size;
  uint64_t ram_end;
@@ -20,7 +20,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #ifdef BX_USE_EBDA_TABLES
  unsigned long ebda_cur_addr;
  #endif
-@@ -480,6 +479,7 @@ void wrmsr_smp(uint32_t index, uint64_t 
+@@ -474,6 +473,7 @@ void wrmsr_smp(uint32_t index, uint64_t
  #define QEMU_CFG_UUID       0x02
  #define QEMU_CFG_ARCH_LOCAL     0x8000
  #define QEMU_CFG_ACPI_TABLES  (QEMU_CFG_ARCH_LOCAL + 0)
@@ -28,7 +28,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  int qemu_cfg_port;
  
-@@ -528,19 +528,17 @@ static int acpi_load_table(int i, uint32
+@@ -522,19 +522,17 @@ static int acpi_load_table(int i, uint32
      qemu_cfg_read((uint8_t*)addr, *len);
      return 0;
  }
@@ -56,7 +56,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  void cpu_probe(void)
  {
-@@ -1984,21 +1982,105 @@ smbios_entry_point_init(void *start,
+@@ -1983,21 +1981,106 @@ smbios_entry_point_init(void *start,
      ep->intermediate_checksum = -sum;
      }
  
@@ -114,7 +114,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 +#endif
 +    return 0;
 +}
-+ 
++
 +#define load_str_field_with_default(type, field, def) do {             \
 +    size = smbios_load_field(type, offsetof(struct smbios_type_##type, \
 +                                            field), end);              \
@@ -138,6 +138,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 +    }                                                                  \
 +} while (0)
 +
++
  /* Type 0 -- BIOS Information */
  #define RELEASE_DATE_STR "01/01/2007"
  static void *
@@ -154,20 +155,20 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      p->header.handle = 0;
  
 -    p->vendor_str = 1;
--    p->bios_version_str = 1;
-+    load_str_field_with_default(0, vendor_str, BX_APPNAME);
+-    p->bios_version_str = 2;
++    load_str_field_with_default(0, vendor_str, BX_APPVENDOR);
 +    load_str_field_with_default(0, bios_version_str, BX_APPNAME);
 +
-     p->bios_starting_address_segment = 0xe800;
--    p->bios_release_date_str = 2;
+     p->bios_starting_address_segment = 0xe000;
+-    p->bios_release_date_str = 3;
 +
 +    load_str_field_with_default(0, bios_release_date_str, RELEASE_DATE_STR);
 +
-     p->bios_rom_size = 0; /* FIXME */
+     p->bios_rom_size = 1; /* 128 kB */
  
      memset(p->bios_characteristics, 0, 8);
-@@ -2006,50 +2088,66 @@ smbios_type_0_init(void *start)
-     p->bios_characteristics_extension_bytes[0] = 0;
+@@ -2029,52 +2112,66 @@ smbios_type_0_init(void *start)
+     p->bios_characteristics_extension_bytes[0] = 1; /* Bit 0 - ACPI supported */
      p->bios_characteristics_extension_bytes[1] = 0;
  
 -    p->system_bios_major_release = 1;
@@ -186,6 +187,8 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      p->embedded_controller_minor_release = 0xff;
  
 -    start += sizeof(struct smbios_type_0);
+-    memcpy((char *)start, BX_APPVENDOR, sizeof(BX_APPVENDOR));
+-    start += sizeof(BX_APPVENDOR);
 -    memcpy((char *)start, BX_APPNAME, sizeof(BX_APPNAME));
 -    start += sizeof(BX_APPNAME);
 -    memcpy((char *)start, RELEASE_DATE_STR, sizeof(RELEASE_DATE_STR));
@@ -255,7 +258,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_3 *p = (struct smbios_type_3 *)start;
  
-@@ -2079,7 +2177,7 @@ smbios_type_3_init(void *start)
+@@ -2104,7 +2201,7 @@ smbios_type_3_init(void *start)
  
  /* Type 4 -- Processor Information */
  static void *
@@ -264,7 +267,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_4 *p = (struct smbios_type_4 *)start;
  
-@@ -2119,7 +2217,7 @@ smbios_type_4_init(void *start, unsigned
+@@ -2144,7 +2241,7 @@ smbios_type_4_init(void *start, unsigned
  
  /* Type 16 -- Physical Memory Array */
  static void *
@@ -273,7 +276,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_16 *p = (struct smbios_type_16*)start;
  
-@@ -2142,7 +2240,7 @@ smbios_type_16_init(void *start, uint32_
+@@ -2167,7 +2264,7 @@ smbios_type_16_init(void *start, uint32_
  
  /* Type 17 -- Memory Device */
  static void *
@@ -282,7 +285,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_17 *p = (struct smbios_type_17 *)start;
  
-@@ -2172,7 +2270,7 @@ smbios_type_17_init(void *start, uint32_
+@@ -2198,7 +2295,7 @@ smbios_type_17_init(void *start, uint32_
  
  /* Type 19 -- Memory Array Mapped Address */
  static void *
@@ -291,7 +294,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_19 *p = (struct smbios_type_19 *)start;
  
-@@ -2193,7 +2291,7 @@ smbios_type_19_init(void *start, uint32_
+@@ -2219,7 +2316,7 @@ smbios_type_19_init(void *start, uint32_
  
  /* Type 20 -- Memory Device Mapped Address */
  static void *
@@ -300,7 +303,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_20 *p = (struct smbios_type_20 *)start;
  
-@@ -2217,7 +2315,7 @@ smbios_type_20_init(void *start, uint32_
+@@ -2243,7 +2340,7 @@ smbios_type_20_init(void *start, uint32_
  
  /* Type 32 -- System Boot Information */
  static void *
@@ -309,7 +312,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_32 *p = (struct smbios_type_32 *)start;
  
-@@ -2235,7 +2333,7 @@ smbios_type_32_init(void *start)
+@@ -2261,7 +2358,7 @@ smbios_type_32_init(void *start)
  
  /* Type 127 -- End of Table */
  static void *
@@ -318,7 +321,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_127 *p = (struct smbios_type_127 *)start;
  
-@@ -2249,6 +2347,78 @@ smbios_type_127_init(void *start)
+@@ -2275,6 +2372,78 @@ smbios_type_127_init(void *start)
      return start + 2;
  }
  
@@ -397,7 +400,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  void smbios_init(void)
  {
      unsigned cpu_num, nr_structs = 0, max_struct_size = 0;
-@@ -2267,34 +2437,39 @@ void smbios_init(void)
+@@ -2288,34 +2457,39 @@ void smbios_init(void)
  
  	p = (char *)start + sizeof(struct smbios_entry_point);
  
@@ -453,7 +456,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  #undef add_struct
  
-@@ -2401,8 +2576,6 @@ void rombios32_init(uint32_t *s3_resume_
+@@ -2419,8 +2593,6 @@ void rombios32_init(uint32_t *s3_resume_
  
          mptable_init();
  
