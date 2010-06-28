@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7),
  autotools-dev, autoconf, automake, libtool, libltdl-dev, libz-dev,
  libncurses5-dev, libaa1-dev, libsvga1-dev [i386 amd64], libsdl1.2-dev,
  libx11-dev, libxpm-dev, libice-dev, libsm-dev, libwxgtk2.8-dev, libgtk2.0-dev,
- libasound2-dev [alpha amd64 arm armel hppa i386 ia64 m68k mips mipsel powerpc ppc64 s390]
+ libasound2-dev [linux-any]
 Build-Depends-Indep: iasl, bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2),
  docbook-utils, gcc-multilib [any-amd64]
 Homepage: http://bochs.sourceforge.net/
