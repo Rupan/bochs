@@ -7,6 +7,7 @@ bochs (2.4.6-1) UNRELEASED; urgency=low
   * Install new hdimage and soundmod plugins.
   * Use linux-any instead of explicit list of architectures for libasound2-dev
     in Build-Depends.
+  * Update tarball.sh to use the new svn repository instead of cvs.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 28 Jun 2010 20:41:49 +0200
 

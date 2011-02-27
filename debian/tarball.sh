@@ -20,7 +20,7 @@ get_version()
 {
   local d=$1
 
-  eval $(grep '^VERSION=' $d/configure.in | sed -e 's/\.cvs//' )
+  eval $(grep '^VERSION=' $d/configure.in | sed -e 's/\.\(cvs\|svn\)//' )
 
   echo $VERSION
 }
@@ -28,16 +28,15 @@ get_version()
 echo "-> getting the source."
 case "$action" in
   snapshot)
-    echo " -> making a cvs snapshot."
+    echo " -> making a svn snapshot."
 
     snapshot_dir="bochs-snapshot"
 
     if [ -d $snapshot_dir ]; then
-      cvs up -dP $snapshot_dir
+      svn up $snapshot_dir
     else
-      export CVSROOT=":pserver:anonymous@bochs.cvs.sf.net:/cvsroot/bochs"
-      cvs login
-      cvs co -d $snapshot_dir bochs
+      SVNROOT="https://bochs.svn.sourceforge.net/svnroot/bochs"
+      svn co $SVNROOT/trunk/bochs $snapshot_dir
     fi
 
     version="$(get_version $snapshot_dir)+$(date +%Y%m%d)"
@@ -63,7 +62,7 @@ tree=bochs-$version
 echo "-> filling the working tree."
 case "$action" in
   snapshot)
-    cp -al $snapshot_dir $tree
+    svn export $snapshot_dir $tree
     ;;
   tarball)
     mv $upstream_dir $tree
@@ -90,8 +89,6 @@ rm -f $tree/bios/BIOS*
 rm -f $tree/bios/VGABIOS*
 rm -f $tree/bios/acpi-dsdt.hex
 rm -f $tree/patches/beos-gui-fabo.capture-filter
-# Clean cvs stuff
-find $tree -name 'CVS' -o -name '.cvsignore' | xargs rm -rf
 
 echo "-> creating new tarball."
 tar czf $tarball $tree

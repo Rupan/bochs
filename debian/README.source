@@ -6,7 +6,7 @@ There's a script to help generating this cleaned tarball:
 
 	$ debian/tarball.sh tarball <upstream-tarball>
 
-or a snapshot from CVS:
+or a snapshot from Subversion:
 
 	$ debian/tarball.sh snapshot
 
