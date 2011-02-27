@@ -1,5 +1,9 @@
-bochs (2.4.5-2) UNRELEASED; urgency=low
+bochs (2.4.6-1) UNRELEASED; urgency=low
 
+  * New upstream release.
+    - Refresh patches.
+    - debian/patches/11_docbook_section_name.patch: Remove, merged upstream.
+    - debian/patches/12_use_so_plugins.patch: Likewise.
   * Use linux-any instead of explicit list of architectures for libasound2-dev
     in Build-Depends.
 

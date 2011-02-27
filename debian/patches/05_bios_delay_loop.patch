@@ -10,7 +10,7 @@ in -smp not working in QEMU.
 
 --- a/bios/rombios32.c
 +++ b/bios/rombios32.c
-@@ -413,7 +413,7 @@ void bios_printf(int flags, const char *
+@@ -369,7 +369,7 @@ void bios_printf(int flags, const char *
  
  void delay_ms(int n)
  {

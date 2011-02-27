@@ -4,21 +4,13 @@ Signed-off-by: Gleb Natapov <gleb@redhat.com>
 Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
 
 ---
- bios/rombios32.c |   81 +++++++++++++++++++++++++++++++++++++++++--------------
- 1 file changed, 61 insertions(+), 20 deletions(-)
+ bios/rombios.h   |    2 +
+ bios/rombios32.c |   79 +++++++++++++++++++++++++++++++++++++++++--------------
+ 2 files changed, 61 insertions(+), 20 deletions(-)
 
 --- a/bios/rombios32.c
 +++ b/bios/rombios32.c
-@@ -472,6 +472,8 @@ void wrmsr_smp(uint32_t index, uint64_t
- #define QEMU_CFG_SIGNATURE  0x00
- #define QEMU_CFG_ID         0x01
- #define QEMU_CFG_UUID       0x02
-+#define QEMU_CFG_ARCH_LOCAL     0x8000
-+#define QEMU_CFG_ACPI_TABLES  (QEMU_CFG_ARCH_LOCAL + 0)
- 
- int qemu_cfg_port;
- 
-@@ -499,6 +501,27 @@ void qemu_cfg_read(uint8_t *buf, int len
+@@ -449,6 +449,27 @@ void qemu_cfg_read(uint8_t *buf, int len
      while (len--)
          *(buf++) = inb(QEMU_CFG_DATA_PORT);
  }
@@ -46,7 +38,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #endif
  
  void uuid_probe(void)
-@@ -1565,8 +1588,8 @@ void acpi_bios_init(void)
+@@ -1484,8 +1505,8 @@ void acpi_bios_init(void)
      uint32_t hpet_addr;
  #endif
      uint32_t base_addr, rsdt_addr, fadt_addr, addr, facs_addr, dsdt_addr, ssdt_addr;
@@ -57,7 +49,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
      if (ram_size - ACPI_DATA_SIZE < 0x100000) {
          BX_INFO("Not enough memory for ACPI tables\n");
-@@ -1584,10 +1607,17 @@ void acpi_bios_init(void)
+@@ -1503,10 +1524,17 @@ void acpi_bios_init(void)
      bios_table_cur_addr += sizeof(*rsdp);
  #endif
  
@@ -76,7 +68,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
      fadt_addr = addr;
      fadt = (void *)(addr);
-@@ -1626,12 +1656,6 @@ void acpi_bios_init(void)
+@@ -1545,12 +1573,6 @@ void acpi_bios_init(void)
      addr += sizeof(*hpet);
  #endif
  
@@ -89,7 +81,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* RSDP */
      memset(rsdp, 0, sizeof(*rsdp));
      memcpy(rsdp->signature, "RSD PTR ", 8);
-@@ -1643,17 +1667,6 @@ void acpi_bios_init(void)
+@@ -1562,17 +1584,6 @@ void acpi_bios_init(void)
      rsdp->rsdt_physical_address = cpu_to_le32(rsdt_addr);
      rsdp->checksum = acpi_checksum((void *)rsdp, 20);
  
@@ -107,7 +99,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* FADT */
      memset(fadt, 0, sizeof(*fadt));
      fadt->firmware_ctrl = cpu_to_le32(facs_addr);
-@@ -1730,6 +1743,7 @@ void acpi_bios_init(void)
+@@ -1649,6 +1660,7 @@ void acpi_bios_init(void)
                                  "APIC", madt_size, 1);
      }
  
@@ -115,7 +107,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #ifdef BX_QEMU
      /* HPET */
      memset(hpet, 0, sizeof(*hpet));
-@@ -1740,8 +1754,35 @@ void acpi_bios_init(void)
+@@ -1659,8 +1671,35 @@ void acpi_bios_init(void)
      hpet->addr.address = cpu_to_le32(ACPI_HPET_ADDRESS);
      acpi_build_table_header((struct  acpi_table_header *)hpet,
                               "HPET", sizeof(*hpet), 1);
@@ -151,3 +143,14 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  }
  
  /* SMBIOS entry point -- must be written to a 16-bit aligned address
+--- a/bios/rombios.h
++++ b/bios/rombios.h
+@@ -215,6 +215,8 @@
+ #define QEMU_CFG_SIGNATURE  0x00
+ #define QEMU_CFG_ID         0x01
+ #define QEMU_CFG_UUID       0x02
++#define QEMU_CFG_ARCH_LOCAL     0x8000
++#define QEMU_CFG_ACPI_TABLES  (QEMU_CFG_ARCH_LOCAL + 0)
+ 
+ #define PCI_ADDRESS_SPACE_MEM		0x00
+ #define PCI_ADDRESS_SPACE_IO		0x01

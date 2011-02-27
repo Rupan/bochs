@@ -6,7 +6,7 @@
 
 --- a/gui/Makefile.in
 +++ b/gui/Makefile.in
-@@ -107,47 +107,47 @@ libgui.a: $(NONPLUGIN_OBJS)
+@@ -108,47 +108,47 @@ libgui.a: $(NONPLUGIN_OBJS)
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -70,7 +70,7 @@
  bx_%.dll: %.o
 --- a/iodev/Makefile.in
 +++ b/iodev/Makefile.in
-@@ -125,44 +125,44 @@ pcidev.o : pcidev.@CPP_SUFFIX@
+@@ -128,44 +128,44 @@ pcidev.o : pcidev.@CPP_SUFFIX@
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -86,9 +86,13 @@
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH)
  
  # special link rules for plugins that require more than one object file
- libbx_harddrv.la: harddrv.lo hdimage.lo vmware3.lo vmware4.lo $(CDROM_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module harddrv.lo hdimage.lo vmware3.lo vmware4.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module harddrv.lo hdimage.lo vmware3.lo vmware4.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
+ libbx_harddrv.la: harddrv.lo $(CDROM_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module harddrv.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module harddrv.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
+ 
+ libbx_hdimage.la: hdimage.lo vmware3.lo vmware4.lo vvfat.lo
+-	$(LIBTOOL) --mode=link $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
  
  libbx_keyboard.la: keyboard.lo scancodes.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module keyboard.lo scancodes.lo -o libbx_keyboard.la -rpath $(PLUGIN_PATH)
@@ -98,9 +102,9 @@
 -	$(LIBTOOL) --mode=link $(CXX) -module pit82c54.lo pit_wrap.lo -o libbx_pit.la -rpath $(PLUGIN_PATH)
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module pit82c54.lo pit_wrap.lo -o libbx_pit.la -rpath $(PLUGIN_PATH)
  
- libbx_sb16.la: sb16.lo $(SOUNDLOW_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module sb16.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_sb16.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module sb16.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_sb16.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
+ libbx_soundmod.la: soundmod.lo $(SOUNDLOW_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module soundmod.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_soundmod.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module soundmod.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_soundmod.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
  
  libbx_ne2k.la: ne2k.lo $(NETLOW_OBJS:.o=.lo)
 -	$(LIBTOOL) --mode=link $(CXX) -module ne2k.lo $(NETLOW_OBJS:.o=.lo) -o libbx_ne2k.la -rpath $(PLUGIN_PATH)
@@ -118,19 +122,15 @@
 -	$(LIBTOOL) --mode=link $(CXX) -module vga.lo svga_cirrus.lo -o libbx_vga.la -rpath $(PLUGIN_PATH)
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module vga.lo svga_cirrus.lo -o libbx_vga.la -rpath $(PLUGIN_PATH)
  
- libbx_usb_uhci.la: usb_uhci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo
--	$(LIBTOOL) --mode=link $(CXX) -module usb_uhci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo -o libbx_usb_uhci.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module usb_uhci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo -o libbx_usb_uhci.la -rpath $(PLUGIN_PATH)
- 
- libbx_usb_ohci.la: usb_ohci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo
--	$(LIBTOOL) --mode=link $(CXX) -module usb_ohci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo -o libbx_usb_ohci.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module usb_ohci.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo hdimage.lo cdrom.lo -o libbx_usb_ohci.la -rpath $(PLUGIN_PATH)
+ libbx_usb_common.la: usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo) -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo) -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
 --- a/configure.in
 +++ b/configure.in
-@@ -1860,8 +1860,8 @@ OFP="-o "
+@@ -1870,8 +1870,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool

@@ -4,7 +4,7 @@
 
 --- a/doc/man/bochsrc.5
 +++ b/doc/man/bochsrc.5
-@@ -184,13 +184,18 @@ starts to autorepeat,  and the measureme
+@@ -169,13 +169,18 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  
  Example Specifications[1]
