@@ -4,6 +4,7 @@ bochs (2.4.6-1) UNRELEASED; urgency=low
     - Refresh patches.
     - debian/patches/11_docbook_section_name.patch: Remove, merged upstream.
     - debian/patches/12_use_so_plugins.patch: Likewise.
+  * Install new hdimage and soundmod plugins.
   * Use linux-any instead of explicit list of architectures for libasound2-dev
     in Build-Depends.
 

@@ -6,6 +6,7 @@ usr/lib/bochs/plugins/libbx_extfpuirq.so*
 usr/lib/bochs/plugins/libbx_gameport.so*
 usr/lib/bochs/plugins/libbx_floppy.so*
 usr/lib/bochs/plugins/libbx_harddrv.so*
+usr/lib/bochs/plugins/libbx_hdimage.so*
 usr/lib/bochs/plugins/libbx_ioapic.so*
 usr/lib/bochs/plugins/libbx_keyboard.so*
 usr/lib/bochs/plugins/libbx_busmouse.so*
@@ -16,6 +17,7 @@ usr/lib/bochs/plugins/libbx_pic.so*
 usr/lib/bochs/plugins/libbx_pit.so*
 usr/lib/bochs/plugins/libbx_sb16.so*
 usr/lib/bochs/plugins/libbx_serial.so*
+usr/lib/bochs/plugins/libbx_soundmod.so*
 usr/lib/bochs/plugins/libbx_speaker.so*
 usr/lib/bochs/plugins/libbx_unmapped.so*
 usr/lib/bochs/plugins/libbx_usb_*.so*
