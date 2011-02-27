@@ -19,7 +19,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, bochs-wx | bochs-gui,
  bochsbios (= ${source:Version}), vgabios (>= 0.5c-1)
 Recommends: bximage | createdisk
-Suggests: bochs-doc, debootstrap, grub-disk, gcc | c-compiler, libc-dev
+Suggests: bochs-doc, debootstrap, grub-rescue-pc, gcc | c-compiler, libc-dev
 Description: IA-32 PC emulator
  Bochs is a highly portable free IA-32 (x86) PC emulator written in C++, that
  runs on most popular platforms. It includes emulation of the Intel x86 CPU,

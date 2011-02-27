@@ -10,6 +10,8 @@ bochs (2.4.6-1) UNRELEASED; urgency=low
   * Update tarball.sh to use the new svn repository instead of cvs.
   * Update debian/copyright with all copyright holders and years.
   * Now using Standards-Version 3.9.1 (no changes needed).
+  * Suggest grub-rescue-pc instead of dummy transitional grub-disk package.
+    (Closes: #607208)
 
  -- Guillem Jover <guillem@debian.org>  Mon, 28 Jun 2010 20:41:49 +0200
 
