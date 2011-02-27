@@ -42,4 +42,3 @@ the bochs-%ui% package we could use it in one of the following ways:
     Run bochs with the '-f' switch:
 
 	$ bochs -f .bochsrc.%ui%
-

@@ -70,4 +70,3 @@ info:
 
 The pseudo NIC is now enabled by default, so there is no need to rebuild
 the package.
-

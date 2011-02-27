@@ -246,4 +246,3 @@ binary: binary-indep binary-arch
 
 .PHONY: build build-arch build-indep clean install install-indep
 .PHONY: binary-indep binary-arch binary
-

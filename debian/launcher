@@ -9,4 +9,3 @@ set -e
 
 # now we run bochs
 GUEST=$GUEST exec bochs-bin -q "$@"
-
