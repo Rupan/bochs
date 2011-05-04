@@ -5,6 +5,8 @@ bochs (2.4.6-2) UNRELEASED; urgency=low
     for bash. (Closes: #625183)
   * Discard .eh_frame sections from the PC BIOS linker scripts, as they
     cause a build problem due to an overlap with the .data section.
+  * Use jade instead of docbook2html, and thus switch Build-Depends-Indep
+    from docbook-utils to docbook-dsssl.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 04 May 2011 02:50:40 +0200
 

@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 7),
  libx11-dev, libxpm-dev, libice-dev, libsm-dev, libwxgtk2.8-dev, libgtk2.0-dev,
  libasound2-dev [linux-any]
 Build-Depends-Indep: iasl, bcc (>= 0.16.3-2), bin86 (>= 0.16.3-2),
- docbook-utils, gcc-multilib [any-amd64]
+ docbook-dsssl, gcc-multilib [any-amd64]
 Homepage: http://bochs.sourceforge.net/
 Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/bochs.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/bochs.git

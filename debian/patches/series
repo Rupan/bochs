@@ -1,5 +1,6 @@
 00_base.patch
 01_build.patch
+use_jade_not_docbook2html.patch
 fix_Makefile_SHELL.patch
 02_libtool.patch
 discard_rom_eh_frame.patch
