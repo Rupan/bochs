@@ -1,0 +1,171 @@
+---
+ Makefile.in                     |    2 +-
+ bios/Makefile.in                |    2 +-
+ bx_debug/Makefile.in            |    2 +-
+ cpu/Makefile.in                 |    2 +-
+ disasm/Makefile.in              |    2 +-
+ fpu/Makefile.in                 |    2 +-
+ gui/Makefile.in                 |    2 +-
+ instrument/example0/Makefile.in |    2 +-
+ instrument/example1/Makefile.in |    2 +-
+ instrument/example2/Makefile.in |    2 +-
+ instrument/stubs/Makefile.in    |    2 +-
+ iodev/Makefile.in               |    2 +-
+ memory/Makefile.in              |    2 +-
+ misc/Makefile.in                |    2 +-
+ 14 files changed, 14 insertions(+), 14 deletions(-)
+
+--- a/bios/Makefile.in
++++ b/bios/Makefile.in
+@@ -28,7 +28,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/disasm/Makefile.in
++++ b/disasm/Makefile.in
+@@ -22,7 +22,7 @@ VPATH = @srcdir@
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/fpu/Makefile.in
++++ b/fpu/Makefile.in
+@@ -21,7 +21,7 @@ VPATH = @srcdir@
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/memory/Makefile.in
++++ b/memory/Makefile.in
+@@ -22,7 +22,7 @@ VPATH = @srcdir@
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/bx_debug/Makefile.in
++++ b/bx_debug/Makefile.in
+@@ -23,7 +23,7 @@ VPATH = @srcdir@
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/cpu/Makefile.in
++++ b/cpu/Makefile.in
+@@ -22,7 +22,7 @@ VPATH = @srcdir@
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/gui/Makefile.in
++++ b/gui/Makefile.in
+@@ -34,7 +34,7 @@ sharedir        = $(datarootdir)/bochs
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/iodev/Makefile.in
++++ b/iodev/Makefile.in
+@@ -34,7 +34,7 @@ sharedir        = $(datarootdir)/bochs
+ top_builddir    = ..
+ top_srcdir      = @top_srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -79,7 +79,7 @@ RC_CMD=@RC_CMD@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/misc/Makefile.in
++++ b/misc/Makefile.in
+@@ -24,7 +24,7 @@
+ @SUFFIX_LINE@
+ 
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/instrument/example0/Makefile.in
++++ b/instrument/example0/Makefile.in
+@@ -20,7 +20,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/instrument/example1/Makefile.in
++++ b/instrument/example1/Makefile.in
+@@ -21,7 +21,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/instrument/example2/Makefile.in
++++ b/instrument/example2/Makefile.in
+@@ -21,7 +21,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 
+--- a/instrument/stubs/Makefile.in
++++ b/instrument/stubs/Makefile.in
+@@ -21,7 +21,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ @SET_MAKE@
+ 

@@ -1,5 +1,6 @@
 00_base.patch
 01_build.patch
+fix_Makefile_SHELL.patch
 02_libtool.patch
 03_qemu_bios.patch
 0006_qemu-bios-use-preprocessor-for-pci-link-routing.patch
