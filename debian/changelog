@@ -1,4 +1,4 @@
-bochs (2.4.6-2) UNRELEASED; urgency=low
+bochs (2.4.6-2) unstable; urgency=low
 
   * Set SHELL variables in Makefile.in to @SHELL@ instead of hardcoding
     them to /bin/sh, which confuses libtool as it might get configured
@@ -9,7 +9,7 @@ bochs (2.4.6-2) UNRELEASED; urgency=low
     from docbook-utils to docbook-dsssl.
   * Now using Standards-Version 3.9.2 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Wed, 04 May 2011 02:50:40 +0200
+ -- Guillem Jover <guillem@debian.org>  Wed, 04 May 2011 05:29:04 +0200
 
 bochs (2.4.6-1) unstable; urgency=low
 
