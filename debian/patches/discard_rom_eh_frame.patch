@@ -1,0 +1,14 @@
+---
+ bios/rombios32.ld |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/bios/rombios32.ld
++++ b/bios/rombios32.ld
+@@ -12,6 +12,7 @@ SECTIONS
+         /DISCARD/ : { *(.stab)
+                      *(.stabstr)
+                      *(.comment)
++                     *(.eh_frame)
+                      *(.note)
+                   }
+ }

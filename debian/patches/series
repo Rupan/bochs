@@ -2,6 +2,7 @@
 01_build.patch
 fix_Makefile_SHELL.patch
 02_libtool.patch
+discard_rom_eh_frame.patch
 03_qemu_bios.patch
 0006_qemu-bios-use-preprocessor-for-pci-link-routing.patch
 0007_bios-add-26-pci-slots,-bringing-the-total-to-32.patch
