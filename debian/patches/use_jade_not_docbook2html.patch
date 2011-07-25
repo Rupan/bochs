@@ -1,7 +1,8 @@
 ---
+ configure.in                  |    2 
  doc/docbook/Makefile.in       |   20 +++++--
  doc/docbook/docbook-utils.dsl |  115 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 131 insertions(+), 4 deletions(-)
+ 3 files changed, 133 insertions(+), 4 deletions(-)
 
 --- a/doc/docbook/Makefile.in
 +++ b/doc/docbook/Makefile.in
@@ -19,7 +20,7 @@
 +ifdef USE_JADE
 +# jade build
 +HTML_STYLESHEET = $(abs_srcdir)/docbook-utils.dsl\#html
-+JADE = jade
++JADE = @JADE@
 +JADE_ARGS = -t sgml -i html -d $(HTML_STYLESHEET)   # -V nochunks
 +SGML_VALIDATE = nsgmls -s
 +DOCBOOK2HTML = $(JADE) $(JADE_ARGS)
@@ -168,3 +169,14 @@
 +  <EXTERNAL-SPECIFICATION ID="DOCBOOK" DOCUMENT="docbook.dsl">
 +
 +</STYLE-SHEET>
+--- a/configure.in
++++ b/configure.in
+@@ -2206,6 +2206,8 @@ AC_SUBST(WX_CFLAGS)
+ AC_SUBST(WX_CXXFLAGS)
+ AC_SUBST(TOOLKIT_CXXFLAGS)
+ 
++AC_CHECK_PROGS([JADE], [jade openjade])
++
+ AC_CHECK_PROGS(WGET, wget curl fetch, not_found)
+ if test "$WGET" = not_found; then
+   AC_MSG_WARN([cannot find wget (or equivalent) command])
