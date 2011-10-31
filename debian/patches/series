@@ -16,3 +16,4 @@ discard_rom_eh_frame.patch
 10_enable_iasl.patch
 13_use_system_libltdl.patch
 linux-3.x.patch
+link-only-needed-libs.patch
