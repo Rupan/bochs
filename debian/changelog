@@ -1,3 +1,9 @@
+bochs (2.4.6-4) UNRELEASED; urgency=low
+
+  * Do not install the ne2k plugin on systems were it's not supported.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 31 Oct 2011 16:46:44 +0100
+
 bochs (2.4.6-3) unstable; urgency=low
 
   * Detect which of jade or openjade is installed at configure time, and

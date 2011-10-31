@@ -10,7 +10,6 @@ usr/lib/bochs/plugins/libbx_hdimage.so*
 usr/lib/bochs/plugins/libbx_ioapic.so*
 usr/lib/bochs/plugins/libbx_keyboard.so*
 usr/lib/bochs/plugins/libbx_busmouse.so*
-usr/lib/bochs/plugins/libbx_ne2k.so*
 usr/lib/bochs/plugins/libbx_parallel.so*
 usr/lib/bochs/plugins/libbx_pci*.so*
 usr/lib/bochs/plugins/libbx_pic.so*

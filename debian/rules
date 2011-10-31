@@ -32,10 +32,7 @@ cdrom := cdrom
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
   kernel := linux
-  conf_arch_args += \
-    --enable-pcidev \
-    --enable-ne2000 \
-    --enable-pnic
+  conf_arch_args += --enable-pcidev
   eth := eth0
   sb16 := linux
   com := ttyS0
@@ -45,7 +42,6 @@ endif
 endif
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   kernel := fbsd
-  conf_arch_args += --enable-ne2000 --enable-pnic
   eth := xl0
   sb16 := freebsd
   com := cuua0
@@ -53,6 +49,11 @@ ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
 endif
 ifeq ($(DEB_HOST_ARCH_OS),hurd)
   com := com0
+endif
+
+ifneq (,$(strip $(eth)))
+  conf_arch_args += --enable-ne2000 --enable-pnic
+  bochs_add_files += usr/lib/bochs/plugins/libbx_ne2k.so*
 endif
 
 clean:
@@ -226,7 +227,8 @@ binary-arch: install
 	dh_testdir -s
 	dh_testroot -s
 	dh_install -s -Nbochs --sourcedir=$(tmpdir)
-	dh_install -pbochs --sourcedir=$(tmpdir) # bochs should be last
+	# bochs should be last
+	dh_install -pbochs --sourcedir=$(tmpdir) $(bochs_add_files)
 	dh_installdocs -s
 	dh_installexamples -s
 	dh_installmenu -s
