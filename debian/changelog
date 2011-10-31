@@ -2,6 +2,7 @@ bochs (2.4.6-4) UNRELEASED; urgency=low
 
   * Do not install the ne2k plugin on systems were it's not supported.
   * Handler Linux 3.x kernels the same way as 2.6.x. (Closes: #647195)
+  * Pack bochsrc.5 man page table to fix a man warning.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 31 Oct 2011 16:46:44 +0100
 
