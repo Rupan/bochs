@@ -19,13 +19,11 @@ else
   conf_gnu_type += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
 endif
 
-CFLAGS = -Wall -g
-
-ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
-  CFLAGS += -O0
-else
-  CFLAGS += -O2
-endif
+WFLAGS = -Wall
+CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS = $(WFLAGS) $(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS = $(WFLAGS) $(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS)
 
 sb16 := dummy
 cdrom := cdrom
@@ -93,7 +91,11 @@ config.status: configure
 	# Note: We disable docbook support here as a cheap way to avoid
 	# building it in build-arch, and only in build-indep. This works
 	# because configure only disables entering the directory.
-	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CFLAGS)" ./configure \
+	CPPFLAGS="$(CPPFLAGS)" \
+	CFLAGS="$(CFLAGS)" \
+	CXXFLAGS="$(CXXFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	./configure \
 	  $(conf_gnu_type) \
 	  --prefix=/usr \
 	  --mandir=\$${prefix}/share/man \
