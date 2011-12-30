@@ -1,6 +1,7 @@
 bochs (2.4.6-5) UNRELEASED; urgency=low
 
   * Fix typo (targeted) in README.Debian, spotted by lintian.
+  * Remove sb16ctrl.exe from upstream tarball in debian/tarball.sh.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
 
