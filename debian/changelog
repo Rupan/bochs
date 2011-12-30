@@ -14,6 +14,7 @@ bochs (2.5.1-1) UNRELEASED; urgency=low
     unstable though, as the debugging screen appearing on start is a bit
     annoying, if one does not want to debug anything. Or alternatively
     making the debugging screen not appear on start. (Closes: #499567)
+  * Bump bochs versioned Depends on vgabios to >= 0.7a-1.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
 
