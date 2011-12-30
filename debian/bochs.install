@@ -14,6 +14,7 @@ usr/lib/bochs/plugins/libbx_parallel.so*
 usr/lib/bochs/plugins/libbx_pci*.so*
 usr/lib/bochs/plugins/libbx_pic.so*
 usr/lib/bochs/plugins/libbx_pit.so*
+usr/lib/bochs/plugins/libbx_rfb.so*
 usr/lib/bochs/plugins/libbx_sb16.so*
 usr/lib/bochs/plugins/libbx_serial.so*
 usr/lib/bochs/plugins/libbx_soundmod.so*

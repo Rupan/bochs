@@ -4,6 +4,7 @@ current list:
   - wx
   - sdl
   - x
+  - rfb
   - svga
   - term
 

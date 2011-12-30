@@ -2,7 +2,7 @@
 #
 # Copyright © 1997-1999 Joey Hess <joeyh@debian.org>
 # Copyright © 2002-2004 Robert Millan <rmh@debian.org>
-# Copyright © 2004-2010 Guillem Jover <guillem@debian.org>
+# Copyright © 2004-2012 Guillem Jover <guillem@debian.org>
 #
 
 tmpdir := $(CURDIR)/debian/tmp
@@ -98,6 +98,7 @@ config.status: configure
 	  --prefix=/usr \
 	  --mandir=\$${prefix}/share/man \
 	  --with-x11 \
+	  --with-rfb \
 	  --with-term \
 	  --with-sdl \
 	  --with-wx \
