@@ -1,3 +1,9 @@
+bochs (2.4.6-5) UNRELEASED; urgency=low
+
+  * Fix typo (targeted) in README.Debian, spotted by lintian.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
+
 bochs (2.4.6-4) unstable; urgency=low
 
   * Do not install the ne2k plugin on systems were it's not supported.

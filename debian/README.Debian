@@ -50,7 +50,7 @@ Bochs as init
 By telling your kernel to use /etc/bochs-init/init.sh as init, you can turn
 your system into a Bochs-only environment. This may be useful for simulating
 that you have an i386-based PC on different hardware platforms. It is mainly
-targetted at embedded systems or some such.
+targeted at embedded systems or some such.
 
 If your kernel is Linux (which is the most likely), you need to pass
 "init=/etc/bochs-init/init.sh" as a kernel parameter.
