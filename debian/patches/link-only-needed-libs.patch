@@ -66,7 +66,7 @@
    fi
 +
 +  X_CFLAGS="`pkg-config --cflags x11`"
-+  X_LIBS="`pkg-config --libs x11` $(XPM_LIB) -lXrandr"
++  X_LIBS="`pkg-config --libs x11` \$(XPM_LIB) -lXrandr"
 +
 +  AC_DEFINE(BX_WITH_X11, 1)
 +  SPECIFIC_GUI_OBJS="$SPECIFIC_GUI_OBJS \$(GUI_OBJS_X11)"
