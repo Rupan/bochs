@@ -1,38 +1,37 @@
 Author: Guillem Jover <guillem@debian.org>
 
 ---
- doc/man/bochsrc.5 |   21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
+ doc/man/bochsrc.5 |   20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
 --- a/doc/man/bochsrc.5
 +++ b/doc/man/bochsrc.5
-@@ -169,13 +169,18 @@ starts to autorepeat,  and the measureme
+@@ -174,13 +174,17 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  
  Example Specifications[1]
 - Bochs Machine/Compiler                                Mips
-- -------------------------------------------------------------------
-- 2.3.7 3.2Ghz Intel Core 2 Q9770 with WinXP/g++ 3.4    50 to 55 Mips
-- 2.3.7 2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4      38 to 43 Mips
-- 2.2.6 2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4      21 to 25 Mips
-- 2.2.6 2.1Ghz Athlon XP with Linux 2.6/g++ 3.4         12 to 15 Mips
-- 2.0.1 1.6Ghz Intel P4 with Win2000/g++ 3.3             5 to  7 Mips
-+
+- --------------------------------------------------------------------
+- 2.4.6 3.4Ghz Intel Core i7 2600 with Win7x64/g++ 4.5.2 85 to 95 Mips
+- 2.3.7 3.2Ghz Intel Core 2 Q9770 with WinXP/g++ 3.4     50 to 55 Mips
+- 2.3.7 2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4       38 to 43 Mips
+- 2.2.6 2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4       21 to 25 Mips
+- 2.2.6 2.1Ghz Athlon XP with Linux 2.6/g++ 3.4          12 to 15 Mips
 +.TS
 +tab (@);
 +l l l.
 +Bochs@Machine/Compiler@Mips
 +_
-+2.3.7@3.2Ghz Intel Core 2 Q9770 w/ WinXP/g++ 3.4@50-55 Mips
-+2.3.7@2.6Ghz Intel Core 2 Duo w/ WinXP/g++ 3.4@38-43 Mips
-+2.2.6@2.6Ghz Intel Core 2 Duo w/ WinXP/g++ 3.4@21-25 Mips
-+2.2.6@2.1Ghz Athlon XP w/ Linux 2.6/g++ 3.4@12-15 Mips
-+2.0.1@1.6Ghz Intel P4 w/ Win2000/g++ 3.3@5-7 Mips
++2.4.6@3.4Ghz Intel Core i7 2600 with Win7x64/g++ 4.5.2@85-95 Mips
++2.3.7@3.2Ghz Intel Core 2 Q9770 with WinXP/g++ 3.4@50-55 Mips
++2.3.7@2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4@38-43 Mips
++2.2.6@2.6Ghz Intel Core 2 Duo with WinXP/g++ 3.4@21-25 Mips
++2.2.6@2.1Ghz Athlon XP with Linux 2.6/g++ 3.4@12-15 Mips
 +.TE
  
   [1]  IPS measurements depend on OS and compiler
  configuration  in addition  to processor clock
-@@ -931,7 +936,7 @@ Example:
+@@ -1011,7 +1015,7 @@ Example:
  This option controls the presence of the USB root hub which is a part
  of the i440FX PCI chipset. With the portX option you can connect devices
  to the hub (currently supported: 'mouse', 'tablet', 'keypad', 'disk', 'cdrom',

@@ -19,6 +19,8 @@ usr/lib/bochs/plugins/libbx_sb16.so*
 usr/lib/bochs/plugins/libbx_serial.so*
 usr/lib/bochs/plugins/libbx_soundmod.so*
 usr/lib/bochs/plugins/libbx_speaker.so*
+usr/lib/bochs/plugins/libbx_ne2k.so*
+usr/lib/bochs/plugins/libbx_netmod.so*
 usr/lib/bochs/plugins/libbx_unmapped.so*
 usr/lib/bochs/plugins/libbx_usb_*.so*
 usr/lib/bochs/plugins/libbx_vga.so*

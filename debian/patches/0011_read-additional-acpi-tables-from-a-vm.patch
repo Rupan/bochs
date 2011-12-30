@@ -38,7 +38,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #endif
  
  void uuid_probe(void)
-@@ -1484,8 +1505,8 @@ void acpi_bios_init(void)
+@@ -1504,8 +1525,8 @@ void acpi_bios_init(void)
      uint32_t hpet_addr;
  #endif
      uint32_t base_addr, rsdt_addr, fadt_addr, addr, facs_addr, dsdt_addr, ssdt_addr;
@@ -49,7 +49,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
      if (ram_size - ACPI_DATA_SIZE < 0x100000) {
          BX_INFO("Not enough memory for ACPI tables\n");
-@@ -1503,10 +1524,17 @@ void acpi_bios_init(void)
+@@ -1523,10 +1544,17 @@ void acpi_bios_init(void)
      bios_table_cur_addr += sizeof(*rsdp);
  #endif
  
@@ -68,7 +68,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
      fadt_addr = addr;
      fadt = (void *)(addr);
-@@ -1545,12 +1573,6 @@ void acpi_bios_init(void)
+@@ -1565,12 +1593,6 @@ void acpi_bios_init(void)
      addr += sizeof(*hpet);
  #endif
  
@@ -81,7 +81,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* RSDP */
      memset(rsdp, 0, sizeof(*rsdp));
      memcpy(rsdp->signature, "RSD PTR ", 8);
-@@ -1562,17 +1584,6 @@ void acpi_bios_init(void)
+@@ -1582,17 +1604,6 @@ void acpi_bios_init(void)
      rsdp->rsdt_physical_address = cpu_to_le32(rsdt_addr);
      rsdp->checksum = acpi_checksum((void *)rsdp, 20);
  
@@ -99,7 +99,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      /* FADT */
      memset(fadt, 0, sizeof(*fadt));
      fadt->firmware_ctrl = cpu_to_le32(facs_addr);
-@@ -1649,6 +1660,7 @@ void acpi_bios_init(void)
+@@ -1669,6 +1680,7 @@ void acpi_bios_init(void)
                                  "APIC", madt_size, 1);
      }
  
@@ -107,7 +107,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  #ifdef BX_QEMU
      /* HPET */
      memset(hpet, 0, sizeof(*hpet));
-@@ -1659,8 +1671,35 @@ void acpi_bios_init(void)
+@@ -1679,8 +1691,35 @@ void acpi_bios_init(void)
      hpet->addr.address = cpu_to_le32(ACPI_HPET_ADDRESS);
      acpi_build_table_header((struct  acpi_table_header *)hpet,
                               "HPET", sizeof(*hpet), 1);

@@ -49,7 +49,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  void cpu_probe(void)
  {
-@@ -1900,21 +1897,106 @@ smbios_entry_point_init(void *start,
+@@ -1920,21 +1917,106 @@ smbios_entry_point_init(void *start,
      ep->intermediate_checksum = -sum;
      }
  
@@ -160,7 +160,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
      p->bios_rom_size = 1; /* 128 kB */
  
      memset(p->bios_characteristics, 0, 8);
-@@ -1946,52 +2028,66 @@ smbios_type_0_init(void *start)
+@@ -1966,52 +2048,66 @@ smbios_type_0_init(void *start)
      p->bios_characteristics_extension_bytes[0] = 1; /* Bit 0 - ACPI supported */
      p->bios_characteristics_extension_bytes[1] = 0;
  
@@ -251,7 +251,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_3 *p = (struct smbios_type_3 *)start;
  
-@@ -2021,7 +2117,7 @@ smbios_type_3_init(void *start)
+@@ -2041,7 +2137,7 @@ smbios_type_3_init(void *start)
  
  /* Type 4 -- Processor Information */
  static void *
@@ -260,7 +260,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_4 *p = (struct smbios_type_4 *)start;
  
-@@ -2061,7 +2157,7 @@ smbios_type_4_init(void *start, unsigned
+@@ -2081,7 +2177,7 @@ smbios_type_4_init(void *start, unsigned
  
  /* Type 16 -- Physical Memory Array */
  static void *
@@ -269,7 +269,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_16 *p = (struct smbios_type_16*)start;
  
-@@ -2084,7 +2180,7 @@ smbios_type_16_init(void *start, uint32_
+@@ -2104,7 +2200,7 @@ smbios_type_16_init(void *start, uint32_
  
  /* Type 17 -- Memory Device */
  static void *
@@ -278,7 +278,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_17 *p = (struct smbios_type_17 *)start;
  
-@@ -2115,7 +2211,7 @@ smbios_type_17_init(void *start, uint32_
+@@ -2135,7 +2231,7 @@ smbios_type_17_init(void *start, uint32_
  
  /* Type 19 -- Memory Array Mapped Address */
  static void *
@@ -287,7 +287,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_19 *p = (struct smbios_type_19 *)start;
  
-@@ -2136,7 +2232,7 @@ smbios_type_19_init(void *start, uint32_
+@@ -2156,7 +2252,7 @@ smbios_type_19_init(void *start, uint32_
  
  /* Type 20 -- Memory Device Mapped Address */
  static void *
@@ -296,7 +296,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_20 *p = (struct smbios_type_20 *)start;
  
-@@ -2160,7 +2256,7 @@ smbios_type_20_init(void *start, uint32_
+@@ -2180,7 +2276,7 @@ smbios_type_20_init(void *start, uint32_
  
  /* Type 32 -- System Boot Information */
  static void *
@@ -305,7 +305,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_32 *p = (struct smbios_type_32 *)start;
  
-@@ -2178,7 +2274,7 @@ smbios_type_32_init(void *start)
+@@ -2198,7 +2294,7 @@ smbios_type_32_init(void *start)
  
  /* Type 127 -- End of Table */
  static void *
@@ -314,7 +314,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  {
      struct smbios_type_127 *p = (struct smbios_type_127 *)start;
  
-@@ -2192,6 +2288,78 @@ smbios_type_127_init(void *start)
+@@ -2212,6 +2308,78 @@ smbios_type_127_init(void *start)
      return start + 2;
  }
  
@@ -393,7 +393,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  void smbios_init(void)
  {
      unsigned cpu_num, nr_structs = 0, max_struct_size = 0;
-@@ -2205,34 +2373,39 @@ void smbios_init(void)
+@@ -2225,34 +2393,39 @@ void smbios_init(void)
  
  	p = (char *)start + sizeof(struct smbios_entry_point);
  
@@ -449,7 +449,7 @@ Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
  
  #undef add_struct
  
-@@ -2336,8 +2509,6 @@ void rombios32_init(uint32_t *s3_resume_
+@@ -2356,8 +2529,6 @@ void rombios32_init(uint32_t *s3_resume_
  
          mptable_init();
  

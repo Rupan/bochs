@@ -1,3 +1,15 @@
+bochs (2.5.1-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+    - Refresh patches.
+  * Do not use obsolete --enable-acpi and --enable-vbe options.
+  * Use --enable-ne2000 and --enable-pnic on all systems, as now a dummy
+    backend is used automatically as a system fallback.
+  * Do not manually specify a backend to --enable-sb16, configure selects
+    the correct one automatically.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
+
 bochs (2.4.6-5) unstable; urgency=low
 
   * Orphan package, set maintainer to Debian QA Group.

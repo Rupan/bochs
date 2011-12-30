@@ -25,7 +25,6 @@ CFLAGS = $(WFLAGS) $(shell dpkg-buildflags --get CFLAGS)
 CXXFLAGS = $(WFLAGS) $(shell dpkg-buildflags --get CXXFLAGS)
 LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS)
 
-sb16 := dummy
 cdrom := cdrom
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
@@ -33,24 +32,18 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
   conf_arch_args += --enable-pcidev
   conf_arch_args += --with-svga
   eth := eth0
-  sb16 := linux
   com := ttyS0
 endif
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   kernel := fbsd
   conf_arch_args += --with-svga
   eth := xl0
-  sb16 := freebsd
   com := cuua0
   cdrom := acd0
 endif
 ifeq ($(DEB_HOST_ARCH_OS),hurd)
+  eth := eth0
   com := com0
-endif
-
-ifneq (,$(strip $(eth)))
-  conf_arch_args += --enable-ne2000 --enable-pnic
-  bochs_add_files += usr/lib/bochs/plugins/libbx_ne2k.so*
 endif
 
 clean:
@@ -105,8 +98,6 @@ config.status: configure
 	  --with-wx \
 	  --disable-docbook \
 	  --enable-cdrom \
-	  --enable-vbe \
-	  --enable-acpi \
 	  --enable-pci \
 	  --enable-usb \
 	  --enable-usb-ohci \
@@ -121,7 +112,9 @@ config.status: configure
 	  --enable-repeat-speedups \
 	  --enable-plugins \
 	  --enable-compressed-hd \
-	  --enable-sb16=$(sb16) \
+	  --enable-sb16 \
+	  --enable-ne2000 \
+	  --enable-pnic \
 	  $(conf_arch_args)
 
 build: build-arch
@@ -228,9 +221,7 @@ binary-indep: install-indep
 binary-arch: install
 	dh_testdir -s
 	dh_testroot -s
-	dh_install -s -Nbochs --sourcedir=$(tmpdir)
-	# bochs should be last
-	dh_install -pbochs --sourcedir=$(tmpdir) $(bochs_add_files)
+	dh_install -s --sourcedir=$(tmpdir)
 	dh_installdocs -s
 	dh_installexamples -s
 	dh_installmenu -s

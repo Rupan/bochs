@@ -6,7 +6,7 @@ Author: Guillem Jover <guillem@debian.org>
 
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -374,13 +374,13 @@ install_doc::
+@@ -381,13 +381,13 @@ install_doc::
  
  
  build_docbook::

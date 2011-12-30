@@ -2,13 +2,13 @@ Author: Guillem Jover <guillem@debian.org>
 
 ---
  configure.in      |    4 ++--
- gui/Makefile.in   |   28 ++++++++++++++--------------
- iodev/Makefile.in |   26 +++++++++++++-------------
- 3 files changed, 29 insertions(+), 29 deletions(-)
+ gui/Makefile.in   |   26 +++++++++++++-------------
+ iodev/Makefile.in |   22 +++++++++++-----------
+ 3 files changed, 26 insertions(+), 26 deletions(-)
 
 --- a/gui/Makefile.in
 +++ b/gui/Makefile.in
-@@ -108,47 +108,47 @@ libgui.a: $(NONPLUGIN_OBJS)
+@@ -106,44 +106,44 @@ libgui.a: $(NONPLUGIN_OBJS)
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -30,10 +30,6 @@ Author: Guillem Jover <guillem@debian.org>
  libbx_svga.la: svga.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH) $(GUI_LINK_OPTS_SVGA)
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH) $(GUI_LINK_OPTS_SVGA)
- 
- libbx_beos.la: beos.lo
--	$(LIBTOOL) --mode=link $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH) $(GUI_LINK_OPTS_BEOS)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH) $(GUI_LINK_OPTS_BEOS)
  
  libbx_rfb.la: rfb.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH) $(GUI_LINK_OPTS_RFB)
@@ -72,7 +68,7 @@ Author: Guillem Jover <guillem@debian.org>
  bx_%.dll: %.o
 --- a/iodev/Makefile.in
 +++ b/iodev/Makefile.in
-@@ -128,44 +128,44 @@ pcidev.o : pcidev.@CPP_SUFFIX@
+@@ -129,38 +129,38 @@ pcidev.o : pcidev.@CPP_SUFFIX@
  
  ##### building plugins with libtool
  %.lo: %.@CPP_SUFFIX@
@@ -88,13 +84,9 @@ Author: Guillem Jover <guillem@debian.org>
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module $< -o $@ -rpath $(PLUGIN_PATH)
  
  # special link rules for plugins that require more than one object file
- libbx_harddrv.la: harddrv.lo $(CDROM_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module harddrv.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module harddrv.lo $(CDROM_OBJS:.o=.lo) -o libbx_harddrv.la -rpath $(PLUGIN_PATH)
- 
- libbx_hdimage.la: hdimage.lo vmware3.lo vmware4.lo vvfat.lo
--	$(LIBTOOL) --mode=link $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
+ libbx_hdimage.la: hdimage.lo vmware3.lo vmware4.lo vvfat.lo $(CDROM_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo $(CDROM_OBJS:.o=.lo) -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module hdimage.lo vmware3.lo vmware4.lo vvfat.lo $(CDROM_OBJS:.o=.lo) -o libbx_hdimage.la -rpath $(PLUGIN_PATH)
  
  libbx_keyboard.la: keyboard.lo scancodes.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module keyboard.lo scancodes.lo -o libbx_keyboard.la -rpath $(PLUGIN_PATH)
@@ -108,13 +100,9 @@ Author: Guillem Jover <guillem@debian.org>
 -	$(LIBTOOL) --mode=link $(CXX) -module soundmod.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_soundmod.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module soundmod.lo $(SOUNDLOW_OBJS:.o=.lo) -o libbx_soundmod.la -rpath $(PLUGIN_PATH) $(SOUND_LINK_OPTS)
  
- libbx_ne2k.la: ne2k.lo $(NETLOW_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module ne2k.lo $(NETLOW_OBJS:.o=.lo) -o libbx_ne2k.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module ne2k.lo $(NETLOW_OBJS:.o=.lo) -o libbx_ne2k.la -rpath $(PLUGIN_PATH)
- 
- libbx_pcipnic.la: pcipnic.lo $(NETLOW_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module pcipnic.lo $(NETLOW_OBJS:.o=.lo) -o libbx_pcipnic.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module pcipnic.lo $(NETLOW_OBJS:.o=.lo) -o libbx_pcipnic.la -rpath $(PLUGIN_PATH)
+ libbx_netmod.la: netmod.lo $(NETLOW_OBJS:.o=.lo)
+-	$(LIBTOOL) --mode=link $(CXX) -module netmod.lo $(NETLOW_OBJS:.o=.lo) -o libbx_netmod.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module netmod.lo $(NETLOW_OBJS:.o=.lo) -o libbx_netmod.la -rpath $(PLUGIN_PATH)
  
  libbx_serial.la: serial.lo serial_raw.lo
 -	$(LIBTOOL) --mode=link $(CXX) -module serial.lo serial_raw.lo -o libbx_serial.la -rpath $(PLUGIN_PATH)
@@ -124,15 +112,15 @@ Author: Guillem Jover <guillem@debian.org>
 -	$(LIBTOOL) --mode=link $(CXX) -module vga.lo svga_cirrus.lo -o libbx_vga.la -rpath $(PLUGIN_PATH)
 +	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module vga.lo svga_cirrus.lo -o libbx_vga.la -rpath $(PLUGIN_PATH)
  
- libbx_usb_common.la: usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo)
--	$(LIBTOOL) --mode=link $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo) -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
-+	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo $(CDROM_OBJS:.o=.lo) -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
+ libbx_usb_common.la: usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo
+-	$(LIBTOOL) --mode=link $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
++	$(LIBTOOL) --mode=link --tag CXX $(CXX) -module usb_common.lo $(USBDEV_OBJS:.o=.lo) scsi_device.lo -o libbx_usb_common.la -rpath $(PLUGIN_PATH)
  
  #### building DLLs for win32  (tested on cygwin only)
  bx_%.dll: %.o
 --- a/configure.in
 +++ b/configure.in
-@@ -1870,8 +1870,8 @@ OFP="-o "
+@@ -1854,8 +1854,8 @@ OFP="-o "
  MAKELIB="ar rv \$@"
  RMCOMMAND="rm -f "
  # first define link variables without libtool
