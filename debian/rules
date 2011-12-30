@@ -104,6 +104,8 @@ config.status: configure
 	  --enable-a20-pin \
 	  --enable-cpu-level=6 \
 	  --enable-x86-64 \
+	  --enable-avx \
+	  --enable-vmx=2 \
 	  --enable-fpu \
 	  --enable-debugger \
 	  --enable-debugger-gui \
@@ -113,7 +115,9 @@ config.status: configure
 	  --enable-repeat-speedups \
 	  --enable-plugins \
 	  --enable-compressed-hd \
+	  --enable-clgd54xx \
 	  --enable-sb16 \
+	  --enable-es1370 \
 	  --enable-ne2000 \
 	  --enable-pnic \
 	  $(conf_arch_args)

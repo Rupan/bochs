@@ -17,6 +17,7 @@ usr/lib/bochs/plugins/libbx_pic.so*
 usr/lib/bochs/plugins/libbx_pit.so*
 usr/lib/bochs/plugins/libbx_rfb.so*
 usr/lib/bochs/plugins/libbx_sb16.so*
+usr/lib/bochs/plugins/libbx_es1370.so*
 usr/lib/bochs/plugins/libbx_serial.so*
 usr/lib/bochs/plugins/libbx_soundmod.so*
 usr/lib/bochs/plugins/libbx_speaker.so*
