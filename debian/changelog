@@ -1,5 +1,8 @@
-bochs (2.5.1-1) UNRELEASED; urgency=low
+bochs (2.5.1-1) experimental; urgency=low
 
+  !! This release gets random app freezes when using the wxWidgets GUI. !!
+
+  * Orphan package, set maintainer to Debian QA Group.
   * New upstream release.
     - Refresh patches.
   * Do not use obsolete --enable-acpi and --enable-vbe options.
@@ -18,11 +21,10 @@ bochs (2.5.1-1) UNRELEASED; urgency=low
   * Fix man page warnings due to unescaped ' at the beginning of line,
     and table lines using more than 80 characters.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
+ -- Guillem Jover <guillem@debian.org>  Tue, 07 Feb 2012 13:33:35 +0100
 
 bochs (2.4.6-5) unstable; urgency=low
 
-  * Orphan package, set maintainer to Debian QA Group.
   * Fix typo (targeted) in README.Debian, spotted by lintian.
   * Remove sb16ctrl.exe from upstream tarball in debian/tarball.sh.
   * Add missing backslash to escape $ on XPM_LIB variable:
