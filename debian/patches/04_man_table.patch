@@ -1,6 +1,6 @@
 ---
- doc/man/bochsrc.5 |   19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+ doc/man/bochsrc.5 |   21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
 --- a/doc/man/bochsrc.5
 +++ b/doc/man/bochsrc.5
@@ -30,3 +30,12 @@
  
   [1]  IPS measurements depend on OS and compiler
  configuration  in addition  to processor clock
+@@ -931,7 +936,7 @@ Example:
+ This option controls the presence of the USB root hub which is a part
+ of the i440FX PCI chipset. With the portX option you can connect devices
+ to the hub (currently supported: 'mouse', 'tablet', 'keypad', 'disk', 'cdrom',
+-'hub' and 'printer').
++\(aqhub' and 'printer').
+ 
+ The optionsX parameter can be used to assign specific options to the device
+ connected to the corresponding USB port. Currently this feature is only used
