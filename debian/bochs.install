@@ -8,6 +8,7 @@ usr/lib/bochs/plugins/libbx_floppy.so*
 usr/lib/bochs/plugins/libbx_harddrv.so*
 usr/lib/bochs/plugins/libbx_hdimage.so*
 usr/lib/bochs/plugins/libbx_ioapic.so*
+usr/lib/bochs/plugins/libbx_iodebug.so*
 usr/lib/bochs/plugins/libbx_keyboard.so*
 usr/lib/bochs/plugins/libbx_busmouse.so*
 usr/lib/bochs/plugins/libbx_parallel.so*

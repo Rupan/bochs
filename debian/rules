@@ -105,7 +105,8 @@ config.status: configure
 	  --enable-cpu-level=6 \
 	  --enable-x86-64 \
 	  --enable-fpu \
-	  --enable-gdb-stub \
+	  --enable-debugger \
+	  --enable-debugger-gui \
 	  --enable-disasm \
 	  --enable-idle-hack \
 	  --enable-all-optimizations \

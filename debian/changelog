@@ -7,6 +7,11 @@ bochs (2.5.1-1) UNRELEASED; urgency=low
     backend is used automatically as a system fallback.
   * Do not manually specify a backend to --enable-sb16, configure selects
     the correct one automatically.
+  * Switch from gdb-stub to the internal GUI debugger, as the former is
+    unmaintained upstream. It might need disabling prior to an upload to
+    unstable though, as the debugging screen appearing on start is a bit
+    annoying, if one does not want to debug anything. Or alternatively
+    making the debugging screen not appear on start. (Closes: #499567)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
 
