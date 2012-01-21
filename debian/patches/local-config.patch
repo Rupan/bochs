@@ -1,7 +1,6 @@
 ---
- .bochsrc        |   85 +++++++++++---------------------------------------------
- doc/man/bochs.1 |    4 +-
- 2 files changed, 19 insertions(+), 70 deletions(-)
+ .bochsrc |   85 ++++++++++++---------------------------------------------------
+ 1 file changed, 17 insertions(+), 68 deletions(-)
 
 --- a/.bochsrc
 +++ b/.bochsrc
@@ -199,16 +198,3 @@
 -#megs: 32
 -#megs: 16
 -#megs: 8
---- a/doc/man/bochs.1
-+++ b/doc/man/bochs.1
-@@ -57,8 +57,8 @@ Example:
- .SH LICENSE
- This program  is distributed  under the terms of the  GNU
- Lesser General Public License as published  by  the  Free
--Software  Foundation.  See  the  COPYING file located  in
--/usr/local/share/doc/bochs/ for details on the license and
-+Software Foundation. See the LGPL file located in
-+/usr/share/common-licenses/ for details on the license and
- the lack of warranty.
- .\"SKIP_SECTION"
- .SH AVAILABILITY
