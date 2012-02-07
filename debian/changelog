@@ -1,4 +1,4 @@
-bochs (2.4.6-5) UNRELEASED; urgency=low
+bochs (2.4.6-5) unstable; urgency=low
 
   * Orphan package, set maintainer to Debian QA Group.
   * Fix typo (targeted) in README.Debian, spotted by lintian.
@@ -18,7 +18,7 @@ bochs (2.4.6-5) UNRELEASED; urgency=low
   * Build bochs-svga on all architectures where svgalib is now available;
     implies switching from i386 and amd64 to linux-any and kfreebsd-any.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
+ -- Guillem Jover <guillem@debian.org>  Tue, 07 Feb 2012 13:10:17 +0100
 
 bochs (2.4.6-4) unstable; urgency=low
 
