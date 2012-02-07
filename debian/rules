@@ -31,15 +31,14 @@ cdrom := cdrom
 ifeq ($(DEB_HOST_ARCH_OS),linux)
   kernel := linux
   conf_arch_args += --enable-pcidev
+  conf_arch_args += --with-svga
   eth := eth0
   sb16 := linux
   com := ttyS0
-ifneq (,$(findstring $(DEB_HOST_ARCH_CPU),i386 amd64))
-  conf_arch_args += --with-svga
-endif
 endif
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   kernel := fbsd
+  conf_arch_args += --with-svga
   eth := xl0
   sb16 := freebsd
   com := cuua0
