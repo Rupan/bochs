@@ -1,3 +1,5 @@
+Author: Guillem Jover <guillem@debian.org>
+
 ---
  bios/rombios32.ld |    1 +
  1 file changed, 1 insertion(+)

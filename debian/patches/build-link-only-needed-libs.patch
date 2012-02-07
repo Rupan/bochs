@@ -1,3 +1,5 @@
+Author: Guillem Jover <guillem@debian.org>
+
 ---
  Makefile.in     |    4 +---
  configure.in    |   40 +++++++++++++++++++++++-----------------

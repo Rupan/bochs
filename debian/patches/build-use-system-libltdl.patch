@@ -1,3 +1,5 @@
+Author: Guillem Jover <guillem@debian.org>
+
 ---
  Makefile.in          |   19 +--
  bx_debug/Makefile.in |    6 -

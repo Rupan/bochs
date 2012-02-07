@@ -1,3 +1,5 @@
+Author: Guillem Jover <guillem@debian.org>
+
 ---
  bios/Makefile.in |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)

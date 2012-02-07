@@ -1,3 +1,6 @@
+Author: Robert Millan <rmh@debian.org>
+Author: Guillem Jover <guillem@debian.org>
+
 ---
  .bochsrc |   85 ++++++++++++---------------------------------------------------
  1 file changed, 17 insertions(+), 68 deletions(-)
