@@ -127,7 +127,7 @@ Description: Disk Image Creation Tool for Bochs
  Bochs environment.
 
 Package: sb16ctrl-bochs
-Architecture: i386 hurd-i386 kfreebsd-i386 knetbsd-i386
+Architecture: any-i386
 Replaces: sb16ctrl
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: control utility for Bochs emulated SB16 card

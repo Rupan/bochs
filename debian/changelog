@@ -12,6 +12,7 @@ bochs (2.4.6-5) UNRELEASED; urgency=low
     - Remove sequence numbers from non-imported patch filenames.
     - Rename non-imported patches to more descriptive names.
     - Split 00_base.patch into a local-config.patch and local-paths.patch.
+  * Switch sb16ctrl-bochs to any-i386 instead of explicit arch list.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 29 Dec 2011 21:49:06 +0100
 
