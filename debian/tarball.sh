@@ -2,7 +2,7 @@
 #
 # tarball.sh
 #
-# Copyright © 2004, 2007-2011 Guillem Jover <guillem@debian.org>
+# Copyright © 2004, 2007-2012 Guillem Jover <guillem@debian.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -83,16 +83,19 @@ find $tree -type f -name '*.cc' -o -name '*.h' -o -name '*.inc' \
   -o -name '*.data' -o -name '*.ico' -o -name '*.xpm' \
   | xargs chmod -x
 
-echo "-> cleaning tree."
-# Clean non-free stuff
-rm -f $tree/bios/BIOS*
-rm -f $tree/bios/VGABIOS*
+echo "-> removing cruft."
+# Clean up non-free files
+rm -f $tree/bios/VGABIOS-elpin-*
+# Clean up binaries w/o source
+rm -f $tree/bios/BIOS-*
+rm -f $tree/bios/VGABIOS-*
+rm -f $tree/patches/beos-gui-fabo.capture-filter
+# Clean up generated cruft, to always build from source
 rm -f $tree/bios/acpi-dsdt.hex
 rm -f $tree/misc/sb16/sb16ctrl.exe
-rm -f $tree/patches/beos-gui-fabo.capture-filter
 
 echo "-> creating new tarball."
 tar czf $tarball $tree
 
-echo "-> cleaning directory tree."
+echo "-> cleaning working tree."
 rm -rf $tree
