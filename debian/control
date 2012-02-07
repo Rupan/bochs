@@ -1,7 +1,7 @@
 Source: bochs
 Section: misc
 Priority: extra
-Maintainer: Guillem Jover <guillem@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper (>= 7),
  autotools-dev, autoconf, automake, libtool, libltdl-dev, libz-dev,
  libncurses5-dev, libaa1-dev, libsdl1.2-dev,
