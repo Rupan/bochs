@@ -10,5 +10,6 @@ build-qemu-bios.patch
 0011_read-additional-acpi-tables-from-a-vm.patch
 0012-load-smbios-entries-and-files-from-qemu.patch
 build-enable-iasl.patch
+build-use-standard-flags.patch
 bios-delay-loop.patch
 man-warnings.patch

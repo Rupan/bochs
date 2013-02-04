@@ -11,6 +11,9 @@ bochs (2.6-1) UNRELEASED; urgency=low
     - debian/patches/build-on-linux-3.x.patch: Likewise.
     - debian/patches/build-recursive-make.patch: Likewise.
   * Now using Standards-Version 3.9.4 (no changes needed).
+  * Honour standard build flags, so that hardening gets properly enabled.
+    Based on a patch by Simon Ruderich <simon@ruderich.org>.
+    (Closes: #653511)
 
  -- Guillem Jover <guillem@debian.org>  Tue, 22 Jan 2013 13:42:21 +0100
 
