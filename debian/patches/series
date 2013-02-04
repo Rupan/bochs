@@ -1,12 +1,7 @@
 local-config.patch
 local-paths.patch
-build-recursive-make.patch
 build-use-jade-instead-of-docboock2html.patch
-build-fix-SHELL.patch
-build-fix-libtool-calls.patch
 build-use-system-libltdl.patch
-build-on-linux-3.x.patch
-build-link-only-needed-libs.patch
 build-qemu-bios.patch
 0006_qemu-bios-use-preprocessor-for-pci-link-routing.patch
 0007_bios-add-26-pci-slots,-bringing-the-total-to-32.patch
@@ -15,6 +10,5 @@ build-qemu-bios.patch
 0011_read-additional-acpi-tables-from-a-vm.patch
 0012-load-smbios-entries-and-files-from-qemu.patch
 build-enable-iasl.patch
-bios-discard-eh_frame.patch
 bios-delay-loop.patch
 man-warnings.patch

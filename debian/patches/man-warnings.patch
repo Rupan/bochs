@@ -6,7 +6,7 @@ Author: Guillem Jover <guillem@debian.org>
 
 --- a/doc/man/bochsrc.5
 +++ b/doc/man/bochsrc.5
-@@ -174,13 +174,17 @@ starts to autorepeat,  and the measureme
+@@ -200,13 +200,17 @@ starts to autorepeat,  and the measureme
  BogoMips and other benchmarks.
  
  Example Specifications[1]
@@ -31,7 +31,7 @@ Author: Guillem Jover <guillem@debian.org>
  
   [1]  IPS measurements depend on OS and compiler
  configuration  in addition  to processor clock
-@@ -374,7 +378,7 @@ This defines parameters related to the V
+@@ -405,7 +409,7 @@ This defines parameters related to the V
  extension:
  
  Here you can specify the display extension to be used. With the value
@@ -40,7 +40,7 @@ Author: Guillem Jover <guillem@debian.org>
  values are 'vbe' for Bochs VBE and 'cirrus' for Cirrus SVGA support.
  
  update_freq:
-@@ -1011,7 +1015,7 @@ Example:
+@@ -1062,7 +1066,7 @@ Example:
  This option controls the presence of the USB root hub which is a part
  of the i440FX PCI chipset. With the portX option you can connect devices
  to the hub (currently supported: 'mouse', 'tablet', 'keypad', 'disk', 'cdrom',

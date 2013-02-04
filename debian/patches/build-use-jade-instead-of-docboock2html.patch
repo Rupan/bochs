@@ -173,7 +173,7 @@ Author: Guillem Jover <guillem@debian.org>
 +</STYLE-SHEET>
 --- a/configure.in
 +++ b/configure.in
-@@ -2183,6 +2183,8 @@ AC_SUBST(WX_CFLAGS)
+@@ -2317,6 +2317,8 @@ AC_SUBST(WX_CFLAGS)
  AC_SUBST(WX_CXXFLAGS)
  AC_SUBST(TOOLKIT_CXXFLAGS)
  

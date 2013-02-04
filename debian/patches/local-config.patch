@@ -2,12 +2,12 @@ Author: Robert Millan <rmh@debian.org>
 Author: Guillem Jover <guillem@debian.org>
 
 ---
- .bochsrc |   83 ++++++++++++---------------------------------------------------
- 1 file changed, 17 insertions(+), 66 deletions(-)
+ .bochsrc |   81 ++++++++++++---------------------------------------------------
+ 1 file changed, 16 insertions(+), 65 deletions(-)
 
 --- a/.bochsrc
 +++ b/.bochsrc
-@@ -19,8 +19,7 @@
+@@ -35,8 +35,7 @@
  # the "wx" display library.
  #=======================================================================
  #config_interface: textconfig
@@ -17,7 +17,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # DISPLAY_LIBRARY
-@@ -34,10 +33,6 @@
+@@ -50,10 +49,6 @@
  #
  # The choices are: 
  #   x              use X windows interface, cross platform
@@ -28,9 +28,9 @@ Author: Guillem Jover <guillem@debian.org>
  #   sdl            use SDL library, cross platform
  #   svga           use SVGALIB library for Linux, allows graphics without X11
  #   term           text only, uses curses/ncurses library, cross platform
-@@ -52,15 +47,11 @@
- # Some display libraries now support specific option to control their
- # behaviour. See the examples below for currently supported options.
+@@ -74,15 +69,11 @@
+ #
+ # See the examples below for other currently supported options.
  #=======================================================================
 -#display_library: amigaos
 -#display_library: carbon
@@ -39,22 +39,22 @@ Author: Guillem Jover <guillem@debian.org>
  #display_library: rfb, options="timeout=60" # time to wait for client
  #display_library: sdl, options="fullscreen" # startup in fullscreen mode
  #display_library: term
--#display_library: win32, options="gui_debug" # use Win32 debugger gui
+-#display_library: win32
 -#display_library: wx
 +display_library: wx
- #display_library: x, options="hideIPS" # disable IPS output in status bar
- #display_library: x, options="gui_debug" # use GTK debugger gui
- #display_library: x, options="nokeyrepeat" # turn off host keyboard repeat
-@@ -78,7 +69,7 @@
+ #display_library: x
+ 
+ #=======================================================================
+@@ -98,7 +89,7 @@
  # now supported, but we still recommend to use the BIOS distributed with
  # Bochs. The start address optional, since it can be calculated from image size.
  #=======================================================================
 -romimage: file=$BXSHARE/BIOS-bochs-latest 
 +romimage: file=/usr/share/bochs/BIOS-bochs-latest
- #romimage: file=bios/seabios-0.6.1.bin
+ #romimage: file=bios/seabios-1.6.3.bin
  #romimage: file=mybios.bin, address=0xfff80000 # 512k at memory top
  
-@@ -330,9 +321,8 @@ memory: guest=512, host=256
+@@ -358,9 +349,8 @@ memory: guest=512, host=256
  # VGAROMIMAGE
  # You now need to load a VGA ROM BIOS into C0000.
  #=======================================================================
@@ -66,7 +66,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # VGA:
-@@ -471,14 +461,11 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
+@@ -499,14 +489,11 @@ ata3: enabled=0, ioaddr1=0x168, ioaddr2=
  #   ata3-master: type=disk, mode=flat, path=483M.sample, cylinders=1024, heads=15, spt=63
  #   ata3-slave:  type=cdrom, path=iso.sample, status=inserted
  #=======================================================================
@@ -84,7 +84,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # BOOT:
-@@ -492,7 +479,8 @@ ata0-master: type=disk, mode=flat, path=
+@@ -520,7 +507,8 @@ ata0-master: type=disk, mode=flat, path=
  #   boot: cdrom, floppy, disk
  #=======================================================================
  #boot: floppy
@@ -94,7 +94,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # CLOCK:
-@@ -553,8 +541,9 @@ floppy_bootsig_check: disabled=0
+@@ -585,8 +573,9 @@ floppy_bootsig_check: disabled=0
  #   log: ./bochs.out
  #   log: /dev/tty
  #=======================================================================
@@ -105,7 +105,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # LOGPREFIX:
-@@ -645,7 +634,7 @@ debugger_log: -
+@@ -681,7 +670,7 @@ debugger_log: -
  #   com4: enabled=1, mode=pipe-client, dev=\\.\pipe\mypipe
  #   com4: enabled=1, mode=pipe-server, dev=\\.\pipe\mypipe
  #=======================================================================
@@ -114,7 +114,7 @@ Author: Guillem Jover <guillem@debian.org>
  
  
  #=======================================================================
-@@ -661,7 +650,7 @@ debugger_log: -
+@@ -697,7 +686,7 @@ debugger_log: -
  #   parport2: enabled=1, file="/dev/lp0"
  #   parport1: enabled=0
  #=======================================================================
@@ -123,16 +123,16 @@ Author: Guillem Jover <guillem@debian.org>
  
  #=======================================================================
  # SB16:
-@@ -702,7 +691,7 @@ parport1: enabled=1, file="parport.out"
- #   sb16: midimode=1, midi="", wavemode=1, wave=""           # win32
+@@ -739,7 +728,7 @@ parport1: enabled=1, file="parport.out"
  #   sb16: midimode=1, midi=alsa:128:0, wavemode=1, wave=alsa # Linux with ALSA
+ #   sb16: wavemode=1, wave=sdl # use SDL audio (if present) for output
  #=======================================================================
 -#sb16: midimode=1, midi=/dev/midi00, wavemode=1, wave=/dev/dsp, loglevel=2, log=sb16.log, dmatimer=600000
 +sb16: midimode=1, midi=/dev/midi00, wavemode=1, wave=/dev/dsp, loglevel=2, log=/dev/stdout, dmatimer=600000
  
  #=======================================================================
  # ES1370:
-@@ -791,18 +780,6 @@ mouse: enabled=0
+@@ -836,18 +825,6 @@ mouse: enabled=0
  private_colormap: enabled=0
  
  #=======================================================================
@@ -151,7 +151,7 @@ Author: Guillem Jover <guillem@debian.org>
  # ne2k: NE2000 compatible ethernet adapter
  #
  # Format:
-@@ -843,10 +820,7 @@ private_colormap: enabled=0
+@@ -892,10 +869,7 @@ private_colormap: enabled=0
  #         overwrite files.
  #
  #=======================================================================
@@ -163,16 +163,7 @@ Author: Guillem Jover <guillem@debian.org>
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tap, ethdev=tap0
  # ne2k: ioaddr=0x300, irq=9, mac=fe:fd:00:00:00:01, ethmod=tuntap, ethdev=/dev/net/tun0, script=./tunconfig
  # ne2k: ioaddr=0x300, irq=9, mac=b0:c4:20:00:00:01, ethmod=null, ethdev=eth0
-@@ -875,7 +849,7 @@ private_colormap: enabled=0
- # Examples:
- #   keyboard_mapping: enabled=1, map=gui/keymaps/x11-pc-de.map
- #=======================================================================
--keyboard_mapping: enabled=0, map=
-+#keyboard_mapping: enabled=0, map=/usr/share/bochs/keymaps/x11-pc-de.map
- 
- #=======================================================================
- # KEYBOARD_TYPE:
-@@ -1061,26 +1035,3 @@ pci: enabled=1, chipset=i440fx
+@@ -1091,26 +1065,3 @@ pci: enabled=1, chipset=i440fx
  # See the example in the Bochs sources how to write a plugin device.
  #=======================================================================
  #user_plugin: name=testdev

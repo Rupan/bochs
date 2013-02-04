@@ -1,18 +1,20 @@
 Author: Guillem Jover <guillem@debian.org>
 
 ---
- Makefile.in          |   17 +--
- bx_debug/Makefile.in |    6 -
- configure.in         |    1 
- gui/Makefile.in      |   68 +++++++-------
- iodev/Makefile.in    |  236 +++++++++++++++++++++++++--------------------------
- 5 files changed, 163 insertions(+), 165 deletions(-)
+ Makefile.in               |   17 +++---
+ bx_debug/Makefile.in      |    6 +-
+ configure.in              |    1 
+ gui/Makefile.in           |   68 +++++++++++++--------------
+ iodev/Makefile.in         |  112 +++++++++++++++++++++++-----------------------
+ iodev/hdimage/Makefile.in |   20 ++++----
+ iodev/usb/Makefile.in     |   36 +++++++-------
+ 7 files changed, 129 insertions(+), 131 deletions(-)
 
 --- a/configure.in
 +++ b/configure.in
 @@ -4,7 +4,6 @@ AC_PREREQ(2.50)
  AC_INIT(bochs.h)
- AC_REVISION([[$Id: configure.in 10946 2012-01-06 18:46:16Z vruppert $]])
+ AC_REVISION([[$Id: configure.in 11392 2012-09-02 11:11:00Z vruppert $]])
  AC_CONFIG_HEADER(config.h)
 -AC_CONFIG_HEADER(ltdlconf.h)
  
@@ -20,15 +22,15 @@ Author: Guillem Jover <guillem@debian.org>
  dnl // into all the right places.
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -474,7 +474,6 @@ local-dist-clean: clean
+@@ -518,7 +518,6 @@ local-dist-clean: clean
  	@RMCOMMAND@ build/win32/nsis/Makefile build/win32/nsis/bochs.nsi
  	@RMCOMMAND@ build/macosx/Info.plist build/macosx/script_compiled.rsrc
  	@RMCOMMAND@ libtool
 -	@RMCOMMAND@ ltdlconf.h
  
- all-clean: clean
- 	cd iodev @COMMAND_SEPARATOR@
-@@ -671,13 +670,13 @@ install_macosx: all download_dlx install
+ clean_pcidev::
+ 	cd host/linux/pcidev @COMMAND_SEPARATOR@
+@@ -738,13 +737,13 @@ install_macosx: all download_dlx install
  ###########################################
  config.o: config.@CPP_SUFFIX@ bochs.h config.h osdep.h bx_debug/debug.h config.h \
    osdep.h bxversion.h gui/siminterface.h gui/paramtree.h memory/memory.h \
@@ -44,7 +46,7 @@ Author: Guillem Jover <guillem@debian.org>
    instrument/stubs/instrument.h param_names.h cpu/cpu.h \
    cpu/cpuid.h cpu/crregs.h cpu/descriptor.h cpu/instr.h \
    cpu/ia_opcodes.h cpu/lazy_flags.h cpu/icache.h cpu/apic.h cpu/i387.h \
-@@ -685,7 +684,7 @@ gdbstub.o: gdbstub.@CPP_SUFFIX@ bochs.h
+@@ -752,7 +751,7 @@ gdbstub.o: gdbstub.@CPP_SUFFIX@ bochs.h
    cpu/stack.h iodev/iodev.h bochs.h param_names.h
  load32bitOShack.o: load32bitOShack.@CPP_SUFFIX@ bochs.h config.h osdep.h \
    bx_debug/debug.h config.h osdep.h bxversion.h gui/siminterface.h \
@@ -53,7 +55,7 @@ Author: Guillem Jover <guillem@debian.org>
    gui/gui.h instrument/stubs/instrument.h param_names.h cpu/cpu.h \
    cpu/cpuid.h cpu/crregs.h cpu/descriptor.h cpu/instr.h \
    cpu/ia_opcodes.h cpu/lazy_flags.h cpu/icache.h cpu/apic.h cpu/i387.h \
-@@ -693,7 +692,7 @@ load32bitOShack.o: load32bitOShack.@CPP_
+@@ -760,7 +759,7 @@ load32bitOShack.o: load32bitOShack.@CPP_
    iodev/iodev.h bochs.h param_names.h
  logio.o: logio.@CPP_SUFFIX@ bochs.h config.h osdep.h bx_debug/debug.h config.h \
    osdep.h bxversion.h gui/siminterface.h gui/paramtree.h memory/memory.h \
@@ -62,7 +64,7 @@ Author: Guillem Jover <guillem@debian.org>
    instrument/stubs/instrument.h cpu/cpu.h cpu/cpuid.h \
    cpu/crregs.h cpu/descriptor.h cpu/instr.h cpu/ia_opcodes.h \
    cpu/lazy_flags.h cpu/icache.h cpu/apic.h cpu/i387.h fpu/softfloat.h \
-@@ -701,7 +700,7 @@ logio.o: logio.@CPP_SUFFIX@ bochs.h conf
+@@ -768,7 +767,7 @@ logio.o: logio.@CPP_SUFFIX@ bochs.h conf
    bochs.h param_names.h
  main.o: main.@CPP_SUFFIX@ bochs.h config.h osdep.h bx_debug/debug.h config.h \
    osdep.h bxversion.h gui/siminterface.h gui/paramtree.h memory/memory.h \
@@ -71,7 +73,7 @@ Author: Guillem Jover <guillem@debian.org>
    instrument/stubs/instrument.h param_names.h gui/textconfig.h cpu/cpu.h \
    cpu/cpuid.h cpu/crregs.h cpu/descriptor.h cpu/instr.h \
    cpu/ia_opcodes.h cpu/lazy_flags.h cpu/icache.h cpu/apic.h cpu/i387.h \
-@@ -709,11 +708,11 @@ main.o: main.@CPP_SUFFIX@ bochs.h config
+@@ -776,11 +775,11 @@ main.o: main.@CPP_SUFFIX@ bochs.h config
    iodev/iodev.h bochs.h param_names.h
  osdep.o: osdep.@CPP_SUFFIX@ bochs.h config.h osdep.h bx_debug/debug.h config.h \
    osdep.h bxversion.h gui/siminterface.h gui/paramtree.h memory/memory.h \
@@ -85,7 +87,7 @@ Author: Guillem Jover <guillem@debian.org>
    instrument/stubs/instrument.h cpu/cpu.h cpu/cpuid.h \
    cpu/crregs.h cpu/descriptor.h cpu/instr.h cpu/ia_opcodes.h \
    cpu/lazy_flags.h cpu/icache.h cpu/apic.h cpu/i387.h fpu/softfloat.h \
-@@ -721,5 +720,5 @@ pc_system.o: pc_system.@CPP_SUFFIX@ boch
+@@ -788,5 +787,5 @@ pc_system.o: pc_system.@CPP_SUFFIX@ boch
    bochs.h param_names.h
  plugin.o: plugin.@CPP_SUFFIX@ bochs.h config.h osdep.h bx_debug/debug.h config.h \
    osdep.h bxversion.h gui/siminterface.h gui/paramtree.h memory/memory.h \
@@ -123,7 +125,7 @@ Author: Guillem Jover <guillem@debian.org>
    ../cpu/lazy_flags.h ../cpu/icache.h ../cpu/apic.h ../cpu/i387.h \
 --- a/gui/Makefile.in
 +++ b/gui/Makefile.in
-@@ -182,19 +182,19 @@ dist-clean: clean
+@@ -181,19 +181,19 @@ dist-clean: clean
  amigaos.o: amigaos.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
    ../bx_debug/debug.h ../config.h ../osdep.h ../bxversion.h \
    ../gui/siminterface.h ../gui/paramtree.h ../memory/memory.h \
@@ -143,10 +145,10 @@ Author: Guillem Jover <guillem@debian.org>
    ../gui/siminterface.h ../gui/paramtree.h ../memory/memory.h \
 -  ../pc_system.h ../plugin.h ../extplugin.h ../ltdl.h ../gui/gui.h \
 +  ../pc_system.h ../plugin.h ../extplugin.h ../gui/gui.h \
-   ../instrument/stubs/instrument.h ../param_names.h ../iodev/vga.h \
+   ../instrument/stubs/instrument.h ../param_names.h \
    keymap.h ../gui/bitmaps/floppya.h ../gui/bitmaps/floppyb.h \
    ../gui/bitmaps/mouse.h ../gui/bitmaps/reset.h ../gui/bitmaps/power.h \
-@@ -204,55 +204,55 @@ gui.o: gui.@CPP_SUFFIX@ ../iodev/iodev.h
+@@ -203,55 +203,55 @@ gui.o: gui.@CPP_SUFFIX@ ../iodev/iodev.h
  keymap.o: keymap.@CPP_SUFFIX@ ../param_names.h ../bochs.h ../config.h ../osdep.h \
    ../bx_debug/debug.h ../config.h ../osdep.h ../bxversion.h \
    ../gui/siminterface.h ../gui/paramtree.h ../memory/memory.h \
@@ -210,10 +212,10 @@ Author: Guillem Jover <guillem@debian.org>
    ../gui/paramtree.h ../memory/memory.h ../pc_system.h ../plugin.h \
 -  ../extplugin.h ../ltdl.h ../gui/gui.h ../instrument/stubs/instrument.h \
 +  ../extplugin.h ../gui/gui.h ../instrument/stubs/instrument.h \
-   ../param_names.h keymap.h ../iodev/iodev.h ../iodev/vga.h
+   ../param_names.h keymap.h ../iodev/iodev.h
  win32dialog.o: win32dialog.@CPP_SUFFIX@ win32dialog.h ../config.h
  win32_enh_dbg_osdep.o: win32_enh_dbg_osdep.@CPP_SUFFIX@ ../config.h
-@@ -260,39 +260,39 @@ win32paramdlg.o: win32paramdlg.@CPP_SUFF
+@@ -259,39 +259,39 @@ win32paramdlg.o: win32paramdlg.@CPP_SUFF
  wx.o: wx.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h ../bx_debug/debug.h \
    ../config.h ../osdep.h ../bxversion.h ../gui/siminterface.h \
    ../gui/paramtree.h ../memory/memory.h ../pc_system.h ../plugin.h \
@@ -256,10 +258,10 @@ Author: Guillem Jover <guillem@debian.org>
    ../gui/siminterface.h ../gui/paramtree.h ../memory/memory.h \
 -  ../pc_system.h ../plugin.h ../extplugin.h ../ltdl.h ../gui/gui.h \
 +  ../pc_system.h ../plugin.h ../extplugin.h ../gui/gui.h \
-   ../instrument/stubs/instrument.h ../param_names.h ../iodev/vga.h \
+   ../instrument/stubs/instrument.h ../param_names.h \
    keymap.h ../gui/bitmaps/floppya.h ../gui/bitmaps/floppyb.h \
    ../gui/bitmaps/mouse.h ../gui/bitmaps/reset.h ../gui/bitmaps/power.h \
-@@ -302,55 +302,55 @@ gui.lo: gui.@CPP_SUFFIX@ ../iodev/iodev.
+@@ -301,55 +301,55 @@ gui.lo: gui.@CPP_SUFFIX@ ../iodev/iodev.
  keymap.lo: keymap.@CPP_SUFFIX@ ../param_names.h ../bochs.h ../config.h ../osdep.h \
    ../bx_debug/debug.h ../config.h ../osdep.h ../bxversion.h \
    ../gui/siminterface.h ../gui/paramtree.h ../memory/memory.h \
@@ -323,10 +325,10 @@ Author: Guillem Jover <guillem@debian.org>
    ../gui/paramtree.h ../memory/memory.h ../pc_system.h ../plugin.h \
 -  ../extplugin.h ../ltdl.h ../gui/gui.h ../instrument/stubs/instrument.h \
 +  ../extplugin.h ../gui/gui.h ../instrument/stubs/instrument.h \
-   ../param_names.h keymap.h ../iodev/iodev.h ../iodev/vga.h
+   ../param_names.h keymap.h ../iodev/iodev.h
  win32dialog.lo: win32dialog.@CPP_SUFFIX@ win32dialog.h ../config.h
  win32_enh_dbg_osdep.lo: win32_enh_dbg_osdep.@CPP_SUFFIX@ ../config.h
-@@ -358,20 +358,20 @@ win32paramdlg.lo: win32paramdlg.@CPP_SUF
+@@ -357,20 +357,20 @@ win32paramdlg.lo: win32paramdlg.@CPP_SUF
  wx.lo: wx.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h ../bx_debug/debug.h \
    ../config.h ../osdep.h ../bxversion.h ../gui/siminterface.h \
    ../gui/paramtree.h ../memory/memory.h ../pc_system.h ../plugin.h \
@@ -352,7 +354,7 @@ Author: Guillem Jover <guillem@debian.org>
    font/vga.bitmap.h
 --- a/iodev/Makefile.in
 +++ b/iodev/Makefile.in
-@@ -216,17 +216,17 @@ acpi.o: acpi.@CPP_SUFFIX@ iodev.h ../boc
+@@ -178,108 +178,108 @@ acpi.o: acpi.@CPP_SUFFIX@ iodev.h ../boc
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
@@ -370,15 +372,12 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h busmouse.h
 + ../param_names.h busmouse.h
- cdrom_amigaos.o: cdrom_amigaos.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -251,174 +251,174 @@ cmos.o: cmos.@CPP_SUFFIX@ iodev.h ../boc
+ cmos.o: cmos.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h cmos.h
-+ ../param_names.h cmos.h
+- ../ltdl.h ../param_names.h cmos.h virt_timer.h
++ ../param_names.h cmos.h virt_timer.h
  devices.o: devices.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -392,67 +391,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h dma.h
 + ../param_names.h dma.h
- es1370.o: es1370.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h es1370.h soundmod.h soundlnx.h \
-+ ../param_names.h pci.h es1370.h soundmod.h soundlnx.h \
-  soundwin.h soundosx.h
- eth_fbsd.o: eth_fbsd.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_linux.o: eth_linux.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_null.o: eth_null.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_slirp.o: eth_slirp.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_tap.o: eth_tap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_tuntap.o: eth_tuntap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_vde.o: eth_vde.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_vnet.o: eth_vnet.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_win32.o: eth_win32.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
  extfpuirq.o: extfpuirq.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -463,8 +401,8 @@ Author: Guillem Jover <guillem@debian.org>
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h floppy.h
-+ ../param_names.h hdimage.h floppy.h
+- ../ltdl.h ../param_names.h hdimage/hdimage.h floppy.h
++ ../param_names.h hdimage/hdimage.h floppy.h
  gameport.o: gameport.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -475,14 +413,8 @@ Author: Guillem Jover <guillem@debian.org>
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h harddrv.h hdimage.h cdrom.h
-+ ../param_names.h harddrv.h hdimage.h cdrom.h
- hdimage.o: hdimage.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h vvfat.h
-+ ../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h vvfat.h
+- ../ltdl.h ../param_names.h harddrv.h hdimage/hdimage.h hdimage/cdrom.h
++ ../param_names.h harddrv.h hdimage/hdimage.h hdimage/cdrom.h
  ioapic.o: ioapic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -501,18 +433,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h ../gui/keymap.h keyboard.h scancodes.h
 + ../param_names.h ../gui/keymap.h keyboard.h scancodes.h
- ne2k.o: ne2k.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h ne2k.h netmod.h
-+ ../param_names.h pci.h ne2k.h netmod.h
- netmod.o: netmod.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
  parallel.o: parallel.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -543,18 +463,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h pci.h pci_ide.h
 + ../param_names.h pci.h pci_ide.h
- pcipnic.o: pcipnic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h
-+ ../param_names.h
- pcivga.o: pcivga.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h pcivga.h
-+ ../param_names.h pci.h pcivga.h
  pic.o: pic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -567,28 +475,16 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h pit82c54.h
 + ../param_names.h pit82c54.h
- pit_wrap.o: pit_wrap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+ pit.o: pit.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pit_wrap.h pit82c54.h virt_timer.h speaker.h
-+ ../param_names.h pit_wrap.h pit82c54.h virt_timer.h speaker.h
- sb16.o: sb16.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h sb16.h soundmod.h soundlnx.h soundwin.h \
-+ ../param_names.h sb16.h soundmod.h soundlnx.h soundwin.h \
-  soundosx.h
+- ../ltdl.h ../param_names.h pit.h pit82c54.h virt_timer.h speaker.h
++ ../param_names.h pit.h pit82c54.h virt_timer.h speaker.h
  scancodes.o: scancodes.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-@@ -428,17 +428,17 @@ scsi_device.o: scsi_device.@CPP_SUFFIX@
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h cdrom.h scsi_device.h
-+ ../param_names.h hdimage.h cdrom.h scsi_device.h
- serial.o: serial.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+@@ -288,12 +288,12 @@ serial.o: serial.@CPP_SUFFIX@ iodev.h ..
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
@@ -603,126 +499,40 @@ Author: Guillem Jover <guillem@debian.org>
  slowdown_timer.o: slowdown_timer.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -448,84 +448,84 @@ soundlnx.o: soundlnx.@CPP_SUFFIX@ iodev.
+@@ -303,27 +303,27 @@ speaker.o: speaker.@CPP_SUFFIX@ iodev.h
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundlnx.h
-+ ../param_names.h soundmod.h soundlnx.h
- soundmod.o: soundmod.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundlnx.h soundosx.h soundwin.h
-+ ../param_names.h soundmod.h soundlnx.h soundosx.h soundwin.h
- soundosx.o: soundosx.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundosx.h
-+ ../param_names.h soundmod.h soundosx.h
- soundwin.o: soundwin.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundwin.h
-+ ../param_names.h soundmod.h soundwin.h
- speaker.o: speaker.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h speaker.h
-+ ../param_names.h speaker.h
+- ../ltdl.h ../param_names.h speaker.h sound/soundmod.h
++ ../param_names.h speaker.h sound/soundmod.h
  svga_cirrus.o: svga_cirrus.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h vga.h svga_cirrus.h virt_timer.h
-+ ../param_names.h vga.h svga_cirrus.h virt_timer.h
+- ../ltdl.h ../param_names.h vgacore.h svga_cirrus.h virt_timer.h
++ ../param_names.h vgacore.h svga_cirrus.h virt_timer.h
  unmapped.o: unmapped.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h unmapped.h
 + ../param_names.h unmapped.h
- usb_common.o: usb_common.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hid.h usb_hub.h usb_msd.h \
-+ ../param_names.h usb_common.h usb_hid.h usb_hub.h usb_msd.h \
-  usb_printer.h
- usb_hid.o: usb_hid.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hid.h
-+ ../param_names.h usb_common.h usb_hid.h
- usb_hub.o: usb_hub.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hub.h
-+ ../param_names.h usb_common.h usb_hub.h
- usb_msd.o: usb_msd.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h cdrom.h hdimage.h scsi_device.h \
-+ ../param_names.h usb_common.h cdrom.h hdimage.h scsi_device.h \
-  usb_msd.h
- usb_ohci.o: usb_ohci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_ohci.h
-+ ../param_names.h pci.h usb_common.h usb_ohci.h
- usb_printer.o: usb_printer.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_printer.h
-+ ../param_names.h usb_common.h usb_printer.h
- usb_uhci.o: usb_uhci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_uhci.h
-+ ../param_names.h pci.h usb_common.h usb_uhci.h
- usb_xhci.o: usb_xhci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_xhci.h
-+ ../param_names.h pci.h usb_common.h usb_xhci.h
  vga.o: vga.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h vga.h virt_timer.h
-+ ../param_names.h vga.h virt_timer.h
+- ../ltdl.h ../param_names.h vgacore.h vga.h virt_timer.h
++ ../param_names.h vgacore.h vga.h virt_timer.h
+ vgacore.o: vgacore.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
+  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
+  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
+- ../ltdl.h ../param_names.h vgacore.h virt_timer.h
++ ../param_names.h vgacore.h virt_timer.h
  virt_timer.o: virt_timer.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -535,32 +535,32 @@ vmware3.o: vmware3.@CPP_SUFFIX@ iodev.h
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vmware3.h
-+ ../param_names.h hdimage.h vmware3.h
- vmware4.o: vmware4.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vmware4.h
-+ ../param_names.h hdimage.h vmware4.h
- vvfat.o: vvfat.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vvfat.h
-+ ../param_names.h hdimage.h vvfat.h
- acpi.lo: acpi.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+@@ -333,108 +333,108 @@ acpi.lo: acpi.@CPP_SUFFIX@ iodev.h ../bo
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
@@ -740,15 +550,12 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h busmouse.h
 + ../param_names.h busmouse.h
- cdrom_amigaos.lo: cdrom_amigaos.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -585,174 +585,174 @@ cmos.lo: cmos.@CPP_SUFFIX@ iodev.h ../bo
+ cmos.lo: cmos.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h cmos.h
-+ ../param_names.h cmos.h
+- ../ltdl.h ../param_names.h cmos.h virt_timer.h
++ ../param_names.h cmos.h virt_timer.h
  devices.lo: devices.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -762,67 +569,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h dma.h
 + ../param_names.h dma.h
- es1370.lo: es1370.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h es1370.h soundmod.h soundlnx.h \
-+ ../param_names.h pci.h es1370.h soundmod.h soundlnx.h \
-  soundwin.h soundosx.h
- eth_fbsd.lo: eth_fbsd.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_linux.lo: eth_linux.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_null.lo: eth_null.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_slirp.lo: eth_slirp.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_tap.lo: eth_tap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_tuntap.lo: eth_tuntap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_vde.lo: eth_vde.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_vnet.lo: eth_vnet.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
- eth_win32.lo: eth_win32.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
  extfpuirq.lo: extfpuirq.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -833,8 +579,8 @@ Author: Guillem Jover <guillem@debian.org>
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h floppy.h
-+ ../param_names.h hdimage.h floppy.h
+- ../ltdl.h ../param_names.h hdimage/hdimage.h floppy.h
++ ../param_names.h hdimage/hdimage.h floppy.h
  gameport.lo: gameport.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -845,14 +591,8 @@ Author: Guillem Jover <guillem@debian.org>
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h harddrv.h hdimage.h cdrom.h
-+ ../param_names.h harddrv.h hdimage.h cdrom.h
- hdimage.lo: hdimage.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h vvfat.h
-+ ../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h vvfat.h
+- ../ltdl.h ../param_names.h harddrv.h hdimage/hdimage.h hdimage/cdrom.h
++ ../param_names.h harddrv.h hdimage/hdimage.h hdimage/cdrom.h
  ioapic.lo: ioapic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -871,18 +611,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h ../gui/keymap.h keyboard.h scancodes.h
 + ../param_names.h ../gui/keymap.h keyboard.h scancodes.h
- ne2k.lo: ne2k.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h ne2k.h netmod.h
-+ ../param_names.h pci.h ne2k.h netmod.h
- netmod.lo: netmod.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h netmod.h
-+ ../param_names.h netmod.h
  parallel.lo: parallel.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -913,18 +641,6 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h pci.h pci_ide.h
 + ../param_names.h pci.h pci_ide.h
- pcipnic.lo: pcipnic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h
-+ ../param_names.h
- pcivga.lo: pcivga.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h pcivga.h
-+ ../param_names.h pci.h pcivga.h
  pic.lo: pic.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
@@ -937,28 +653,16 @@ Author: Guillem Jover <guillem@debian.org>
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h pit82c54.h
 + ../param_names.h pit82c54.h
- pit_wrap.lo: pit_wrap.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+ pit.lo: pit.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pit_wrap.h pit82c54.h virt_timer.h speaker.h
-+ ../param_names.h pit_wrap.h pit82c54.h virt_timer.h speaker.h
- sb16.lo: sb16.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h sb16.h soundmod.h soundlnx.h soundwin.h \
-+ ../param_names.h sb16.h soundmod.h soundlnx.h soundwin.h \
-  soundosx.h
+- ../ltdl.h ../param_names.h pit.h pit82c54.h virt_timer.h speaker.h
++ ../param_names.h pit.h pit82c54.h virt_timer.h speaker.h
  scancodes.lo: scancodes.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-@@ -762,17 +762,17 @@ scsi_device.lo: scsi_device.@CPP_SUFFIX@
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h cdrom.h scsi_device.h
-+ ../param_names.h hdimage.h cdrom.h scsi_device.h
- serial.lo: serial.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+@@ -443,12 +443,12 @@ serial.lo: serial.@CPP_SUFFIX@ iodev.h .
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
@@ -973,122 +677,244 @@ Author: Guillem Jover <guillem@debian.org>
  slowdown_timer.lo: slowdown_timer.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -782,84 +782,84 @@ soundlnx.lo: soundlnx.@CPP_SUFFIX@ iodev
+@@ -458,27 +458,27 @@ speaker.lo: speaker.@CPP_SUFFIX@ iodev.h
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundlnx.h
-+ ../param_names.h soundmod.h soundlnx.h
- soundmod.lo: soundmod.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundlnx.h soundosx.h soundwin.h
-+ ../param_names.h soundmod.h soundlnx.h soundosx.h soundwin.h
- soundosx.lo: soundosx.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundosx.h
-+ ../param_names.h soundmod.h soundosx.h
- soundwin.lo: soundwin.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h soundmod.h soundwin.h
-+ ../param_names.h soundmod.h soundwin.h
- speaker.lo: speaker.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h speaker.h
-+ ../param_names.h speaker.h
+- ../ltdl.h ../param_names.h speaker.h sound/soundmod.h
++ ../param_names.h speaker.h sound/soundmod.h
  svga_cirrus.lo: svga_cirrus.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h vga.h svga_cirrus.h virt_timer.h
-+ ../param_names.h vga.h svga_cirrus.h virt_timer.h
+- ../ltdl.h ../param_names.h vgacore.h svga_cirrus.h virt_timer.h
++ ../param_names.h vgacore.h svga_cirrus.h virt_timer.h
  unmapped.lo: unmapped.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
 - ../ltdl.h ../param_names.h unmapped.h
 + ../param_names.h unmapped.h
- usb_common.lo: usb_common.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hid.h usb_hub.h usb_msd.h \
-+ ../param_names.h usb_common.h usb_hid.h usb_hub.h usb_msd.h \
-  usb_printer.h
- usb_hid.lo: usb_hid.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hid.h
-+ ../param_names.h usb_common.h usb_hid.h
- usb_hub.lo: usb_hub.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_hub.h
-+ ../param_names.h usb_common.h usb_hub.h
- usb_msd.lo: usb_msd.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h cdrom.h hdimage.h scsi_device.h \
-+ ../param_names.h usb_common.h cdrom.h hdimage.h scsi_device.h \
-  usb_msd.h
- usb_ohci.lo: usb_ohci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_ohci.h
-+ ../param_names.h pci.h usb_common.h usb_ohci.h
- usb_printer.lo: usb_printer.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h usb_common.h usb_printer.h
-+ ../param_names.h usb_common.h usb_printer.h
- usb_uhci.lo: usb_uhci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_uhci.h
-+ ../param_names.h pci.h usb_common.h usb_uhci.h
- usb_xhci.lo: usb_xhci.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h pci.h usb_common.h usb_xhci.h
-+ ../param_names.h pci.h usb_common.h usb_xhci.h
  vga.lo: vga.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
   ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h vga.h virt_timer.h
-+ ../param_names.h vga.h virt_timer.h
+- ../ltdl.h ../param_names.h vgacore.h vga.h virt_timer.h
++ ../param_names.h vgacore.h vga.h virt_timer.h
+ vgacore.lo: vgacore.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
+  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
+  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
+  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
+- ../ltdl.h ../param_names.h vgacore.h virt_timer.h
++ ../param_names.h vgacore.h virt_timer.h
  virt_timer.lo: virt_timer.@CPP_SUFFIX@ ../bochs.h ../config.h ../osdep.h \
   ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
   ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-@@ -869,14 +869,14 @@ vmware3.lo: vmware3.@CPP_SUFFIX@ iodev.h
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vmware3.h
-+ ../param_names.h hdimage.h vmware3.h
- vmware4.lo: vmware4.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vmware4.h
-+ ../param_names.h hdimage.h vmware4.h
- vvfat.lo: vvfat.@CPP_SUFFIX@ iodev.h ../bochs.h ../config.h ../osdep.h \
-  ../bx_debug/debug.h ../config.h ../osdep.h ../gui/siminterface.h \
-  ../cpudb.h ../gui/paramtree.h ../memory/memory.h ../pc_system.h \
-  ../gui/gui.h ../instrument/stubs/instrument.h ../plugin.h ../extplugin.h \
-- ../ltdl.h ../param_names.h hdimage.h vvfat.h
-+ ../param_names.h hdimage.h vvfat.h
+--- a/iodev/hdimage/Makefile.in
++++ b/iodev/hdimage/Makefile.in
+@@ -147,32 +147,32 @@ hdimage.o: hdimage.@CPP_SUFFIX@ ../iodev
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h \
++ ../../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h \
+  vvfat.h vpc-img.h
+ vmware3.o: vmware3.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vmware3.h
++ ../../param_names.h hdimage.h vmware3.h
+ vmware4.o: vmware4.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vmware4.h
++ ../../param_names.h hdimage.h vmware4.h
+ vpc-img.o: vpc-img.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vpc-img.h
++ ../../param_names.h hdimage.h vpc-img.h
+ vvfat.o: vvfat.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h ../../osdep.h \
+  ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vvfat.h
++ ../../param_names.h hdimage.h vvfat.h
+ cdrom_amigaos.lo: cdrom_amigaos.@CPP_SUFFIX@ ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+@@ -203,29 +203,29 @@ hdimage.lo: hdimage.@CPP_SUFFIX@ ../iode
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h \
++ ../../param_names.h cdrom.h hdimage.h vmware3.h vmware4.h \
+  vvfat.h vpc-img.h
+ vmware3.lo: vmware3.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vmware3.h
++ ../../param_names.h hdimage.h vmware3.h
+ vmware4.lo: vmware4.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vmware4.h
++ ../../param_names.h hdimage.h vmware4.h
+ vpc-img.lo: vpc-img.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vpc-img.h
++ ../../param_names.h hdimage.h vpc-img.h
+ vvfat.lo: vvfat.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h ../../osdep.h \
+  ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h hdimage.h vvfat.h
++ ../../param_names.h hdimage.h vvfat.h
+--- a/iodev/usb/Makefile.in
++++ b/iodev/usb/Makefile.in
+@@ -121,112 +121,112 @@ scsi_device.o: scsi_device.@CPP_SUFFIX@
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../hdimage/hdimage.h ../hdimage/cdrom.h \
++ ../../param_names.h ../hdimage/hdimage.h ../hdimage/cdrom.h \
+  scsi_device.h
+ usb_common.o: usb_common.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hid.h usb_hub.h \
++ ../../param_names.h usb_common.h usb_hid.h usb_hub.h \
+  usb_msd.h usb_printer.h
+ usb_hid.o: usb_hid.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hid.h
++ ../../param_names.h usb_common.h usb_hid.h
+ usb_hub.o: usb_hub.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hub.h
++ ../../param_names.h usb_common.h usb_hub.h
+ usb_msd.o: usb_msd.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h ../hdimage/cdrom.h \
++ ../../param_names.h usb_common.h ../hdimage/cdrom.h \
+  ../hdimage/hdimage.h scsi_device.h usb_msd.h
+ usb_ohci.o: usb_ohci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_ohci.h
++ ../../param_names.h ../pci.h usb_common.h usb_ohci.h
+ usb_printer.o: usb_printer.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_printer.h
++ ../../param_names.h usb_common.h usb_printer.h
+ usb_uhci.o: usb_uhci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_uhci.h
++ ../../param_names.h ../pci.h usb_common.h usb_uhci.h
+ usb_xhci.o: usb_xhci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_xhci.h
++ ../../param_names.h ../pci.h usb_common.h usb_xhci.h
+ scsi_device.lo: scsi_device.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../hdimage/hdimage.h ../hdimage/cdrom.h \
++ ../../param_names.h ../hdimage/hdimage.h ../hdimage/cdrom.h \
+  scsi_device.h
+ usb_common.lo: usb_common.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hid.h usb_hub.h \
++ ../../param_names.h usb_common.h usb_hid.h usb_hub.h \
+  usb_msd.h usb_printer.h
+ usb_hid.lo: usb_hid.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hid.h
++ ../../param_names.h usb_common.h usb_hid.h
+ usb_hub.lo: usb_hub.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_hub.h
++ ../../param_names.h usb_common.h usb_hub.h
+ usb_msd.lo: usb_msd.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h ../hdimage/cdrom.h \
++ ../../param_names.h usb_common.h ../hdimage/cdrom.h \
+  ../hdimage/hdimage.h scsi_device.h usb_msd.h
+ usb_ohci.lo: usb_ohci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_ohci.h
++ ../../param_names.h ../pci.h usb_common.h usb_ohci.h
+ usb_printer.lo: usb_printer.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h usb_common.h usb_printer.h
++ ../../param_names.h usb_common.h usb_printer.h
+ usb_uhci.lo: usb_uhci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_uhci.h
++ ../../param_names.h ../pci.h usb_common.h usb_uhci.h
+ usb_xhci.lo: usb_xhci.@CPP_SUFFIX@ ../iodev.h ../../bochs.h ../../config.h \
+  ../../osdep.h ../../bx_debug/debug.h ../../config.h ../../osdep.h \
+  ../../gui/siminterface.h ../../cpudb.h ../../gui/paramtree.h \
+  ../../memory/memory.h ../../pc_system.h ../../gui/gui.h \
+  ../../instrument/stubs/instrument.h ../../plugin.h ../../extplugin.h \
+- ../../ltdl.h ../../param_names.h ../pci.h usb_common.h usb_xhci.h
++ ../../param_names.h ../pci.h usb_common.h usb_xhci.h
