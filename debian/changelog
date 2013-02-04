@@ -10,6 +10,7 @@ bochs (2.6-1) UNRELEASED; urgency=low
     - debian/patches/build-link-only-needed-libs.patch: Likewise.
     - debian/patches/build-on-linux-3.x.patch: Likewise.
     - debian/patches/build-recursive-make.patch: Likewise.
+  * Now using Standards-Version 3.9.4 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Tue, 22 Jan 2013 13:42:21 +0100
 
