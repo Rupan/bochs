@@ -1,0 +1,23 @@
+Restore vga_update_interval option parsing for IDA
+
+--- a/config.cc	2013-03-17 10:16:45.000000000 -0700
++++ b/config.cc	2013-04-18 10:40:34.868959545 -0700
+@@ -2585,6 +2585,18 @@
+         PARSE_ERR(("%s: optramimage%d directive malformed.", context, num));
+       }
+     }
++  } else if (!strcmp(params[0], "vga_update_interval")) {
++    Bit64u value;
++    if (num_params != 2) {
++      PARSE_ERR(("%s: vga_update_interval directive: wrong # args.", context));
++    }
++    value = atol(params[1]);
++    if (value > 0) {
++      SIM->get_param_num(BXPN_VGA_UPDATE_FREQUENCY)->set(1000000 / value);
++      PARSE_WARN(("%s: 'vga_update_interval' will be replaced by new 'vga: update_freq' option.", context));
++    } else {
++      PARSE_ERR(("%s: invalid value for vga_update_interval", context));
++    }
+   } else if (!strcmp(params[0], "vga")) {
+     if (num_params < 2) {
+       PARSE_ERR(("%s: vga directive malformed.", context));

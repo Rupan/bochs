@@ -1,3 +1,19 @@
+bochs (2.6.2-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Michael Mohr <akihana@gmail.com>  Sat, 06 Jul 2013 20:40:42 -0700
+
+bochs (2.6.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Add configure options for IDA as specified by Hex-Rays
+  * Remove incompatible patches, forward port others
+  * Restore vga_update_interval option parsing for IDA
+  * Add symlink for hardcoded path in IDA BOCHS plugin
+
+ -- Michael Mohr <akihana@gmail.com>  Thu, 11 Apr 2013 11:35:07 -0700
+
 bochs (2.6-1) experimental; urgency=low
 
   * QA upload.

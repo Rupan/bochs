@@ -120,6 +120,9 @@ config.status: configure
 	  --enable-es1370 \
 	  --enable-ne2000 \
 	  --enable-pnic \
+	  --enable-show-ips \
+	  --with-all-libs \
+	  --disable-readline \
 	  $(conf_arch_args)
 
 build: build-arch
